@@ -7,7 +7,7 @@
 # Acceptance Criteria
 <!-- The Acceptance Criteria of a User Story consists of a set of Test Scenarios that are to be met to confirm that the software is working as expected. The Acceptance Criteria illustrates the scope of the individual ticket and expectations from the team and client. -->
 
-<!-- The Acceptance Criteria is applicable to specific User Story. Acceptance Criteria of each User Story will be different based on the requirements of that User Story. -->
+<!-- The Acceptance Criteria is applicable to specific User Story. Acceptance Criteria of each User Story will be different based on the requirements of that User Story!-->
 
 <!-- EXAMPLE -->
 <!-- WHEN the user visits any page -->
