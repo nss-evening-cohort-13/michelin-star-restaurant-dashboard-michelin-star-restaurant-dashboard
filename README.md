@@ -1,5 +1,5 @@
 # Michelin Star Restaurant Dashboard
-Our Job is to build a website/dashboard for the faux restaurant Le Baquette! This site should keep track of staff, ingredients, reservations, and menu items.
+Our job is to build a website/dashboard for the faux restaurant Le Baquette! This site should keep track of staff, ingredients, reservations, and menu items.
 Authenticated users should be able to update, create and delete any of the data on the website.
 
 ## The Motivation
