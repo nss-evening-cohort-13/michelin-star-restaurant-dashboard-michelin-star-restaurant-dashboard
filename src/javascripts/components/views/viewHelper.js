@@ -1,7 +1,10 @@
+// import loginView from
+
 const viewHelper = (id) => {
   switch (id) {
     case 'login':
-      return loginView.loginView();
+      return console.warn('loginview');
+      // loginView.loginView();
     default:
       return console.warn('nothing clicked');
   }
@@ -9,8 +12,9 @@ const viewHelper = (id) => {
 
 const viewListener = () => {
   $('body').on('click', '#userBtn', () => {
+    if ()
     viewHelper('login');
   });
 };
 
-export default { viewListener };
+export default { viewListener, viewHelper };
