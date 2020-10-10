@@ -1,19 +1,22 @@
-// import loginView from
+import auth from '../auth/auth';
 
 const viewHelper = (id) => {
   switch (id) {
-    case 'login':
-      return console.warn('loginview');
-      // loginView.loginView();
+    case 'home':
+      return console.warn('homeView');
     default:
       return console.warn('nothing clicked');
   }
 };
 
-const viewListener = () => {
+const viewListener = (view, user) => {
+  viewHelper(view);
   $('body').on('click', '#userBtn', () => {
-    if ()
-    viewHelper('login');
+    if (user) {
+      auth.logoutButton();
+    } else {
+      auth.loginButton();
+    }
   });
 };
 

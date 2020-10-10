@@ -18,18 +18,6 @@ const loginButton = () => {
   $('#google-auth').on('click', signMeIn);
 };
 
-const logoutButton = () => {
-  const domString = `<div id="auth">
-                        <span style="font-size: 5em; color: Tomato;"><i class="fas fa-utensils"></i></span>
-                        <h4>Logout from Le Baquette</h4>
-                        <button id="logout-button" class="btn btn-primary btn-lg">
-                          Logout
-                        </button>
-                      </div>`;
-  $('#app').html(domString);
-  logoutEvent();
-};
-
 const logoutEvent = () => {
   $('#logout-button').on('click', (e) => {
     e.preventDefault();
@@ -39,4 +27,16 @@ const logoutEvent = () => {
   });
 };
 
-export default { loginButton };
+const logoutButton = () => {
+  const domString = `<div id="auth">
+                          <span style="font-size: 5em; color: Tomato;"><i class="fas fa-utensils"></i></span>
+                          <h4>Logout from Le Baquette</h4>
+                          <button id="logout-button" class="btn btn-primary btn-lg">
+                            Logout
+                          </button>
+                        </div>`;
+  $('#app').html(domString);
+  logoutEvent();
+};
+
+export default { loginButton, logoutButton };
