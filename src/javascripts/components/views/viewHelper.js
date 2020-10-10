@@ -1,3 +1,4 @@
+import auth from '../auth/auth';
 import menuView from './menuView';
 import reservationView from './reservationView';
 import staffView from './staffView';
@@ -11,12 +12,14 @@ const viewHelper = (id) => {
       return reservationView.reservationView();
     case 'staffLink':
       return staffView.staffView();
+    case 'home':
+      return console.warn('homeView');
     default:
       return console.warn('nothing clicked');
   }
 };
 
-const viewListener = (view) => {
+const viewListener = (view, user) => {
   viewHelper(view);
 
   // targeting nav link id on click event to print nav link respective view
@@ -24,6 +27,14 @@ const viewListener = (view) => {
     e.stopImmediatePropagation();
     viewHelper(e.currentTarget.id);
   });
+
+  $('body').on('click', '#userLink', () => {
+    if (user) {
+      auth.logoutButton();
+    } else {
+      auth.loginButton();
+    }
+  });
 };
 
-export default { viewListener };
+export default { viewListener, viewHelper };
