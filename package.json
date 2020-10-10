@@ -8,7 +8,7 @@
     "build": "webpack --mode production --module-bind js=babel-loader"
   },
   "keywords": [],
-  "author": "Chris Lojacano, Joseph Martin, Liz Barnes, Kaitlyn VanHook",
+  "author": "Chris Lojacono, Joseph Martin, Liz Barnes, Kaitlyn VanHook",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "7.11.4",
