@@ -30,7 +30,7 @@ Javascript Es6, Sass, HTML5
 N/A
 
 ## ERD
-![ERD](https://i.postimg.cc/25b4vQxn/ERD-Michelin-Star.png)
+![ERD](https://i.postimg.cc/bNRHYqzb/ERD-michelin-star.png)
 
 ## Wireframe
 [Wireframe](https://www.figma.com/file/mgcTKkbXSx81KxopQasZaw/Wireframe?node-id=0%3A1)
