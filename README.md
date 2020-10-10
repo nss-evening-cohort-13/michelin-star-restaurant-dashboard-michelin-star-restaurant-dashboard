@@ -30,7 +30,7 @@ Javascript Es6, Sass, HTML5
 N/A
 
 ## ERD
-N/A
+[ERD](https://lucid.app/invitations/accept/b2dddab3-814e-418f-8772-a1a86265cba5)
 
 ## Wireframe
-N/A
+[Wireframe](https://www.figma.com/file/mgcTKkbXSx81KxopQasZaw/Wireframe?node-id=0%3A1)
