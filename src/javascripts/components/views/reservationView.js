@@ -1,5 +1,5 @@
 const reservationView = () => {
-  $('#app').html('<div>Show me the reservations!</div>');
+  $('#app').html('<div style="background-color: green;">Show me the reservations!</div>');
 };
 
 export default { reservationView };

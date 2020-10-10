@@ -1,5 +1,5 @@
 const menuView = () => {
-  $('#app').html('<div>Show me the menu!</div>');
+  $('#app').html('<div style="background-color: green;">Show me the menu!</div>');
 };
 
 export default { menuView };
