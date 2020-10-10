@@ -4,6 +4,7 @@ import 'firebase/auth';
 const signMeIn = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider);
+  $('#app').html('');
 };
 
 const loginButton = () => {
