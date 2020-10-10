@@ -34,3 +34,9 @@ N/A
 
 ## Wireframe
 [Wireframe](https://www.figma.com/file/mgcTKkbXSx81KxopQasZaw/Wireframe?node-id=0%3A1)
+
+## Contributors
+* [Chris Lojacono](https://github.com/chrislojacono)
+* [Joseph Martin](https://github.com/josephtmartin)
+* [Kaitlyn VanHook](https://github.com/kaitvan)
+* [Liz Barnes](https://github.com/liz-barnes)
