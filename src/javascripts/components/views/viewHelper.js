@@ -11,7 +11,7 @@ const viewHelper = (id) => {
 
 const viewListener = (view, user) => {
   viewHelper(view);
-  $('body').on('click', '#userBtn', () => {
+  $('body').on('click', '#userLink', () => {
     if (user) {
       auth.logoutButton();
     } else {
