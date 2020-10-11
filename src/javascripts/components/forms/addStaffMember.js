@@ -29,9 +29,34 @@ const addStaffMemberForm = () => {
       imageUrl: $('#staff-image-url').val() || false,
     };
 
-    staffData.addStaffMember(data);
+    if (Object.values(data).includes(false)) {
+      $('#error-message').html(
+        `<div class="alert alert-danger" role="alert">
+        Please complete all fields
+      </div>`
+      );
+    } else {
+      $('#error-message').html('');
 
-    console.warn(data, 'staff data');
+      staffData
+        .addStaffMember(data)
+        .then(() => {
+          $('#success-message').html(
+            `<div class="alert alert-success" role="alert">
+          Right on! New staff member was added!
+        </div>`
+          );
+        })
+        .catch((error) => console.warn(error));
+
+      setTimeout(() => {
+        $('#success-message').html('');
+      }, 3000);
+
+      $('#name').val('');
+      $('#role').val('');
+      $('#staff-image-url').val('');
+    }
   });
 };
 
