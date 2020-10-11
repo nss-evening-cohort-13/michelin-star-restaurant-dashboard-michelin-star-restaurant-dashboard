@@ -7,7 +7,7 @@ const addGuestInfo = (data) => {
   $('#add-reservation').html(`<h2>Enter User Info</h2>
         <div id="success-message"></div>
           <div id="error-message"></div>
-    <div>
+    <form>
     <div id="input-group">
         <div class="form-group">
           <label for="firstName">First Name</label>
@@ -22,9 +22,10 @@ const addGuestInfo = (data) => {
             <input class="form-control" id="phoneNumber" class="timePicker" autocomplete="off" placeholder="ex: (615)123-4567">
           </div>
           </div>
-          <button id="add-reservation-btn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Complete Reservation</button>
-        </div>`);
-  $('#add-reservation-btn').on('click', () => {
+          <button id="addReservationBtn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Complete Reservation</button>
+        </form>`);
+  $('#addReservationBtn').on('click', (e) => {
+    e.preventDefault();
     //   This is adding the new data to the first data object
     const guestData = data;
     guestData.firstName = $('#firstName').val() || false;
@@ -92,7 +93,9 @@ const addReservationForm = () => {
   $('#seating-btn').on('click', (e) => {
     e.preventDefault();
     if (seatingChartIsNotShown) {
-      $('#viewSeats').html(`<img id="seatingChart"src="${image}" alt="seating chart">`);
+      $('#viewSeats').html(
+        `<img id="seatingChart"src="${image}" alt="seating chart">`
+      );
       seatingChartIsNotShown = false;
     } else {
       $('#viewSeats').html('');
