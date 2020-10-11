@@ -5,7 +5,8 @@
   "main": "src/javascripts/main.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production --module-bind js=babel-loader"
+    "build": "webpack --mode production --module-bind js=babel-loader",
+    "deploy": "npm run build && firebase deploy"
   },
   "keywords": [],
   "author": "Chris Lojacono, Joseph Martin, Liz Barnes, Kaitlyn VanHook",
@@ -34,9 +35,7 @@
     "axios": "0.20.0",
     "bootstrap": "4.5.2",
     "firebase": "^7.21.0",
-    "jquery": "^3.5.1",
-    "jquery-timepicker": "^1.3.3",
-    "jquery-ui": "^1.12.1",
+    "jquery": "3.5.1",
     "jquery-ui-bundle": "^1.12.1-migrate",
     "popper.js": "1.16.1"
   }

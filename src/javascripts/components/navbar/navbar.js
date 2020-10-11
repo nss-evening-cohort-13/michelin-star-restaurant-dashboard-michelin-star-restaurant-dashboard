@@ -27,7 +27,7 @@ const navbar = () => {
           Welcome!
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa fa-user" id="userLink" aria-hidden="true"></i></a>
+          <a class="userLinkLogin" href="#"><i class="fa fa-user" id="userLink" aria-hidden="true"></i></a>
         </li>
       </ul>
     </div>

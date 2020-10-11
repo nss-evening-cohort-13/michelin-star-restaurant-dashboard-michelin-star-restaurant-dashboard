@@ -4,7 +4,11 @@ import viewHelper from '../../components/views/viewHelper';
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
-    viewHelper.viewListener('home', user);
+    if (user) {
+      viewHelper.viewListener('home', user);
+    } else {
+      viewHelper.viewListener('home', user);
+    }
   });
 };
 
