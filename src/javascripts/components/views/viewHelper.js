@@ -39,6 +39,8 @@ const viewListener = (view, user) => {
 
   $('body').on('click', '.add-staff-btn', (e) => {
     e.stopImmediatePropagation();
+    console.warn('clicked');
+    $('.add-staff-btn').remove();
     addStaffForm.addStaffMemberForm();
   });
 };

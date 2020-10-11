@@ -1,5 +1,4 @@
 const addStaffMemberForm = () => {
-  $('#app').html('');
   $('#add-staff-form').html(`
   <h2>Add Staff Member</h2>
   <div id="success-message"></div>
