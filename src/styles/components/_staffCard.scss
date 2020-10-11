@@ -5,7 +5,15 @@
 .staff-form-btn {
   margin-left: 500px;
   margin-top: 15px;
+  border: #EA859E 1px solid;
   border-radius: 5px;
+  background-color: #262626;
+  color: white;
+}
+
+.staff-form-btn:hover {
+  background-color: #EA859E;
+  border: #EA859E 1px solid;
 }
 
 .card-container-page {
