@@ -3,8 +3,9 @@ import addStaffView from './addStaffView';
 import card from '../cards/staffMemberCard';
 
 const staffView = () => {
-  $('#app').html(`<div class="staff-member-container" class="card-container-page">
+  $('#app').html(`<div class="staff-member-navigation">
                    <button class="staff-form-btn" style="background-color: white;">Add Staff Member</button>
+                   <div class="staff-member-container card-container-page"></div>
                   </div>`);
   staffData.getAllStaff().then((response) => {
     console.warn('response', response);

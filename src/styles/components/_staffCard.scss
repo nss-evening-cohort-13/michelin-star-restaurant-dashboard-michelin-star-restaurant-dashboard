@@ -1,0 +1,23 @@
+.card-container-page {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.card-container {
+  width: 250px;
+  margin: 25px;
+}
+
+.card {
+  display: flex;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  justify-content: flex-end;
+}
+
+.card-btn-container {
+  align-content: center;
+}
