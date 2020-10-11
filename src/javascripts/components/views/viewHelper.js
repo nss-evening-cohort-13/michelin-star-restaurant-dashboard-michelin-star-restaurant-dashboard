@@ -31,7 +31,11 @@ const viewListener = (view, user) => {
     viewHelper(e.currentTarget.id);
   });
   $('body').on('click', '#add-reservation-btn', (e) => {
-    viewHelper(e.currentTarget.id);
+    if (user) {
+      viewHelper(e.currentTarget.id);
+    } else {
+      $('#error-message-reservation').html('<div class="alert alert-danger" role="alert">Please Sign in To Make a Reservation</div>');
+    }
   });
 
   $('body').on('click', '#userLink', () => {
