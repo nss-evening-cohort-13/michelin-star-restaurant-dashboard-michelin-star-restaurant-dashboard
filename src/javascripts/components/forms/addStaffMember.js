@@ -1,3 +1,5 @@
+import staffData from '../../helpers/data/staffData';
+
 const addStaffMemberForm = () => {
   $('#add-staff-form').html(`
   <h2>Add Staff Member</h2>
@@ -21,13 +23,15 @@ const addStaffMemberForm = () => {
   $('#add-staff-btn').on('click', () => {
     console.warn('clicked add btn');
 
-    const staffData = {
+    const data = {
       name: $('#name').val() || false,
       role: $('#role').val() || false,
       imageUrl: $('#staff-image-url').val() || false,
     };
 
-    console.warn(staffData, 'staff data');
+    staffData.addStaffMember(data);
+
+    console.warn(data, 'staff data');
   });
 };
 
