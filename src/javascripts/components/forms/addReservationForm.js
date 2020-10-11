@@ -45,7 +45,7 @@ const addGuestInfo = (data) => {
         })
         .catch((error) => console.warn(error));
       setTimeout(() => {
-        $('#succes-message').html('');
+        $('#success-message').html('');
       }, 3000);
       $('#firstName').val('');
       $('#lastName').val('');
@@ -118,7 +118,7 @@ const addReservationForm = () => {
       addGuestInfo(data);
     }
     setTimeout(() => {
-      $('#succes-message').html('');
+      $('#success-message').html('');
     }, 3000);
   });
 };
