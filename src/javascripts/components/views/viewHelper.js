@@ -2,6 +2,7 @@ import auth from '../auth/auth';
 import menuView from './menuView';
 import reservationView from './reservationView';
 import staffView from './staffView';
+import addStaffForm from '../forms/addStaffMember';
 
 const viewHelper = (id) => {
   switch (id) {
@@ -34,6 +35,11 @@ const viewListener = (view, user) => {
     } else {
       auth.loginButton();
     }
+  });
+
+  $('body').on('click', '.add-staff-btn', (e) => {
+    e.stopImmediatePropagation();
+    addStaffForm.addStaffMemberForm();
   });
 };
 
