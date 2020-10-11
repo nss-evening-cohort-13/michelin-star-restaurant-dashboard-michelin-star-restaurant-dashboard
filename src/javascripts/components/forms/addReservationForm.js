@@ -10,15 +10,15 @@ const addGuestInfo = (data) => {
     <div>
     <div id="input-group">
         <div class="form-group">
-          <label for="image">First Name</label>
+          <label for="firstName">First Name</label>
           <input type="text" class="form-control" id="firstName" placeholder="Your First Name">
         </div>
           <div class="form-group">
-            <label for="date">Last Name</label>
+            <label for="lastName">Last Name</label>
             <input class="form-control" id="lastName" autocomplete="off" placeholder="Your Last Name">
           </div>
           <div class="form-group">
-            <label for="date">Phone Number</label>
+            <label for="phoneNumber">Phone Number</label>
             <input class="form-control" id="phoneNumber" class="timePicker" autocomplete="off" placeholder="ex: (615)123-4567">
           </div>
           </div>
