@@ -83,9 +83,8 @@ const addReservationForm = () => {
     <button id="seating-btn" type="button" class="btn btn-primary">View Seating Chart</button>
     <button id="add-guest-btn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Add Guest Info</button>
     </div>
-    <div id="viewSeats"></div>
     </div>
-      
+    <div id="viewSeats"></div>
     </div>`);
   // Code for Date dropdown
   $('#datePicker').datepicker();
@@ -94,7 +93,7 @@ const addReservationForm = () => {
   $('#seating-btn').on('click', (e) => {
     e.preventDefault();
     if (seatingChartIsNotShown) {
-      $('#viewSeats').html(`<img src="${image}" alt="seating chart">`);
+      $('#viewSeats').html(`<img id="seatingChart"src="${image}" alt="seating chart">`);
       seatingChartIsNotShown = false;
     } else {
       $('#viewSeats').html('');
