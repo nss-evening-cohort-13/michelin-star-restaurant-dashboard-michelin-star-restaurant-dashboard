@@ -30,13 +30,9 @@ const viewListener = (view) => {
 
   $('body').on('click', '.userLinkLogout', () => {
     auth.logoutButton();
-    $('.userLinkLogin').removeClass('userLinkLogout');
-    $('.userLinkLogout').addClass('userLinkLogin');
   });
   $('body').on('click', '.userLinkLogin', () => {
     auth.loginButton();
-    $('.userLinkLogin').addClass('userLinkLogout');
-    $('.userLinkLogout').removeClass('userLinkLogin');
   });
 };
 
