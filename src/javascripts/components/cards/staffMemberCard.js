@@ -3,7 +3,8 @@ const buildStaffCard = (staffObject) => {
           <div class="staff-container card-container" id="${staffObject.firebaseKey}">
             <div class="staff-card card" id="${staffObject.firebaseKey}" style="width: 100%; background-image: url(${staffObject.imageUrl});">
               <div class="staff-btn-container card-btn-container">
-                <button class="btn btn-danger delete-staff-btn delete-btn" id="${staffObject.firebaseKey}">Delete Board</button>
+                <button class="btn btn-danger edit-staff-btn edit-btn" id="${staffObject.firebaseKey}">Edit Member</button>
+                <button class="btn btn-danger delete-staff-btn delete-btn" id="${staffObject.firebaseKey}">Delete Member</button>
               </div>
             </div>
             <div class="staff-info">
