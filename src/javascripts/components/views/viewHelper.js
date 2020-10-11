@@ -37,10 +37,10 @@ const viewListener = (view, user) => {
     }
   });
 
-  $('body').on('click', '.add-staff-btn', (e) => {
+  $('body').on('click', '.staff-form-btn', (e) => {
     e.stopImmediatePropagation();
     console.warn('clicked');
-    $('.add-staff-btn').remove();
+    $('.staff-form-btn').remove();
     addStaffForm.addStaffMemberForm();
   });
 };

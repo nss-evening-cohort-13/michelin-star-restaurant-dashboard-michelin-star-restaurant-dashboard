@@ -17,6 +17,9 @@ const addStaffMemberForm = () => {
   </div>
     <button id="add-staff-btn" type="submit" class="btn btn-info form-btn"><i class="fas fa-plus-circle"></i> Add Staff Member</button>
     `);
+  $('#add-staff-btn').on('click', () => {
+    console.warn('clicked add btn');
+  });
 };
 
 export default { addStaffMemberForm };
