@@ -17,6 +17,8 @@ const loginButton = () => {
                       </div>`;
   $('#app').html(domString);
   $('#google-auth').on('click', signMeIn);
+  $('.userLinkLogin').addClass('userLinkLogout');
+  $('.userLinkLogout').removeClass('userLinkLogin');
 };
 
 const logoutEvent = () => {
@@ -38,6 +40,8 @@ const logoutButton = () => {
                         </div>`;
   $('#app').html(domString);
   logoutEvent();
+  $('.userLinkLogin').removeClass('userLinkLogout');
+  $('.userLinkLogout').addClass('userLinkLogin');
 };
 
 export default { loginButton, logoutButton };

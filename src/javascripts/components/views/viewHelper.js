@@ -19,7 +19,7 @@ const viewHelper = (id) => {
   }
 };
 
-const viewListener = (view, user) => {
+const viewListener = (view) => {
   viewHelper(view);
 
   // targeting nav link id on click event to print nav link respective view
@@ -28,12 +28,11 @@ const viewListener = (view, user) => {
     viewHelper(e.currentTarget.id);
   });
 
-  $('body').on('click', '#userLink', () => {
-    if (user) {
-      auth.logoutButton();
-    } else {
-      auth.loginButton();
-    }
+  $('body').on('click', '.userLinkLogout', () => {
+    auth.logoutButton();
+  });
+  $('body').on('click', '.userLinkLogin', () => {
+    auth.loginButton();
   });
 };
 
