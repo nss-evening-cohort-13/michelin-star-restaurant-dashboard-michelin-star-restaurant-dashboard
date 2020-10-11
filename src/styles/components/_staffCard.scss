@@ -1,4 +1,15 @@
+.staff-member-page {
+  background-color: #262626;
+}
+
+.staff-form-btn {
+  margin-left: 500px;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+
 .card-container-page {
+  background-color: #262626;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -20,4 +31,10 @@
 
 .card-btn-container {
   align-content: center;
+  align-self: center;
+  margin-bottom: 5px;
+}
+
+.staff-info {
+    color: white;
 }
