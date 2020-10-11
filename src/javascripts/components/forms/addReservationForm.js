@@ -25,18 +25,18 @@ const addGuestInfo = (data) => {
         </div>
           <button id="add-reservation-btn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Complete Reservation</button>
         </div>`);
-  const guestData = data;
-  guestData.firstName = $('#firstName').val() || false;
-  guestData.lastName = $('#lastName').val() || false;
-  guestData.phoneNumber = $('#phoneNumber').val() || false;
   $('#add-reservation-btn').on('click', () => {
-    console.warn('add button clicked');
-    console.warn(guestData);
+    //   This is adding the new data to the first data object
+    const guestData = data;
+    guestData.firstName = $('#firstName').val() || false;
+    guestData.lastName = $('#lastName').val() || false;
+    guestData.phoneNumber = $('#phoneNumber').val() || false;
     if (Object.values(guestData).includes(false)) {
       $('#error-message').html(
         '<div class="alert alert-danger" role="alert">Please complete all fields</div>'
       );
     } else {
+      $('#error-message').html('');
       reservationData
         .addReservation(data)
         .then(() => {
@@ -54,11 +54,11 @@ const addGuestInfo = (data) => {
     }
   });
 };
-
+// First Form to Appear
 const addReservationForm = () => {
   $('#add-reservation').html(`<h2>Add A Reservation</h2>
     <div id="success-message"></div>
-    <form>
+    <div>
       <div id="error-message"></div>
 <div id="input-group">
     <div class="form-group">
@@ -79,11 +79,14 @@ const addReservationForm = () => {
     </div>
     </div>
     <div id="seating-section">
+    <div id="reservation-buttons">
     <button id="seating-btn" type="button" class="btn btn-primary">View Seating Chart</button>
+    <button id="add-guest-btn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Add Guest Info</button>
+    </div>
     <div id="viewSeats"></div>
     </div>
-      <button id="add-guest-btn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Add Guest Info</button>
-    </form>`);
+      
+    </div>`);
   // Code for Date dropdown
   $('#datePicker').datepicker();
   //  Code for seating chart dropdown
@@ -116,6 +119,9 @@ const addReservationForm = () => {
       $('#error-message').html('');
       addGuestInfo(data);
     }
+    setTimeout(() => {
+      $('#succes-message').html('');
+    }, 3000);
   });
 };
 
