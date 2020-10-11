@@ -16,7 +16,20 @@
   border: #EA859E 1px solid;
 }
 
+.staff-btn {
+  border: none;
+  border-radius: 5px;
+  background-color: #262626;
+  color: white;
+}
+
+.staff-btn:hover {
+  background-color: #EA859E;
+  border: none;
+}
+
 .card-container-page {
+  margin-top: 10px;
   background-color: #262626;
   display: flex;
   flex-flow: row wrap;
@@ -44,5 +57,6 @@
 }
 
 .staff-info {
-    color: white;
+  margin-top: 5px;
+  color: white;
 }
