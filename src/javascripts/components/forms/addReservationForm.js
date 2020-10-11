@@ -6,8 +6,8 @@ require('jquery-ui-bundle');
 const addGuestInfo = (data) => {
   $('#add-reservation').html(`<h2>Enter User Info</h2>
         <div id="success-message"></div>
-        <div>
           <div id="error-message"></div>
+    <div>
     <div id="input-group">
         <div class="form-group">
           <label for="image">First Name</label>
@@ -19,10 +19,9 @@ const addGuestInfo = (data) => {
           </div>
           <div class="form-group">
             <label for="date">Phone Number</label>
-            <input class="form-control" id="phoneNumber" class="timePicker" autocomplete="off" placeholder="Enter Your Phone Number">
+            <input class="form-control" id="phoneNumber" class="timePicker" autocomplete="off" placeholder="ex: (615)123-4567">
           </div>
-        </div>
-        </div>
+          </div>
           <button id="add-reservation-btn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Complete Reservation</button>
         </div>`);
   $('#add-reservation-btn').on('click', () => {
