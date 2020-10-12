@@ -10,6 +10,8 @@ const reservationTimes = () => {
   });
 };
 
+// SECOND FORM TO APPEAR
+
 const addGuestInfo = (data) => {
   $('#add-reservation').html(`<h2>Enter User Info</h2>
         <div id="success-message"></div>
@@ -26,7 +28,7 @@ const addGuestInfo = (data) => {
           </div>
           <div class="form-group">
             <label for="phoneNumber">Phone Number</label>
-            <input class="form-control" id="phoneNumber" class="timePicker" autocomplete="off" placeholder="ex: (615)123-4567">
+            <input type="tel" class="form-control" id="phoneNumber" class="timePicker" autocomplete="off" placeholder="ex: 615-123-4567">
           </div>
           </div>
           <button id="addReservationBtn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Complete Reservation</button>
