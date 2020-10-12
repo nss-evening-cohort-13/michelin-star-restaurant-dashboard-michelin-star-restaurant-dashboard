@@ -11,8 +11,8 @@ const viewHelper = (id) => {
       return menuView.menuView();
     case 'reservationLink':
       return reservationView.reservationView();
-    // case 'staffLink':
-    //   return staffView.userStaffView();
+    case 'staffLink':
+      return staffView.userStaffView();
     // case 'userStaffView':
     //   return staffView.userStaffView();
     case 'home':
@@ -35,7 +35,7 @@ const viewListener = (view, user) => {
     e.stopImmediatePropagation();
     console.warn('clicked');
     if (user) {
-      staffView.userStaffView();
+      viewHelper(e.currentTarget.id);
     } else {
       staffView.staffView();
     }

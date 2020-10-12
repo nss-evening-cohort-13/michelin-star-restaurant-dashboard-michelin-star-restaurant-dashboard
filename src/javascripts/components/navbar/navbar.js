@@ -17,8 +17,8 @@ const navbar = () => {
     <li class="nav-item mx-3" id="reservationLink">
       <a class="nav-link" id="reservationLink" href="#">Reservation</a>
     </li>
-    <li class="nav-item mx-3 staffLink">
-      <a class="nav-link staffLink"href="#">Staff</a>
+    <li class="nav-item mx-3 staffLink" id="staffLink">
+      <a class="nav-link staffLink" id="staffLink" href="#">Staff</a>
     </li>
   </ul>
 
