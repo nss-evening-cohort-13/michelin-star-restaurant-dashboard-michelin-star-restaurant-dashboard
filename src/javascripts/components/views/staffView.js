@@ -41,4 +41,12 @@ const staffView = () => {
   });
 };
 
-export default { userStaffView, staffView };
+const staffViewConditional = (user) => {
+  if (user) {
+    userStaffView();
+  } else {
+    staffView();
+  }
+};
+
+export default { userStaffView, staffView, staffViewConditional };

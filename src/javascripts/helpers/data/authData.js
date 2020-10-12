@@ -8,11 +8,10 @@ const checkLoginStatus = () => {
     if (user) {
       viewHelper.viewListener('home');
       loginLogout.logoutNavButton();
-      viewHelper.viewListener('staffLink', user);
+      // viewHelper.viewListener('staffLink', user);
     } else {
       viewHelper.viewListener('home');
       loginLogout.loginNavButton();
-      viewHelper.viewListener('.staffLink');
     }
   });
 };

@@ -11,10 +11,11 @@ const viewHelper = (id) => {
       return menuView.menuView();
     case 'reservationLink':
       return reservationView.reservationView();
-    // case 'staffLink':
-    //   return staffView.userStaffView();
-    // case 'userStaffView':
-    //   return staffView.userStaffView();
+    case 'staffLink':
+      return staffView.userStaffView();
+      // return staffView.staffViewConditional(user);
+    case 'userStaffView':
+      return staffView.userStaffView();
     case 'home':
       return console.warn('homeView');
     default:
@@ -23,23 +24,25 @@ const viewHelper = (id) => {
 };
 
 const viewListener = (view, user) => {
-  viewHelper(view);
+  viewHelper(view, user);
 
   // targeting nav link id on click event to print nav link respective view
-  // $('body').on('click', 'a.nav-link', (e) => {
-  //   e.stopImmediatePropagation();
-  //   viewHelper(e.currentTarget.id);
-  // });
-
-  $('body').on('click', '.staffLink', (e) => {
+  $('body').on('click', 'a.nav-link', (e) => {
     e.stopImmediatePropagation();
-    console.warn('clicked');
-    if (user) {
-      staffView.userStaffView();
-    } else {
-      staffView.staffView();
-    }
+    viewHelper(e.currentTarget.id, user);
   });
+
+  // $('body').on('click', '#staffLink', (e) => {
+  //   e.stopImmediatePropagation();
+  //   console.warn('clicked', e.currentTarget.id);
+  //   if (user) {
+  //     viewHelper('userStaffView', user);
+  //     // staffView.userStaffView();
+  //   } else {
+  //     viewHelper('staffLink');
+  //     // staffView.staffView();
+  //   }
+  // });
 
   $('body').on('click', '.userLinkLogout', () => {
     auth.logoutButton();
