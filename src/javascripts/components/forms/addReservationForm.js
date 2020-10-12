@@ -3,6 +3,8 @@ import reservationData from '../../helpers/data/reservationData';
 
 require('jquery-ui-bundle');
 
+const reservationTimes = ['5:00pm', '5:30pm', '6:00pm', '6:30pm', '7:00pm', '7:30pm', '8:00pm', '8:30pm', '9:00pm', '9:30pm', '10:00pm'];
+
 const addGuestInfo = (data) => {
   $('#add-reservation').html(`<h2>Enter User Info</h2>
         <div id="success-message"></div>
@@ -70,8 +72,10 @@ const addReservationForm = () => {
         <input class="form-control" id="datePicker" autocomplete="off" placeholder="Click to choose a date">
       </div>
       <div class="form-group">
-        <label for="date">Time</label>
-        <input class="form-control" id="time" class="timePicker" placeholder="Enter Time: ex: 7:00pm">
+      <label for="time">Time</label>
+      <select class="form-control" id="time">
+        <option value="">Select a Time</option>
+      </select>
       </div>
       <div class="form-group">
       <label for="date">Seating Preference</label>
@@ -86,8 +90,10 @@ const addReservationForm = () => {
     </div>
     <div id="viewSeats"></div>
     </div>`);
+
   // Code for Date dropdown
   $('#datePicker').datepicker();
+
   //  Code for seating chart dropdown
   let seatingChartIsNotShown = true;
   $('#seating-btn').on('click', (e) => {
@@ -102,6 +108,12 @@ const addReservationForm = () => {
       seatingChartIsNotShown = true;
     }
   });
+
+  // Code for time selector
+  reservationTimes.forEach((item) => {
+    $('select').append(`<option value="${item}">${item}</option>`);
+  });
+
   $('#add-guest-btn').on('click', (e) => {
     e.preventDefault();
     // Capturing the first Segment of Data
