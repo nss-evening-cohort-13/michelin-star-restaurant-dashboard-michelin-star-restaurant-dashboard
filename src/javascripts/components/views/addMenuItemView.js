@@ -1,4 +1,6 @@
-const addMenuItem = () => {
+import menuData from '../../helpers/data/menuItemsData';
+
+const addMenuItemForm = () => {
   $('body').css({ 'background-image': 'none', 'background-color': '#262626', color: 'white' });
   $('#app').html(`<h2>Enter Menu Item Info</h2>
                   <div id="success-message"></div>
@@ -33,17 +35,18 @@ const addMenuItem = () => {
       ingredients: $('#ingredientSelection').val() || false,
       price: $('#price').val() || false
     };
-    if (Object.values(menuItemData).includes(false)) {
+    if (Object.values(menuItemData).includes(false) || menuItemData.ingredients.length === 0) {
       $('#error-message').html('<div class="alert alert-danger" role="alert">Please complete all fields</div>');
     } else {
+      console.warn('ingredients value', $('#ingredientSelection').val());
       $('#error-message').html('');
-      // menuData.addMenuItem(menuItemData)
-      //   .then(() => {
-      //     $('#success-message').html('<div class="alert alert-success" role="alert">Your menu item was added!</div>');
-      //   }).catch((error) => console.warn(error));
-      // setTimeout(() => {
-      //   $('#success-message').html('');
-      // }, 3000);
+      menuData.addMenuItem(menuItemData)
+        .then(() => {
+          $('#success-message').html('<div class="alert alert-success" role="alert">Your menu item was added!</div>');
+        }).catch((error) => console.warn(error));
+      setTimeout(() => {
+        $('#success-message').html('');
+      }, 3000);
       $('#menuItemName').val('');
       $('#ingredientSelection').val('');
       $('#price').val('');
@@ -51,4 +54,4 @@ const addMenuItem = () => {
   });
 };
 
-export default { addMenuItem };
+export default { addMenuItemForm };

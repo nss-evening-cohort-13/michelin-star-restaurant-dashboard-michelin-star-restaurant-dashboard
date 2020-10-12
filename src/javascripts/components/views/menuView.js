@@ -20,7 +20,7 @@ const menuView = () => {
                       </div>
                   </div>`);
   $('#addMenuItemBtn').on('click', () => {
-    addMenuItemView.addMenuItem();
+    addMenuItemView.addMenuItemForm();
   });
 };
 
