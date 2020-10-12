@@ -1,7 +1,7 @@
 import staffData from '../../helpers/data/staffData';
 
 const addStaffMemberForm = () => {
-  $('#add-staff-form').html(`
+  $('#staffForm').html(`
   <h2>Add Staff Member</h2>
   <div id="success-message"></div>
   <div id="error-message"></div>

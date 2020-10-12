@@ -54,7 +54,7 @@ const viewListener = (view, user) => {
   $('body').on('click', '.staff-form-btn', (e) => {
     e.stopImmediatePropagation();
     console.warn('clicked');
-    $('.staff-form-btn').remove();
+    // $('.staff-form-btn').remove();
     addStaffForm.addStaffMemberForm();
   });
 };
