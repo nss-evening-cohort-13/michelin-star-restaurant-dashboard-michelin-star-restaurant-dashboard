@@ -6,10 +6,10 @@ import loginLogout from '../../components/auth/auth';
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      viewHelper.viewListener('home');
+      viewHelper.viewListener('home', user);
       loginLogout.logoutNavButton();
     } else {
-      viewHelper.viewListener('home');
+      viewHelper.viewListener('home', user);
       loginLogout.loginNavButton();
     }
   });

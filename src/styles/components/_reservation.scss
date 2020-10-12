@@ -1,0 +1,29 @@
+.ui-datepicker {
+    background: rgb(241, 240, 240);
+    border: 1px solid #555;
+    color: rgb(29, 24, 24);
+    padding: 10px;
+    
+}
+#add-reservation{
+    width: 80%;
+    margin:auto;
+    background-color: white;
+    border-radius: 6px;
+    padding: 20px;
+}
+#input-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#ui-datepicker-div{
+    display: none;
+}
+#seatingChart{
+    width: 400px;
+}
+#add-reservation{
+    width: 75%;
+    height: auto;
+}
