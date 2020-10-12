@@ -14,6 +14,8 @@ const viewHelper = (id) => {
     case 'staffLink':
       return staffView.userStaffView();
       // return staffView.staffViewConditional(user);
+    // case 'staffLink':
+    //   return staffView.staffViewConditional(user);
     case 'userStaffView':
       return staffView.userStaffView();
     case 'home':
@@ -32,6 +34,15 @@ const viewListener = (view, user) => {
     viewHelper(e.currentTarget.id, user);
   });
 
+  // $('body').on('click', 'a.nav-link', (e) => {
+  //   e.stopImmediatePropagation();
+  //   if (user) {
+  //     viewHelper(e.currentTarget.id, user);
+  //   } else {
+  //     staffView.staffView();
+  //   }
+  // });
+
   // $('body').on('click', '#staffLink', (e) => {
   //   e.stopImmediatePropagation();
   //   console.warn('clicked', e.currentTarget.id);
@@ -39,8 +50,8 @@ const viewListener = (view, user) => {
   //     viewHelper('userStaffView', user);
   //     // staffView.userStaffView();
   //   } else {
-  //     viewHelper('staffLink');
-  //     // staffView.staffView();
+  //     // viewHelper('staffLink');
+  //     staffView.staffView();
   //   }
   // });
 
@@ -55,6 +66,8 @@ const viewListener = (view, user) => {
     e.stopImmediatePropagation();
     console.warn('clicked');
     // $('.staff-form-btn').remove();
+    // $('.staff-member-container').remove();
+    // $('#app').css('background-color', '#262626');
     addStaffForm.addStaffMemberForm();
   });
 };

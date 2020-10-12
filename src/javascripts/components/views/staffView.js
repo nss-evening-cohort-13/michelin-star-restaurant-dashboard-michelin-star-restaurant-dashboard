@@ -5,17 +5,6 @@ import card from '../cards/staffMemberCard';
 const userStaffView = () => {
   $('#app').html(`<div class="staff-member-page">
                     <div class="staff-member-navigation">
-                    <a class="btn btn-primary" data-toggle="collapse" href="#staffForm" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    Add to Kennel
-                    </a>
-                    <div class="collapse" id="staffForm" style="background-color: white;">
-                    </div>
-                      <a class="staff-form-btn btn btn btn-danger" data-toggle="collapse" href="#collapseForm" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        Add Staff Member
-                      </a>
-                      <div class="collapse" id="collapseForm">
-                        Place form here
-                      </div>
                       <button class="staff-form-btn btn btn btn-danger">Add Staff Member</button>
                     </div>
                     <div class="staff-member-container card-container-page"></div>
