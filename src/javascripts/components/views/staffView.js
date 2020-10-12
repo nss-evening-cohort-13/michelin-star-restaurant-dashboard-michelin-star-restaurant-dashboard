@@ -7,7 +7,7 @@ const staffView = () => {
                     <div class="staff-member-navigation">
                       <button class="staff-form-btn btn btn-danger">Add Staff Member</button>
                     </div>
-                    <div class="staff-form" ></div>
+                    <div class="staff-form form" ></div>
                     <div class="staff-member-container"></div>
                   </div>`);
 };
