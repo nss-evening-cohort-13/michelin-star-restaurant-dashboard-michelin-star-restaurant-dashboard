@@ -11,8 +11,10 @@ const viewHelper = (id) => {
       return menuView.menuView();
     case 'reservationLink':
       return reservationView.reservationView();
-    case 'staffLink':
-      return staffView.staffView();
+    // case 'staffLink':
+    //   return staffView.userStaffView();
+    // case 'userStaffView':
+    //   return staffView.userStaffView();
     case 'home':
       return console.warn('homeView');
     default:
@@ -24,9 +26,19 @@ const viewListener = (view, user) => {
   viewHelper(view);
 
   // targeting nav link id on click event to print nav link respective view
-  $('body').on('click', 'a.nav-link', (e) => {
+  // $('body').on('click', 'a.nav-link', (e) => {
+  //   e.stopImmediatePropagation();
+  //   viewHelper(e.currentTarget.id);
+  // });
+
+  $('body').on('click', '.staffLink', (e) => {
     e.stopImmediatePropagation();
-    viewHelper(e.currentTarget.id);
+    console.warn('clicked');
+    if (user) {
+      staffView.userStaffView();
+    } else {
+      staffView.staffView();
+    }
   });
 
   $('body').on('click', '#userLink', () => {

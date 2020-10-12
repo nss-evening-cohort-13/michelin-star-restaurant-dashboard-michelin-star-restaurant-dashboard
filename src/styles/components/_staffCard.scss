@@ -2,8 +2,12 @@
   background-color: #262626;
 }
 
+.staff-member-navigation {
+  display: flex;
+  justify-content: center;
+}
+
 .staff-form-btn {
-  margin-left: 500px;
   margin-top: 15px;
   border: #EA859E 1px solid;
   border-radius: 5px;
@@ -59,4 +63,10 @@
 .staff-info {
   margin-top: 5px;
   color: white;
+}
+
+.meet-staff {
+  text-align: center;
+  color: white;
+  padding-top: 25px;
 }
