@@ -2,7 +2,7 @@ import auth from '../auth/auth';
 import menuView from './menuView';
 import reservationView from './reservationView';
 import staffView from './staffView';
-import addStaffForm from '../forms/addStaffMember';
+// import addStaffForm from '../forms/addStaffMember';
 
 const viewHelper = (id) => {
   switch (id) {
@@ -12,12 +12,12 @@ const viewHelper = (id) => {
     case 'reservationLink':
       return reservationView.reservationView();
     case 'staffLink':
-      return staffView.userStaffView();
+      return staffView.staffView();
       // return staffView.staffViewConditional(user);
     // case 'staffLink':
     //   return staffView.staffViewConditional(user);
-    case 'userStaffView':
-      return staffView.userStaffView();
+    // case 'userStaffView':
+    //   return staffView.userStaffView();
     case 'home':
       return console.warn('homeView');
     default:
@@ -65,10 +65,11 @@ const viewListener = (view, user) => {
   $('body').on('click', '.staff-form-btn', (e) => {
     e.stopImmediatePropagation();
     console.warn('clicked');
+    $('.staff-form').html('<div>hello</div>');
     // $('.staff-form-btn').remove();
     // $('.staff-member-container').remove();
     // $('#app').css('background-color', '#262626');
-    addStaffForm.addStaffMemberForm();
+    // addStaffForm.addStaffMemberForm();
   });
 };
 
