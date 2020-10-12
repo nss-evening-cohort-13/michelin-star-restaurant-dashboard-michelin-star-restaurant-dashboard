@@ -11,8 +11,8 @@ const viewHelper = (id) => {
       return menuView.menuView();
     case 'reservationLink':
       return reservationView.reservationView();
-    case 'staffLink':
-      return staffView.userStaffView();
+    // case 'staffLink':
+    //   return staffView.userStaffView();
     // case 'userStaffView':
     //   return staffView.userStaffView();
     case 'home':
@@ -35,18 +35,17 @@ const viewListener = (view, user) => {
     e.stopImmediatePropagation();
     console.warn('clicked');
     if (user) {
-      viewHelper(e.currentTarget.id);
+      staffView.userStaffView();
     } else {
       staffView.staffView();
     }
   });
 
-  $('body').on('click', '#userLink', () => {
-    if (user) {
-      auth.logoutButton();
-    } else {
-      auth.loginButton();
-    }
+  $('body').on('click', '.userLinkLogout', () => {
+    auth.logoutButton();
+  });
+  $('body').on('click', '.userLinkLogin', () => {
+    auth.loginButton();
   });
 
   $('body').on('click', '.staff-form-btn', (e) => {

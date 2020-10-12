@@ -1,11 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
-@import './components/index.scss';
-@import './variables/index.scss';
+@import './variables/';
+@import './components/';
 
 body {
-  background-image: url(https://www.hawaiimagazine.com/sites/default/files/field/image/farmrestaurants-monkeypod4.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  text-align: center;
 }
