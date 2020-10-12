@@ -6,6 +6,12 @@ const signMeIn = () => {
   firebase.auth().signInWithPopup(provider);
   $('#app').html('');
 };
+const logoutNavButton = () => {
+  $('#loginLogout').html('<a class="userLinkLogout" href="#"><i class="fa fa-user" id="userLink" aria-hidden="true"></i></a>');
+};
+const loginNavButton = () => {
+  $('#loginLogout').html('<a class="userLinkLogin" href="#"><i class="fa fa-user" id="userLink" aria-hidden="true"></i></a>');
+};
 
 const loginButton = () => {
   const domString = `<div id="auth">
@@ -17,8 +23,6 @@ const loginButton = () => {
                       </div>`;
   $('#app').html(domString);
   $('#google-auth').on('click', signMeIn);
-  $('.userLinkLogin').addClass('userLinkLogout');
-  $('.userLinkLogout').removeClass('userLinkLogin');
 };
 
 const logoutEvent = () => {
@@ -40,8 +44,11 @@ const logoutButton = () => {
                         </div>`;
   $('#app').html(domString);
   logoutEvent();
-  $('.userLinkLogin').removeClass('userLinkLogout');
-  $('.userLinkLogout').addClass('userLinkLogin');
 };
 
-export default { loginButton, logoutButton };
+export default {
+  loginButton,
+  logoutButton,
+  logoutNavButton,
+  loginNavButton
+};

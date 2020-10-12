@@ -2,10 +2,7 @@
 
 const navbar = () => {
   $('#nav').html(`
-  <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="#">Le Baguette</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -26,8 +23,7 @@ const navbar = () => {
         <li class="user-info-nav">
           Welcome!
         </li>
-        <li class="nav-item">
-          <a class="userLinkLogin" href="#"><i class="fa fa-user" id="userLink" aria-hidden="true"></i></a>
+        <li class="nav-item" id="loginLogout">
         </li>
       </ul>
     </div>
