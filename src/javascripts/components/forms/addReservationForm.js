@@ -71,7 +71,7 @@ const addReservationForm = () => {
       </div>
       <div class="form-group">
         <label for="date">Time</label>
-        <input class="form-control" id="time" class="timePicker" placeholder="ex: 7:00pm">
+        <input type="text" class="form-control" id="time" class="timePicker" placeholder="ex: 7:00pm">
       </div>
       <div class="form-group">
       <label for="date">Seating Preference</label>
@@ -80,17 +80,18 @@ const addReservationForm = () => {
     </div>
     <div id="seating-section">
     <div id="reservation-buttons">
-    <button id="seating-btn" type="button" class="btn btn-primary">View Seating Chart</button>
+    <button id="seatingBtn" type="button" class="btn btn-primary">View Seating Chart</button>
     <button id="add-guest-btn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Add Guest Info</button>
     </div>
     </div>
     <div id="viewSeats"></div>
-    </div>`);
+    </div>
+`);
   // Code for Date dropdown
   $('#datePicker').datepicker();
   //  Code for seating chart dropdown
   let seatingChartIsNotShown = true;
-  $('#seating-btn').on('click', (e) => {
+  $('#seatingBtn').on('click', (e) => {
     e.preventDefault();
     if (seatingChartIsNotShown) {
       $('#viewSeats').html(
