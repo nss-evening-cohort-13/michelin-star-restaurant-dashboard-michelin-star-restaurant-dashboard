@@ -3,6 +3,15 @@ import reservationData from '../../helpers/data/reservationData';
 
 require('jquery-ui-bundle');
 
+const reservationTimes = () => {
+  const times = ['5:00pm', '5:30pm', '6:00pm', '6:30pm', '7:00pm', '7:30pm', '8:00pm', '8:30pm', '9:00pm', '9:30pm', '10:00pm'];
+  times.forEach((item) => {
+    $('select').append(`<option value="${item}">${item}</option>`);
+  });
+};
+
+// SECOND FORM TO APPEAR
+
 const addGuestInfo = (data) => {
   $('#add-reservation').html(`<h2>Enter User Info</h2>
         <div id="success-message"></div>
@@ -19,7 +28,7 @@ const addGuestInfo = (data) => {
           </div>
           <div class="form-group">
             <label for="phoneNumber">Phone Number</label>
-            <input class="form-control" id="phoneNumber" class="timePicker" autocomplete="off" placeholder="ex: (615)123-4567">
+            <input type="tel" class="form-control" id="phoneNumber" class="timePicker" autocomplete="off" placeholder="ex: 615-123-4567">
           </div>
           </div>
           <button id="addReservationBtn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Complete Reservation</button>
@@ -70,8 +79,10 @@ const addReservationForm = () => {
         <input class="form-control" id="datePicker" autocomplete="off" placeholder="Click to choose a date">
       </div>
       <div class="form-group">
-        <label for="date">Time</label>
-        <input type="text" class="form-control" id="time" class="timePicker" placeholder="ex: 7:00pm">
+      <label for="time">Time</label>
+      <select class="form-control" id="time">
+        <option value="">Select a Time</option>
+      </select>
       </div>
       <div class="form-group">
       <label for="date">Seating Preference</label>
@@ -85,10 +96,14 @@ const addReservationForm = () => {
     </div>
     </div>
     <div id="viewSeats"></div>
-    </div>
-`);
+    </div>`);
+
   // Code for Date dropdown
   $('#datePicker').datepicker();
+
+  // RESERVATION DROPDOWN
+  reservationTimes();
+
   //  Code for seating chart dropdown
   let seatingChartIsNotShown = true;
   $('#seatingBtn').on('click', (e) => {
@@ -103,6 +118,7 @@ const addReservationForm = () => {
       seatingChartIsNotShown = true;
     }
   });
+
   $('#add-guest-btn').on('click', (e) => {
     e.preventDefault();
     // Capturing the first Segment of Data
