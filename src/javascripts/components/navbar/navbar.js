@@ -26,8 +26,7 @@ const navbar = () => {
         <li class="user-info-nav">
           Welcome!
         </li>
-        <li class="nav-item">
-          <a class="userLinkLogin" href="#"><i class="fa fa-user" id="userLink" aria-hidden="true"></i></a>
+        <li class="nav-item" id="loginLogout">
         </li>
       </ul>
     </div>
