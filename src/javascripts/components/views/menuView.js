@@ -1,7 +1,7 @@
 import addMenuItemView from './addMenuItemView';
 
 const menuView = () => {
-  $('body').css({ 'background-image': 'none', 'background-color': '#262626', color: 'white' });
+  $('body').css({ color: 'white' });
   $('#app').html(`<div class="container">
                     <div class="row mt-5 mb-5">
                       <div class="col">

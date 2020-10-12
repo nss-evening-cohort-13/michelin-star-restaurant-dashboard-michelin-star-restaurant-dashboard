@@ -1,11 +1,11 @@
 import menuData from '../../helpers/data/menuItemsData';
 
 const addMenuItemForm = () => {
-  $('body').css({ 'background-image': 'none', 'background-color': '#262626', color: 'white' });
+  $('body').css({ color: 'white' });
   $('#app').html(`<h2>Enter Menu Item Info</h2>
                   <div id="success-message"></div>
                   <div id="error-message"></div>
-                  <div id="input-group">
+                  <div id="input-group-menu">
                     <div class="form-group">
                       <label for="menuItemName">Menu Item</label>
                       <input type="text" class="form-control" id="menuItemName" placeholder="Menu Item">
