@@ -58,6 +58,7 @@ const addStaffMemberForm = () => {
       $('#name').val('');
       $('#role').val('');
       $('#staff-image-url').val('');
+      $('.staff-form').remove();
     }
   });
 };
