@@ -11,11 +11,11 @@ const addGuestInfo = (data) => {
     <div id="input-group">
         <div class="form-group">
           <label for="firstName">First Name</label>
-          <input type="text" class="form-control" id="firstName" placeholder="Your First Name">
+          <input type="text" class="form-control" id="firstName" placeholder="First Name">
         </div>
           <div class="form-group">
             <label for="lastName">Last Name</label>
-            <input class="form-control" id="lastName" autocomplete="off" placeholder="Your Last Name">
+            <input class="form-control" id="lastName" autocomplete="off" placeholder="Last Name">
           </div>
           <div class="form-group">
             <label for="phoneNumber">Phone Number</label>
@@ -63,7 +63,7 @@ const addReservationForm = () => {
 <div id="input-group">
     <div class="form-group">
       <label for="image">Number of Guests</label>
-      <input type="text" class="form-control" id="numberOfGuests" placeholder="Number of Guests">
+      <input type="text" class="form-control" id="numberOfGuests" placeholder="# of Guests">
     </div>
       <div class="form-group">
         <label for="date">Date</label>
@@ -71,11 +71,11 @@ const addReservationForm = () => {
       </div>
       <div class="form-group">
         <label for="date">Time</label>
-        <input class="form-control" id="time" class="timePicker" placeholder="Enter Time: ex: 7:00pm">
+        <input class="form-control" id="time" class="timePicker" placeholder="ex: 7:00pm">
       </div>
       <div class="form-group">
       <label for="date">Seating Preference</label>
-      <input class="form-control" id="seatingPreference" placeholder="Enter a Table number from the chart">
+      <input class="form-control" id="seatingPreference" placeholder="View Chart Below">
     </div>
     </div>
     <div id="seating-section">

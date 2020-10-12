@@ -23,3 +23,13 @@
 #seatingChart{
     width: 400px;
 }
+#reservationSection{
+ display: flex;
+ flex-flow: row wrap;
+ width: 95%;
+ justify-content: center;
+}
+
+#add-reservation{
+    width:95%;
+}

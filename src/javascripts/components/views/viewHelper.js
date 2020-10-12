@@ -11,7 +11,7 @@ const viewHelper = (id) => {
       return menuView.menuView();
     case 'reservationLink':
       return reservationView.reservationView();
-    case 'add-reservation-btn':
+    case 'addReservation':
       return addReservationView.addReservationView();
     case 'staffLink':
       return staffView.staffView();
@@ -24,14 +24,13 @@ const viewHelper = (id) => {
 
 const viewListener = (view, user) => {
   viewHelper(view);
-  console.warn(user);
 
   // targeting nav link id on click event to print nav link respective view
   $('body').on('click', 'a.nav-link', (e) => {
     e.stopImmediatePropagation();
     viewHelper(e.currentTarget.id);
   });
-  $('body').on('click', '#add-reservation-btn', (e) => {
+  $('body').on('click', '#addReservation', (e) => {
     if (user) {
       viewHelper(e.currentTarget.id);
     } else {
