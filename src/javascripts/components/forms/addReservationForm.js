@@ -3,7 +3,12 @@ import reservationData from '../../helpers/data/reservationData';
 
 require('jquery-ui-bundle');
 
-const reservationTimes = ['5:00pm', '5:30pm', '6:00pm', '6:30pm', '7:00pm', '7:30pm', '8:00pm', '8:30pm', '9:00pm', '9:30pm', '10:00pm'];
+const reservationTimes = () => {
+  const times = ['5:00pm', '5:30pm', '6:00pm', '6:30pm', '7:00pm', '7:30pm', '8:00pm', '8:30pm', '9:00pm', '9:30pm', '10:00pm'];
+  times.forEach((item) => {
+    $('select').append(`<option value="${item}">${item}</option>`);
+  });
+};
 
 const addGuestInfo = (data) => {
   $('#add-reservation').html(`<h2>Enter User Info</h2>
@@ -94,6 +99,9 @@ const addReservationForm = () => {
   // Code for Date dropdown
   $('#datePicker').datepicker();
 
+  // RESERVATION DROPDOWN
+  reservationTimes();
+
   //  Code for seating chart dropdown
   let seatingChartIsNotShown = true;
   $('#seating-btn').on('click', (e) => {
@@ -107,11 +115,6 @@ const addReservationForm = () => {
       $('#viewSeats').html('');
       seatingChartIsNotShown = true;
     }
-  });
-
-  // Code for time selector
-  reservationTimes.forEach((item) => {
-    $('select').append(`<option value="${item}">${item}</option>`);
   });
 
   $('#add-guest-btn').on('click', (e) => {
