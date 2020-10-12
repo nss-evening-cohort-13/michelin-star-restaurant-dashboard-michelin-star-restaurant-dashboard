@@ -2,7 +2,7 @@
 
 const navbar = () => {
   $('#nav').html(`
-  <nav class="navbar navbar-light navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="#">Le Baguette</a>
     <button id="navBarToggle" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
