@@ -1,5 +1,4 @@
 const menuView = () => {
-  $('body').css({ color: 'white' });
   $('#app').html(`<div id="error-message-menu"></div>
                   <div class="container">
                     <div class="row mt-5 mb-5">
