@@ -1,4 +1,7 @@
-const menuView = () => {
+import menuData from '../../helpers/data/menuItemsData';
+import card from '../cards/menuItemsCard';
+
+const menuView = (user) => {
   $('#app').html(`<div id="error-message-menu"></div>
                   <div class="container">
                     <div class="row mt-5 mb-5">
@@ -13,10 +16,24 @@ const menuView = () => {
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col" id="menuItems">
+                      <div class="col"">
                         MENU ITEMS
                       </div>
-                  </div>`);
+                      <div class="list-group" id="menuItems">
+                      </div>
+                  </div>
+  `);
+  menuData.getMenuItems().then((response) => {
+    if (user) {
+      response.forEach((item) => {
+        $('#menuItems').append(card.menuItemCardMaker(item));
+      });
+    } else {
+      response.forEach((item) => {
+        $('#menuItems').append(card.menuItemCardMaker(item));
+      });
+    }
+  });
 };
 
 export default { menuView };
