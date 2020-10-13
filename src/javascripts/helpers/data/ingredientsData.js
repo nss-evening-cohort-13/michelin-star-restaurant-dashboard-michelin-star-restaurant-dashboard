@@ -21,4 +21,18 @@ const addIngredient = (data) => axios.post(`${baseUrl}/ingredients.json`, data).
   axios.patch(`${baseUrl}/ingredients/${response.data.name}.json`, update).catch((error) => console.warn(error));
 });
 
-export default { getAllIngredients, addIngredient };
+const getIngredientsByCategory = (category) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/ingredients.json?orderBy="category"&equalTo="${category}"`)
+    .then((response) => {
+      const categoryData = response.data;
+      const categoryArray = [];
+      if (categoryData) {
+        Object.keys(categoryData).forEach((item) => {
+          categoryArray.push(categoryData[item]);
+        });
+      }
+      resolve(categoryArray);
+    }).catch((error) => reject(error));
+});
+
+export default { getAllIngredients, addIngredient, getIngredientsByCategory };

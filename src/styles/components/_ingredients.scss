@@ -1,0 +1,24 @@
+.categories-container {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  color: white;
+}
+.category-section {
+  margin: 2px;
+  font-family: 'Prata', serif;
+}
+.card {
+  background: none;
+  border: none;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+}
+.button-container-ingredient {
+  outline: none;
+}
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none;
+}

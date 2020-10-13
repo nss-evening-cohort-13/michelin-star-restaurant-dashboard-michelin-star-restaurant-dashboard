@@ -1,7 +1,7 @@
 import ingredientsData from '../../helpers/data/ingredientsData';
 
 const availableCategories = () => {
-  const categories = ['Breads', 'Pasta', 'Vegetables', 'Fruit', 'Dairy', 'Meat', 'Nuts', 'Oils', 'Spices'];
+  const categories = ['Breads', 'Vegetables', 'Fruit', 'Dairy', 'Meat', 'Nuts', 'Oils', 'Spices'];
   categories.forEach((item) => {
     $('select').append(`<option value="${item}">${item}</option>`);
   });
