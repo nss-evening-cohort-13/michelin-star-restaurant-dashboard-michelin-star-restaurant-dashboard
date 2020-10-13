@@ -13,6 +13,14 @@ const staffView = () => {
 };
 
 const userStaffView = () => {
+  $('#app').html(`<div class="staff-member-page">
+                    <div class="staff-member-navigation">
+                      <button class="staff-form-btn btn btn-danger">Add Staff Member</button>
+                    </div>
+                    <div class="staff-form form" id="staffForm"></div>
+                    <div class="staff-member-container"></div>
+                  </div>`);
+  $('.staff-form').css({ display: 'none' });
   staffData.getAllStaff().then((response) => {
     console.warn('response', response);
     if (response.length) {

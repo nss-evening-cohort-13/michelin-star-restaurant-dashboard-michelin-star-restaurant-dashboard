@@ -12,8 +12,8 @@ const viewHelper = (id) => {
       return menuView.menuView();
     case 'reservationLink':
       return reservationView.reservationView();
-    // case 'staffLink':
-    //   return staffView.staffView();
+    case 'staffLink':
+      return staffView.userStaffView();
       // return staffView.staffViewConditional(user);
     // case 'staffLink':
     //   return staffView.staffViewConditional(user);
@@ -34,19 +34,24 @@ const viewListener = (view, user) => {
   viewHelper(view, user);
   console.warn(user);
 
-  $('body').on('click', '#staffLink', (e) => {
+  $('body').on('click', 'a.nav-link', (e) => {
     e.stopImmediatePropagation();
-    if (user) {
-      $('#app').html('');
-      console.warn(user);
-      staffView.staffView();
-      staffView.userStaffView();
-    } else {
-      $('#app').html('');
-      staffView.staffView();
-      staffView.unauthStaffView();
-    }
+    viewHelper(e.currentTarget.id, user);
   });
+
+  // $('body').on('click', '#staffLink', (e) => {
+  //   e.stopImmediatePropagation();
+  //   if (user) {
+  //     $('#app').html('');
+  //     console.warn(user);
+  //     staffView.staffView();
+  //     staffView.userStaffView();
+  //   } else {
+  //     $('#app').html('');
+  //     staffView.staffView();
+  //     staffView.unauthStaffView();
+  //   }
+  // });
 
   $('body').on('click', '#add-reservation-btn', (e) => {
     if (user) {
@@ -72,12 +77,6 @@ const viewListener = (view, user) => {
     // $('#app').css('background-color', '#262626');
     addStaffForm.addStaffMemberForm();
   });
-
-  // targeting nav link id on click event to print nav link respective view
-  // $('body').on('click', 'a.nav-link', (e) => {
-  //   e.stopImmediatePropagation();
-  //   viewHelper(e.currentTarget.id, user);
-  // });
 
   // $('body').on('click', 'a.nav-link', (e) => {
   //   e.stopImmediatePropagation();
