@@ -23,9 +23,6 @@ const navbar = () => {
   </ul>
 
       <ul class="navbar-nav ml-auto">
-        <li class="user-info-nav">
-          Welcome!
-        </li>
         <li class="nav-item" id="loginLogout">
         </li>
       </ul>
