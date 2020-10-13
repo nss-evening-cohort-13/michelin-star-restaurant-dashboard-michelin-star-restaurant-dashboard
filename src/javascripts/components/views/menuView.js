@@ -1,5 +1,3 @@
-import addMenuItemView from './addMenuItemView';
-
 const menuView = () => {
   $('body').css({ color: 'white' });
   $('#app').html(`<div id="error-message-menu"></div>
@@ -20,9 +18,6 @@ const menuView = () => {
                         MENU ITEMS
                       </div>
                   </div>`);
-  $('#addMenuItemBtn').on('click', () => {
-    addMenuItemView.addMenuItemForm();
-  });
 };
 
 export default { menuView };
