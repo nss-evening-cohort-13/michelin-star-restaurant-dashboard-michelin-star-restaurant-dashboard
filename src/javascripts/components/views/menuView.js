@@ -17,6 +17,9 @@ const menuView = () => {
                         MENU ITEMS
                       </div>
                   </div>`);
+  $('a.nav-link#reservationLink').css({ color: 'white' });
+  $('a.nav-link#staffLink').css({ color: 'white' });
+  $('a.nav-link#menuLink').css({ color: '#EA859E' });
 };
 
 export default { menuView };

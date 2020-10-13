@@ -6,6 +6,9 @@ const reservationView = (user) => {
   <div id="error-message-reservation"></div>
   <button id="addReservation" type="button" class="btn btn-info">Add Reservation</button>
   <div id="reservationSection"</div></div>`);
+  $('a.nav-link#menuLink').css({ color: 'white' });
+  $('a.nav-link#staffLink').css({ color: 'white' });
+  $('a.nav-link#reservationLink').css({ color: '#EA859E' });
   reservations.getAllReservations().then((response) => {
     if (user) {
       response.forEach((item) => {
