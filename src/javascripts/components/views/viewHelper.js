@@ -3,6 +3,8 @@ import menuView from './menuView';
 import reservationView from './reservationView';
 import staffView from './staffView';
 import addReservationView from './addReservationView';
+import ingredientsView from './ingredientsView';
+import addIngredientsView from './addIngredientsView';
 
 const viewHelper = (id) => {
   switch (id) {
@@ -15,6 +17,10 @@ const viewHelper = (id) => {
       return addReservationView.addReservationView();
     case 'staffLink':
       return staffView.staffView();
+    case 'viewIngredientsBtn':
+      return ingredientsView.ingredientsView();
+    case 'add-ingredient-btn':
+      return addIngredientsView.addIngredientsView();
     case 'home':
       return console.warn('homeView');
     default:
@@ -44,6 +50,14 @@ const viewListener = (view, user) => {
     } else {
       $('#error-message-reservation').html('<div class="alert alert-danger" role="alert">Please Sign in To Make a Reservation</div>');
     }
+  });
+  // View Ingredients Button
+  $('body').on('click', '#viewIngredientsBtn', (e) => {
+    viewHelper(e.currentTarget.id);
+  });
+  // Add Ingredients Button
+  $('body').on('click', '#add-ingredient-btn', (e) => {
+    viewHelper(e.currentTarget.id);
   });
   $('body').on('click', '.userLinkLogout', () => {
     auth.logoutButton();

@@ -1,5 +1,5 @@
 const ingredientsView = () => {
-  $('#app').html(`<div id="add-ingredients">Show me the ingredients!</div>
+  $('#app').html(`<div id="add-ingredients"></div>
   <button id="add-ingredient-btn" type="button" class="btn btn-info">Add Ingredient</button>
   `);
 };

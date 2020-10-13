@@ -1,5 +1,12 @@
 import ingredientsData from '../../helpers/data/ingredientsData';
 
+const availableCategories = () => {
+  const categories = ['Breads', 'Pasta', 'Vegetables', 'Fruit', 'Dairy', 'Meat', 'Nuts', 'Oils', 'Spices'];
+  categories.forEach((item) => {
+    $('select').append(`<option value="${item}">${item}</option>`);
+  });
+};
+
 const addIngredientsForm = () => {
   $('#add-ingredients').html(`
   <h2>Add An Ingredient</h2>
@@ -12,8 +19,10 @@ const addIngredientsForm = () => {
         <input type="text" class="form-control" id="ingredient" placeholder="Sliced Pears" />
       </div>
       <div class="form-group">
-        <label for="lastName">Category</label>
-        <input class="form-control" id="category" autocomplete="off" placeholder="Fruit" />
+      <label for="category">Category</label>
+      <select class="form-control" id="category">
+        <option value="">Select a Category</option>
+      </select>
       </div>
     </div>
     <button id="addIngredientBtn" type="button" class="btn btn-info">
@@ -21,6 +30,8 @@ const addIngredientsForm = () => {
     </button>
   </form>
   `);
+  // Category Dropdown
+  availableCategories();
 
   $('#addIngredientBtn').on('click', (e) => {
     e.preventDefault();
@@ -40,7 +51,7 @@ const addIngredientsForm = () => {
         .addIngredient(data)
         .then(() => {
           $('#success-message').html(
-            '<div class="alert alert-success" role="alert">Your Board Was Added!</div>'
+            '<div class="alert alert-success" role="alert">Your Ingredient Was Added!</div>'
           );
           setTimeout(() => {
             $('#success-message').html('');
