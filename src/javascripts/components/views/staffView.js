@@ -1,5 +1,4 @@
 import staffData from '../../helpers/data/staffData';
-// import addStaffView from './addStaffView';
 import card from '../cards/staffMemberCard';
 
 const staffView = () => {

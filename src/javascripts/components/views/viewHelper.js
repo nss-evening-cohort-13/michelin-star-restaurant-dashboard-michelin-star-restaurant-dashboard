@@ -3,6 +3,7 @@ import menuView from './menuView';
 import reservationView from './reservationView';
 import staffView from './staffView';
 import addStaffForm from '../forms/addStaffMember';
+import addReservationView from './addReservationView';
 
 const viewHelper = (id) => {
   switch (id) {
@@ -18,6 +19,10 @@ const viewHelper = (id) => {
     //   return staffView.staffViewConditional(user);
     // case 'userStaffView':
     //   return staffView.userStaffView();
+    case 'add-reservation-btn':
+      return addReservationView.addReservationView();
+    // case 'staffLink':
+    //   return staffView.staffView();
     case 'home':
       return console.warn('homeView');
     default:
@@ -27,21 +32,7 @@ const viewHelper = (id) => {
 
 const viewListener = (view, user) => {
   viewHelper(view, user);
-
-  // targeting nav link id on click event to print nav link respective view
-  // $('body').on('click', 'a.nav-link', (e) => {
-  //   e.stopImmediatePropagation();
-  //   viewHelper(e.currentTarget.id, user);
-  // });
-
-  // $('body').on('click', 'a.nav-link', (e) => {
-  //   e.stopImmediatePropagation();
-  //   if (user) {
-  //     viewHelper(e.currentTarget.id, user);
-  //   } else {
-  //     staffView.staffView();
-  //   }
-  // });
+  console.warn(user);
 
   $('body').on('click', '#staffLink', (e) => {
     e.stopImmediatePropagation();
@@ -57,17 +48,13 @@ const viewListener = (view, user) => {
     }
   });
 
-  // $('body').on('click', '#staffLink', (e) => {
-  //   e.stopImmediatePropagation();
-  //   console.warn('clicked', e.currentTarget.id);
-  //   if (user) {
-  //     viewHelper('userStaffView', user);
-  //     // staffView.userStaffView();
-  //   } else {
-  //     // viewHelper('staffLink');
-  //     staffView.staffView();
-  //   }
-  // });
+  $('body').on('click', '#add-reservation-btn', (e) => {
+    if (user) {
+      viewHelper(e.currentTarget.id);
+    } else {
+      $('#error-message-reservation').html('<div class="alert alert-danger" role="alert">Please Sign in To Make a Reservation</div>');
+    }
+  });
 
   $('body').on('click', '.userLinkLogout', () => {
     auth.logoutButton();
@@ -85,6 +72,33 @@ const viewListener = (view, user) => {
     // $('#app').css('background-color', '#262626');
     addStaffForm.addStaffMemberForm();
   });
+
+  // targeting nav link id on click event to print nav link respective view
+  // $('body').on('click', 'a.nav-link', (e) => {
+  //   e.stopImmediatePropagation();
+  //   viewHelper(e.currentTarget.id, user);
+  // });
+
+  // $('body').on('click', 'a.nav-link', (e) => {
+  //   e.stopImmediatePropagation();
+  //   if (user) {
+  //     viewHelper(e.currentTarget.id, user);
+  //   } else {
+  //     staffView.staffView();
+  //   }
+  // });
+
+  // $('body').on('click', '#staffLink', (e) => {
+  //   e.stopImmediatePropagation();
+  //   console.warn('clicked', e.currentTarget.id);
+  //   if (user) {
+  //     viewHelper('userStaffView', user);
+  //     // staffView.userStaffView();
+  //   } else {
+  //     // viewHelper('staffLink');
+  //     staffView.staffView();
+  //   }
+  // });
 };
 
 export default { viewListener, viewHelper };

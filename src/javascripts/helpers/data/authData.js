@@ -10,7 +10,7 @@ const checkLoginStatus = () => {
       loginLogout.logoutNavButton();
       // viewHelper.viewListener('staffLink', user);
     } else {
-      viewHelper.viewListener('home');
+      viewHelper.viewListener('home', user);
       loginLogout.loginNavButton();
     }
   });
