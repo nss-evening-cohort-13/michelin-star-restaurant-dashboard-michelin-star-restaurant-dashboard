@@ -22,10 +22,17 @@ const viewHelper = (id) => {
   }
 };
 
+// const hideUserButtons = (user) => {
+//   if (user) {
+//     $('#addMenuItemBtn').css({ display: 'none' });
+//   } else {
+//     $('#addMenuItemBtn').css({ display: 'inline' });
+//   }
+// };
+
 const viewListener = (view, user) => {
   viewHelper(view);
-  console.warn(user);
-
+  // hideUserButtons(user);
   // targeting nav link id on click event to print nav link respective view
   $('body').on('click', 'a.nav-link', (e) => {
     e.stopImmediatePropagation();
@@ -38,7 +45,6 @@ const viewListener = (view, user) => {
       $('#error-message-reservation').html('<div class="alert alert-danger" role="alert">Please Sign in To Make a Reservation</div>');
     }
   });
-
   $('body').on('click', '.userLinkLogout', () => {
     auth.logoutButton();
   });

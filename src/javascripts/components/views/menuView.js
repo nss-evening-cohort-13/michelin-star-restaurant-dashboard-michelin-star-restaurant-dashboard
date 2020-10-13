@@ -2,7 +2,8 @@ import addMenuItemView from './addMenuItemView';
 
 const menuView = () => {
   $('body').css({ color: 'white' });
-  $('#app').html(`<div class="container">
+  $('#app').html(`<div id="error-message-menu"></div>
+                  <div class="container">
                     <div class="row mt-5 mb-5">
                       <div class="col">
                         <button type="button" class="btn btn-outline" id="addMenuItemBtn">Add a Menu Item</button>
