@@ -2,17 +2,16 @@ import data from '../../helpers/data/ingredientsData';
 import card from '../cards/ingredientsCard';
 
 const ingredientsView = () => {
-  $('#app').html(`<div id="add-ingredients"></div>
+  $('#app').html(`<div id="add-ingredients" style="background-color: #444444;">
   <button id="add-ingredient-btn" type="button" class="btn btn-outline mb-5">Add Ingredient</button>
   <div class="categories-container">
-    <div id="Breads" class="category-section"><h2>Breads</h2></div>
-    <div id="Vegetables" class="category-section"><h2>Vegetables</h2></div>
-    <div id="Fruit" class="category-section"><h2>Fruit</h2></div>
-    <div id="Dairy" class="category-section"><h2>Dairy</h2></div>
-    <div id="Meat" class="category-section"><h2>Meat</h2></div>
-    <div id="Nuts" class="category-section"><h2>Nuts</h2></div>
-    <div id="Oils" class="category-section"><h2>Oils</h2></div>
-    <div id="Spices" class="category-section"><h2>Spices</h2></div>
+    <div id="Dairy" class="category-section"><h1>Dairy</h1></div>
+    <div id="Vegetables" class="category-section"><h1>Vegetables</h1></div>
+    <div id="Meat" class="category-section"><h1>Meat</h1></div>
+    <div id="Breads" class="category-section"><h1>Breads</h1></div>
+    <div id="Fruit" class="category-section"><h1>Fruit</h1></div>
+    <div id="Nuts" class="category-section"><h1>Nuts</h1></div>
+  </div>
   </div>
   `);
   data.getIngredientsByCategory('Breads').then((response) => {
@@ -43,16 +42,6 @@ const ingredientsView = () => {
   data.getIngredientsByCategory('Nuts').then((response) => {
     response.forEach((item) => {
       $('#Nuts').append(card.ingredientMaker(item));
-    });
-  });
-  data.getIngredientsByCategory('Oils').then((response) => {
-    response.forEach((item) => {
-      $('#Oils').append(card.ingredientMaker(item));
-    });
-  });
-  data.getIngredientsByCategory('Spices').then((response) => {
-    response.forEach((item) => {
-      $('#Spices').append(card.ingredientMaker(item));
     });
   });
 };
