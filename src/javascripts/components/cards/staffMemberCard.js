@@ -1,4 +1,4 @@
-const buildStaffCard = (staffObject) => {
+const authStaffView = (staffObject) => {
   const domString = `
           <div class="staff-container card-container" id="${staffObject.firebaseKey}">
             <div class="staff-card card" id="${staffObject.firebaseKey}" style="width: 100%; background-image: url(${staffObject.imageUrl});">
@@ -15,4 +15,16 @@ const buildStaffCard = (staffObject) => {
   return domString;
 };
 
-export default { buildStaffCard };
+const unauthStaffView = (staffObject) => {
+  const domString = `
+          <div class="staff-container card-container" id="${staffObject.firebaseKey}">
+            <div class="staff-card card" id="${staffObject.firebaseKey}" style="width: 100%; background-image: url(${staffObject.imageUrl});"></div>
+            <div class="staff-info">
+              <h5 class="staff-role">${staffObject.role}</h5>
+              <h6 class="staff-name">${staffObject.name}</h6>
+            </div>
+          </div>`;
+  return domString;
+};
+
+export default { authStaffView, unauthStaffView };

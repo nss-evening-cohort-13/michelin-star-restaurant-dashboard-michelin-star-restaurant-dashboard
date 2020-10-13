@@ -5,7 +5,7 @@ const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
 const getAllStaff = () => new Promise((resolve, reject) => {
   axios
-    .get(`${baseUrl}/users.json`)
+    .get(`${baseUrl}/staff.json`)
     .then((response) => {
       const allStaff = response.data;
       const staff = [];
@@ -20,10 +20,10 @@ const getAllStaff = () => new Promise((resolve, reject) => {
 });
 
 const addStaffMember = (data) => axios
-  .post(`${baseUrl}/users.json`, data)
+  .post(`${baseUrl}/staff.json`, data)
   .then((response) => {
     const update = { firebaseKey: response.data.name };
-    axios.patch(`${baseUrl}/users/${response.data.name}.json`, update);
+    axios.patch(`${baseUrl}/staff/${response.data.name}.json`, update);
   })
   .catch((error) => console.warn(error));
 
