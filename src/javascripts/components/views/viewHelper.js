@@ -45,8 +45,16 @@ const viewListener = (view, user) => {
 
   $('body').on('click', '#staffLink', (e) => {
     e.stopImmediatePropagation();
-    staffView.staffView();
-    staffView.userStaffView();
+    if (user) {
+      $('#app').html('');
+      console.warn(user);
+      staffView.staffView();
+      staffView.userStaffView();
+    } else {
+      $('#app').html('');
+      staffView.staffView();
+      staffView.unauthStaffView();
+    }
   });
 
   // $('body').on('click', '#staffLink', (e) => {

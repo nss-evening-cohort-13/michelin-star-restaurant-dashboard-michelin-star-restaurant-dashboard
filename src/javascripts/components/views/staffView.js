@@ -7,7 +7,7 @@ const staffView = () => {
                     <div class="staff-member-navigation">
                       <button class="staff-form-btn btn btn-danger">Add Staff Member</button>
                     </div>
-                    <div class="staff-form form" ></div>
+                    <div class="staff-form form" id="staffForm"></div>
                     <div class="staff-member-container"></div>
                   </div>`);
   $('.staff-form').css({ display: 'none' });
@@ -22,6 +22,23 @@ const userStaffView = () => {
       });
     } else {
       $('#app').html('<h1>No staff members have been added.</h1>');
+    }
+  });
+};
+
+const unauthStaffView = () => {
+  staffData.getAllStaff().then((response) => {
+    console.warn('response', response);
+    if (response.length) {
+      response.forEach((staffObject) => {
+        $('.staff-member-container').append(card.buildStaffCard(staffObject));
+        $('.staff-btn-container').remove();
+        $('.staff-member-navigation').remove();
+      });
+    } else {
+      $('#app').html(
+        '<h1>No staff members to view at the moment. Try back later!</h1>'
+      );
     }
   });
 };
@@ -53,4 +70,4 @@ const userStaffView = () => {
 //   }
 // };
 
-export default { userStaffView, staffView };
+export default { userStaffView, staffView, unauthStaffView };
