@@ -70,6 +70,7 @@ const viewListener = (view, user) => {
 
   $('body').on('click', '.staff-form-btn', (e) => {
     e.stopImmediatePropagation();
+    $('.staff-form').css({ display: 'block' });
     console.warn('clicked');
     // $('.staff-form-btn').remove();
     // $('.staff-member-container').remove();
