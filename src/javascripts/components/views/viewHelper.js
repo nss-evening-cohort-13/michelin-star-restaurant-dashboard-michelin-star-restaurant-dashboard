@@ -8,6 +8,7 @@ import addReservationView from './addReservationView';
 import ingredientsView from './ingredientsView';
 import addIngredientsView from './addIngredientsView';
 import addMenuItemForm from './addMenuItemView';
+import homePage from './homePageView';
 
 const viewHelper = (id) => {
   $('#app').html('');
@@ -29,7 +30,7 @@ const viewHelper = (id) => {
       case 'addMenuItemBtn':
         return addMenuItemForm.addMenuItemForm();
       case 'home':
-        return console.warn('homeView');
+        return homePage.homePageView();
       default:
         return console.warn('nothing clicked');
     }
