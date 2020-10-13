@@ -11,8 +11,8 @@ const viewHelper = (id) => {
       return menuView.menuView();
     case 'reservationLink':
       return reservationView.reservationView();
-    case 'staffLink':
-      return staffView.staffView();
+    // case 'staffLink':
+    //   return staffView.staffView();
       // return staffView.staffViewConditional(user);
     // case 'staffLink':
     //   return staffView.staffViewConditional(user);
@@ -29,10 +29,10 @@ const viewListener = (view, user) => {
   viewHelper(view, user);
 
   // targeting nav link id on click event to print nav link respective view
-  $('body').on('click', 'a.nav-link', (e) => {
-    e.stopImmediatePropagation();
-    viewHelper(e.currentTarget.id, user);
-  });
+  // $('body').on('click', 'a.nav-link', (e) => {
+  //   e.stopImmediatePropagation();
+  //   viewHelper(e.currentTarget.id, user);
+  // });
 
   // $('body').on('click', 'a.nav-link', (e) => {
   //   e.stopImmediatePropagation();
@@ -42,6 +42,12 @@ const viewListener = (view, user) => {
   //     staffView.staffView();
   //   }
   // });
+
+  $('body').on('click', '#staffLink', (e) => {
+    e.stopImmediatePropagation();
+    staffView.staffView();
+    staffView.userStaffView();
+  });
 
   // $('body').on('click', '#staffLink', (e) => {
   //   e.stopImmediatePropagation();

@@ -1,4 +1,5 @@
 import staffData from '../../helpers/data/staffData';
+import staffView from '../views/staffView';
 // import staffView from '../views/staffView';
 
 const addStaffMemberForm = () => {
@@ -59,6 +60,7 @@ const addStaffMemberForm = () => {
       $('#role').val('');
       $('#staff-image-url').val('');
       $('.staff-form').remove();
+      staffView.userStaffView();
     }
   });
 };

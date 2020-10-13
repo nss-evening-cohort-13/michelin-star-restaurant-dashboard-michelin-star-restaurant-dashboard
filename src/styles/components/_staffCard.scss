@@ -7,6 +7,12 @@
   justify-content: center;
 }
 
+.staff-member-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
 .staff-form-btn {
   margin-top: 15px;
   border: #EA859E 1px solid;
@@ -35,9 +41,6 @@
 .card-container-page {
   margin-top: 10px;
   background-color: #262626;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
 }
 
 .card-container {
