@@ -101,7 +101,7 @@ const addReservationForm = () => {
   // Code for Date dropdown
   $('#datePicker').datepicker();
 
-  // RESERVATION DROPDOWN
+  // RESERVATION TIMES DROPDOWN
   reservationTimes();
 
   //  Code for seating chart dropdown
