@@ -27,9 +27,9 @@ const viewHelper = (id) => {
 
 // const hideUserButtons = (user) => {
 //   if (user) {
-//     $('button').css({ display: 'inline' });
+//     $('#addMenuItemBtn').css({ display: 'inline' });
 //   } else {
-//     $('button').css({ display: 'none' });
+//     $('#addMenuItemBtn').css({ display: 'none' });
 //   }
 // };
 

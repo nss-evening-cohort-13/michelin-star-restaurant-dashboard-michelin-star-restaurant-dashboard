@@ -1,4 +1,5 @@
 import menuData from '../../helpers/data/menuItemsData';
+// import ingredientsData from '../../helpers/data/ingredientsData';
 
 const makeMenuItemForm = () => {
   $('#app').html(`<div id="menu-item-form">
