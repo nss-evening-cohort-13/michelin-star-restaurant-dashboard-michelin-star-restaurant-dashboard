@@ -5,6 +5,7 @@ import staffView from './staffView';
 import addReservationView from './addReservationView';
 import ingredientsView from './ingredientsView';
 import addIngredientsView from './addIngredientsView';
+import addMenuItemForm from './addMenuItemView';
 
 const viewHelper = (id) => {
   switch (id) {
@@ -21,6 +22,8 @@ const viewHelper = (id) => {
       return ingredientsView.ingredientsView();
     case 'add-ingredient-btn':
       return addIngredientsView.addIngredientsView();
+    case 'addMenuItemBtn':
+      return addMenuItemForm.addMenuItemForm();
     case 'home':
       return console.warn('homeView');
     default:
@@ -30,15 +33,14 @@ const viewHelper = (id) => {
 
 // const hideUserButtons = (user) => {
 //   if (user) {
-//     $('#addMenuItemBtn').css({ display: 'none' });
-//   } else {
 //     $('#addMenuItemBtn').css({ display: 'inline' });
+//   } else {
+//     $('#addMenuItemBtn').css({ display: 'none' });
 //   }
 // };
 
 const viewListener = (view, user) => {
   viewHelper(view);
-  // hideUserButtons(user);
   // targeting nav link id on click event to print nav link respective view
   $('body').on('click', 'a.nav-link', (e) => {
     e.stopImmediatePropagation();
@@ -57,6 +59,9 @@ const viewListener = (view, user) => {
   });
   // Add Ingredients Button
   $('body').on('click', '#add-ingredient-btn', (e) => {
+    viewHelper(e.currentTarget.id);
+  });
+  $('body').on('click', '#addMenuItemBtn', (e) => {
     viewHelper(e.currentTarget.id);
   });
   $('body').on('click', '.userLinkLogout', () => {
