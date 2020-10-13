@@ -3,6 +3,7 @@ import menuView from './menuView';
 import reservationView from './reservationView';
 import staffView from './staffView';
 import addReservationView from './addReservationView';
+import addMenuItemForm from './addMenuItemView';
 
 const viewHelper = (id) => {
   switch (id) {
@@ -15,6 +16,8 @@ const viewHelper = (id) => {
       return addReservationView.addReservationView();
     case 'staffLink':
       return staffView.staffView();
+    case 'addMenuItemBtn':
+      return addMenuItemForm.addMenuItemForm();
     case 'home':
       return console.warn('homeView');
     default:
@@ -22,10 +25,16 @@ const viewHelper = (id) => {
   }
 };
 
+// const hideUserButtons = (user) => {
+//   if (user) {
+//     $('#addMenuItemBtn').css({ display: 'inline' });
+//   } else {
+//     $('#addMenuItemBtn').css({ display: 'none' });
+//   }
+// };
+
 const viewListener = (view, user) => {
   viewHelper(view);
-  console.warn(user);
-
   // targeting nav link id on click event to print nav link respective view
   $('body').on('click', 'a.nav-link', (e) => {
     e.stopImmediatePropagation();
@@ -38,7 +47,9 @@ const viewListener = (view, user) => {
       $('#error-message-reservation').html('<div class="alert alert-danger" role="alert">Please Sign in To Make a Reservation</div>');
     }
   });
-
+  $('body').on('click', '#addMenuItemBtn', (e) => {
+    viewHelper(e.currentTarget.id);
+  });
   $('body').on('click', '.userLinkLogout', () => {
     auth.logoutButton();
   });
