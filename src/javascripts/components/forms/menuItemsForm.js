@@ -1,5 +1,5 @@
 import menuData from '../../helpers/data/menuItemsData';
-// import ingredientsData from '../../helpers/data/ingredientsData';
+import ingredientsData from '../../helpers/data/ingredientsData';
 
 const makeMenuItemForm = () => {
   $('#app').html(`<div id="menu-item-form">
@@ -14,8 +14,6 @@ const makeMenuItemForm = () => {
                       <div class="form-group">
                         <label for="ingredientSelection">Select Ingredients</label>
                         <select multiple class="form-control" id="ingredientSelection">
-                          <option>1</option>
-                          <option>2</option>
                         </select>
                       </div>
                       <div class="form-group">
@@ -26,11 +24,12 @@ const makeMenuItemForm = () => {
                     </div>
                   <div>
   `);
-  // ingredientsData.getAllIngredients().then((response) => {
-  //   response.forEach((ingredient) => {
-  //     $('#ingredientSelection').append(`<option value="${ingredient.id}">${ingredient.name}</option>`);
-  //   });
-  // });
+  ingredientsData.getAllIngredients().then((response) => {
+    $('#ingredientSelection').html('');
+    response.forEach((ingredient) => {
+      $('#ingredientSelection').append(`<option value="${ingredient.ingredient}">${ingredient.ingredient}</option>`);
+    });
+  });
   $('#submitMenuItemBtn').on('click', (e) => {
     e.preventDefault(e);
     const menuItemData = {
@@ -41,7 +40,6 @@ const makeMenuItemForm = () => {
     if (Object.values(menuItemData).includes(false) || menuItemData.ingredients.length === 0) {
       $('#error-message').html('<div class="alert alert-danger" role="alert">Please complete all fields</div>');
     } else {
-      console.warn('ingredients value', $('#ingredientSelection').val());
       $('#error-message').html('');
       menuData.addMenuItem(menuItemData)
         .then(() => {
