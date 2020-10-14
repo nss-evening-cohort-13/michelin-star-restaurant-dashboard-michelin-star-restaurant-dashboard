@@ -1,0 +1,75 @@
+.staff-member-page {
+  background-color: #262626;
+}
+
+.staff-member-navigation {
+  display: flex;
+  justify-content: center;
+}
+
+.staff-member-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.staff-form-btn {
+  margin-top: 15px;
+  border: #EA859E 1px solid;
+  border-radius: 5px;
+  background-color: #262626;
+  color: white;
+}
+
+.staff-form-btn:hover {
+  background-color: #EA859E;
+  border: #EA859E 1px solid;
+}
+
+.staff-btn {
+  border: none;
+  border-radius: 5px;
+  background-color: #262626;
+  color: white;
+}
+
+.staff-btn:hover {
+  background-color: #EA859E;
+  border: none;
+}
+
+.card-container-page {
+  margin-top: 10px;
+  background-color: #262626;
+}
+
+.card-container {
+  width: 250px;
+  margin: 25px;
+}
+
+.staff-card {
+  display: flex;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  justify-content: flex-end;
+}
+
+.card-btn-container {
+  align-content: center;
+  align-self: center;
+  margin-bottom: 5px;
+}
+
+.staff-info {
+  margin-top: 5px;
+  color: white;
+}
+
+.meet-staff {
+  text-align: left;
+  color: white;
+  padding-top: 25px;
+}

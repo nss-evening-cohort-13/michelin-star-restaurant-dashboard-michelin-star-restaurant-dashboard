@@ -1,6 +1,14 @@
 import data from '../../helpers/data/ingredientsData';
 import card from '../cards/ingredientsCard';
 
+const ingredientsByCategory = (id) => {
+  data.getIngredientsByCategory(`${id}`).then((response) => {
+    response.forEach((item) => {
+      $(`#${id}`).append(card.ingredientMaker(item));
+    });
+  });
+};
+
 const ingredientsView = () => {
   $('#app').html(`<div id="add-ingredients" style="background-color: #444444;">
   <button id="add-ingredient-btn" type="button" class="btn btn-outline mb-5">Add Ingredient</button>
@@ -14,36 +22,12 @@ const ingredientsView = () => {
   </div>
   </div>
   `);
-  data.getIngredientsByCategory('Breads').then((response) => {
-    response.forEach((item) => {
-      $('#Breads').append(card.ingredientMaker(item));
-    });
-  });
-  data.getIngredientsByCategory('Vegetables').then((response) => {
-    response.forEach((item) => {
-      $('#Vegetables').append(card.ingredientMaker(item));
-    });
-  });
-  data.getIngredientsByCategory('Fruit').then((response) => {
-    response.forEach((item) => {
-      $('#Fruit').append(card.ingredientMaker(item));
-    });
-  });
-  data.getIngredientsByCategory('Dairy').then((response) => {
-    response.forEach((item) => {
-      $('#Dairy').append(card.ingredientMaker(item));
-    });
-  });
-  data.getIngredientsByCategory('Meat').then((response) => {
-    response.forEach((item) => {
-      $('#Meat').append(card.ingredientMaker(item));
-    });
-  });
-  data.getIngredientsByCategory('Nuts').then((response) => {
-    response.forEach((item) => {
-      $('#Nuts').append(card.ingredientMaker(item));
-    });
-  });
+  ingredientsByCategory('Dairy');
+  ingredientsByCategory('Vegetables');
+  ingredientsByCategory('Meat');
+  ingredientsByCategory('Breads');
+  ingredientsByCategory('Fruit');
+  ingredientsByCategory('Nuts');
 };
 
 export default { ingredientsView };

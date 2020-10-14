@@ -4,6 +4,7 @@ import auth from '../auth/auth';
 import menuView from './menuView';
 import reservationView from './reservationView';
 import staffView from './staffView';
+import addStaffForm from '../forms/addStaffMember';
 import addReservationView from './addReservationView';
 import ingredientsView from './ingredientsView';
 import addIngredientsView from './addIngredientsView';
@@ -22,7 +23,7 @@ const viewHelper = (id) => {
       case 'addReservation':
         return addReservationView.addReservationView();
       case 'staffLink':
-        return staffView.staffView();
+        return staffView.staffView(user);
       case 'viewIngredientsBtn':
         return ingredientsView.ingredientsView();
       case 'add-ingredient-btn':
@@ -37,21 +38,15 @@ const viewHelper = (id) => {
   });
 };
 
-// const hideUserButtons = (user) => {
-//   if (user) {
-//     $('#addMenuItemBtn').css({ display: 'inline' });
-//   } else {
-//     $('#addMenuItemBtn').css({ display: 'none' });
-//   }
-// };
-
 const viewListener = (view, user) => {
-  viewHelper(view);
+  viewHelper(view, user);
+
   // targeting nav link id on click event to print nav link respective view
   $('body').on('click', 'a.nav-link', (e) => {
     e.stopImmediatePropagation();
     viewHelper(e.currentTarget.id, user);
   });
+
   $('body').on('click', '#addReservation', (e) => {
     if (user) {
       viewHelper(e.currentTarget.id, user);
@@ -61,22 +56,33 @@ const viewListener = (view, user) => {
       );
     }
   });
+
   // View Ingredients Button
   $('body').on('click', '#viewIngredientsBtn', (e) => {
     viewHelper(e.currentTarget.id);
   });
+
   // Add Ingredients Button
   $('body').on('click', '#add-ingredient-btn', (e) => {
     viewHelper(e.currentTarget.id);
   });
+
   $('body').on('click', '#addMenuItemBtn', (e) => {
     viewHelper(e.currentTarget.id);
   });
+
   $('body').on('click', '.userLinkLogout', () => {
     auth.logoutButton();
   });
+
   $('body').on('click', '.userLinkLogin', () => {
     auth.loginButton();
+  });
+
+  $('body').on('click', '.staff-form-btn', (e) => {
+    e.stopImmediatePropagation();
+    $('.staff-form').css({ display: 'block' });
+    addStaffForm.addStaffMemberForm(user);
   });
 };
 
