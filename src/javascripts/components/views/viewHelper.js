@@ -19,8 +19,8 @@ const viewHelper = (id) => {
         return addReservationView.addReservationView();
       case 'staffLink':
         return staffView.staffView(user);
-      case 'add-staff-btn':
-        return staffView.staffView(user);
+      // case 'add-staff-btn':
+      //   return addStaffForm.formBtnFunction();
       // case 'viewIngredientsBtn':
       //   return ingredientsView.ingredientsView();
       // case 'add-ingredient-btn':
@@ -62,43 +62,25 @@ const viewHelper = (id) => {
 
 const viewListener = (view, user) => {
   viewHelper(view, user);
-  // console.warn(user);
 
   $('body').on('click', 'a.nav-link', (e) => {
     e.stopImmediatePropagation();
     viewHelper(e.currentTarget.id, user);
   });
 
-  $('body').on('click', '#add-staff-btn', (e) => {
-    console.warn('clicked add btn');
-    addStaffForm.formBtnFunction();
-    viewHelper(e.currentTarget.id, user);
-  });
-
-  // $('body').on('click', '#staffLink', (e) => {
-  //   if (user) {
-  //     viewHelper(e.currentTarget.id, user);
-  //     // staffView.userStaffView();
-  //   } else {
-  //     console.warn('suck it');
-  //     // viewHelper(e.currentTarget.id);
-  //     // staffView.unauthStaffView();
-  //   }
+  // $('body').on('click', '#add-staff-btn', (e) => {
+  //   viewHelper(e.currentTarget.id, user);
+  //   console.warn('formbtn', e.currentTarget.id);
+  //   viewHelper('staffLink', user);
   // });
 
-  // $('body').on('click', '#staffLink', (e) => {
-  //   console.warn('staff click user', user);
-  //   e.stopImmediatePropagation();
-  //   if (user) {
-  //     $('#app').html('');
-  //     console.warn('user', user);
-  //     staffView.staffView();
-  //     staffView.userStaffView();
-  //   } else {
-  //     $('#app').html('');
-  //     staffView.staffView();
-  //     staffView.unauthStaffView();
-  //   }
+  // $('body').on('click', '#add-staff-btn', () => {
+  //   $('.staff-member-container').html('');
+  //   addStaffForm.formBtnFunction();
+  //   console.warn('form btn user', user);
+  //   console.warn('clicked add btn');
+  //   // viewHelper(e.currentTarget.id, user);
+  //   staffView.staffView(user);
   // });
 
   $('body').on('click', '#add-reservation-btn', (e) => {
@@ -120,32 +102,8 @@ const viewListener = (view, user) => {
     e.stopImmediatePropagation();
     $('.staff-form').css({ display: 'block' });
     console.warn('clicked');
-    // $('.staff-form-btn').remove();
-    // $('.staff-member-container').remove();
-    // $('#app').css('background-color', '#262626');
-    addStaffForm.addStaffMemberForm();
+    addStaffForm.addStaffMemberForm(user);
   });
-
-  // $('body').on('click', 'a.nav-link', (e) => {
-  //   e.stopImmediatePropagation();
-  //   if (user) {
-  //     viewHelper(e.currentTarget.id, user);
-  //   } else {
-  //     staffView.staffView();
-  //   }
-  // });
-
-  // $('body').on('click', '#staffLink', (e) => {
-  //   e.stopImmediatePropagation();
-  //   console.warn('clicked', e.currentTarget.id);
-  //   if (user) {
-  //     viewHelper('userStaffView', user);
-  //     // staffView.userStaffView();
-  //   } else {
-  //     // viewHelper('staffLink');
-  //     staffView.staffView();
-  //   }
-  // });
 };
 
 export default { viewListener, viewHelper };

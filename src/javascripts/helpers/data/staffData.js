@@ -19,12 +19,15 @@ const getAllStaff = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const addStaffMember = (data) => axios
-  .post(`${baseUrl}/staff.json`, data)
-  .then((response) => {
-    const update = { firebaseKey: response.data.name };
-    axios.patch(`${baseUrl}/staff/${response.data.name}.json`, update);
-  })
-  .catch((error) => console.warn(error));
+const addStaffMember = (data) => new Promise((resolve, reject) => {
+  axios
+    .post(`${baseUrl}/staff.json`, data)
+    .then((response) => {
+      const update = { firebaseKey: response.data.name };
+      axios.patch(`${baseUrl}/staff/${response.data.name}.json`, update);
+      resolve(response.statusText);
+    })
+    .catch((error) => reject(error));
+});
 
 export default { addStaffMember, getAllStaff };
