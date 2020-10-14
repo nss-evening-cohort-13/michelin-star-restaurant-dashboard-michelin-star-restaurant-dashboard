@@ -5,8 +5,8 @@ const authStaffView = (staffObject) => {
           <div class="staff-container card-container" id="${staffObject.firebaseKey}">
             <div class="staff-card" id="${staffObject.firebaseKey}" style="width: 100%; background-image: url(${staffObject.imageUrl});">
               <div class="staff-btn-container card-btn-container">
-                <button class="btn btn-danger edit-staff-btn edit-btn staff-btn" id="${staffObject.firebaseKey}">Edit</button>
-                <button class="btn btn-danger delete-staff-btn delete-btn staff-btn" id="${staffObject.firebaseKey}">Delete</button>
+                <button class="btn btn-light edit-staff-btn edit-btn staff-btn" id="${staffObject.firebaseKey}">Edit</button>
+                <button class="btn btn-light delete-staff-btn delete-btn staff-btn" id="${staffObject.firebaseKey}">Delete</button>
               </div>
             </div>
             <div class="staff-info">
