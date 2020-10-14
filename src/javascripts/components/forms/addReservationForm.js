@@ -20,11 +20,11 @@ const addGuestInfo = (data) => {
     <div id="input-group">
         <div class="form-group">
           <label for="firstName">First Name</label>
-          <input type="text" class="form-control" id="firstName" placeholder="Your First Name">
+          <input type="text" class="form-control" id="firstName" placeholder="First Name">
         </div>
           <div class="form-group">
             <label for="lastName">Last Name</label>
-            <input class="form-control" id="lastName" autocomplete="off" placeholder="Your Last Name">
+            <input class="form-control" id="lastName" autocomplete="off" placeholder="Last Name">
           </div>
           <div class="form-group">
             <label for="phoneNumber">Phone Number</label>
@@ -72,7 +72,7 @@ const addReservationForm = () => {
 <div id="input-group">
     <div class="form-group">
       <label for="image">Number of Guests</label>
-      <input type="text" class="form-control" id="numberOfGuests" placeholder="Number of Guests">
+      <input type="text" class="form-control" id="numberOfGuests" placeholder="# of Guests">
     </div>
       <div class="form-group">
         <label for="date">Date</label>
@@ -86,12 +86,12 @@ const addReservationForm = () => {
       </div>
       <div class="form-group">
       <label for="date">Seating Preference</label>
-      <input class="form-control" id="seatingPreference" placeholder="Enter a Table number from the chart">
+      <input class="form-control" id="seatingPreference" placeholder="View Chart Below">
     </div>
     </div>
     <div id="seating-section">
     <div id="reservation-buttons">
-    <button id="seating-btn" type="button" class="btn btn-primary">View Seating Chart</button>
+    <button id="seatingBtn" type="button" class="btn btn-primary">View Seating Chart</button>
     <button id="add-guest-btn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Add Guest Info</button>
     </div>
     </div>
@@ -101,12 +101,12 @@ const addReservationForm = () => {
   // Code for Date dropdown
   $('#datePicker').datepicker();
 
-  // RESERVATION DROPDOWN
+  // RESERVATION TIMES DROPDOWN
   reservationTimes();
 
   //  Code for seating chart dropdown
   let seatingChartIsNotShown = true;
-  $('#seating-btn').on('click', (e) => {
+  $('#seatingBtn').on('click', (e) => {
     e.preventDefault();
     if (seatingChartIsNotShown) {
       $('#viewSeats').html(
