@@ -10,8 +10,9 @@ import ingredientsView from './ingredientsView';
 import addIngredientsView from './addIngredientsView';
 import addMenuItemForm from './addMenuItemView';
 import homePage from './homePageView';
+import updateMenuView from './updateMenuView';
 
-const viewHelper = (id) => {
+const viewHelper = (id, arg) => {
   $('#app').html('');
   firebase.auth().onAuthStateChanged((user) => {
     switch (id) {
@@ -30,6 +31,8 @@ const viewHelper = (id) => {
         return addIngredientsView.addIngredientsView();
       case 'addMenuItemBtn':
         return addMenuItemForm.addMenuItemForm();
+      case 'update-menu-item-link':
+        return updateMenuView.updateMenuItemsView(arg);
       case 'home':
         return homePage.homePageView();
       default:
@@ -40,13 +43,11 @@ const viewHelper = (id) => {
 
 const viewListener = (view, user) => {
   viewHelper(view, user);
-
   // targeting nav link id on click event to print nav link respective view
   $('body').on('click', 'a.nav-link', (e) => {
     e.stopImmediatePropagation();
     viewHelper(e.currentTarget.id, user);
   });
-
   $('body').on('click', '#addReservation', (e) => {
     if (user) {
       viewHelper(e.currentTarget.id, user);
@@ -56,33 +57,31 @@ const viewListener = (view, user) => {
       );
     }
   });
-
   // View Ingredients Button
   $('body').on('click', '#viewIngredientsBtn', (e) => {
     viewHelper(e.currentTarget.id);
   });
-
   // Add Ingredients Button
   $('body').on('click', '#add-ingredient-btn', (e) => {
     viewHelper(e.currentTarget.id);
   });
-
   $('body').on('click', '#addMenuItemBtn', (e) => {
     viewHelper(e.currentTarget.id);
   });
-
   $('body').on('click', '.userLinkLogout', () => {
     auth.logoutButton();
   });
-
   $('body').on('click', '.userLinkLogin', () => {
     auth.loginButton();
   });
-
   $('body').on('click', '.staff-form-btn', (e) => {
     e.stopImmediatePropagation();
     $('.staff-form').css({ display: 'block' });
     addStaffForm.addStaffMemberForm(user);
+  });
+  $('body').on('click', '.update-menu-item-btn', (e) => {
+    const menuItemUid = e.currentTarget.id;
+    viewHelper('update-menu-item-link', user, menuItemUid);
   });
 };
 

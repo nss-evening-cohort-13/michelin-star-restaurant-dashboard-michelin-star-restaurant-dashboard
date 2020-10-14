@@ -1,15 +1,15 @@
 import menuData from '../../helpers/data/menuItemsData';
 import ingredientsData from '../../helpers/data/ingredientsData';
 
-const makeMenuItemForm = () => {
-  $('#updateMenuItemForm').html(`<div id="menu-item-form">
-                    <h2>Add Menu Item</h2>
+const updateMenuItemForm = (menuObject) => {
+  $('#app').html(`<div id="update-menu-item-form">
+                    <h2>Update Menu Item</h2>
                     <div id="success-message"></div>
                     <div id="error-message"></div>
                     <div id="input-group-menu">
                       <div class="form-group">
                         <label for="menuItemName">Menu Item</label>
-                        <input type="text" class="form-control" id="menuItemName" placeholder="Menu Item">
+                        <input type="text" class="form-control" id="menuItemName" value="${menuObject.name}" placeholder="Menu Item">
                       </div>
                       <div class="form-group">
                         <label for="ingredientSelection">Select Ingredients</label>
@@ -18,9 +18,9 @@ const makeMenuItemForm = () => {
                       </div>
                       <div class="form-group">
                         <label for="price">Price</label>
-                        <input class="form-control" id="price" class="timePicker" autocomplete="off" placeholder="Enter a price">
+                        <input class="form-control" id="price" class="timePicker" autocomplete="off" value="${menuObject.price}" placeholder="Enter a price">
                       </div>
-                      <button id="submitMenuItemBtn" type="button" class="btn btn-info"></i>Add Menu Item</button>
+                      <button id="updateMenuItemBtn" type="button" class="btn btn-info"></i>Update Menu Item</button>
                     </div>
                   <div>
   `);
@@ -30,7 +30,7 @@ const makeMenuItemForm = () => {
       $('#ingredientSelection').append(`<option value="${ingredient.ingredient}">${ingredient.ingredient}</option>`);
     });
   });
-  $('#submitMenuItemBtn').on('click', (e) => {
+  $('#updateMenuItemBtn').on('click', (e) => {
     e.preventDefault(e);
     const menuItemData = {
       name: $('#menuItemName').val() || false,
@@ -41,7 +41,7 @@ const makeMenuItemForm = () => {
       $('#error-message').html('<div class="alert alert-danger" role="alert">Please complete all fields</div>');
     } else {
       $('#error-message').html('');
-      menuData.addMenuItem(menuItemData)
+      menuData.updateMenuItem(menuObject.id, menuItemData)
         .then(() => {
           $('#success-message').html('<div class="alert alert-success" role="alert">Your menu item was added!</div>');
         }).catch((error) => console.warn(error));
@@ -55,4 +55,4 @@ const makeMenuItemForm = () => {
   });
 };
 
-export default { makeMenuItemForm };
+export default { updateMenuItemForm };
