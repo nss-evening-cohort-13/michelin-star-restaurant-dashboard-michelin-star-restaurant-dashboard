@@ -2,7 +2,7 @@ import reservations from '../../helpers/data/reservationData';
 import card from '../cards/reservationCards';
 
 const reservationView = (user) => {
-  $('#app').html(`<div id="add-reservation" style="background-color: white;"> 
+  $('#app').html(`<div id="add-reservation"> 
   <div id="error-message-reservation"></div>
   <button id="addReservation" type="button" class="btn btn-info">Add Reservation</button>
   <div id="reservationSection"</div></div>`);
