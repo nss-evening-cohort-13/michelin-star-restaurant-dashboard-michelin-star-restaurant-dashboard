@@ -8,6 +8,12 @@ const ingredientMaker = (object) => {
     </div>
   </div>
 </div>`;
+
+  $('body').on('click', '.delete-ingredient', (e) => {
+    e.stopImmediatePropagation();
+    console.warn('DELETE CLICKED', e.currentTarget.id);
+  });
+
   return domString;
 };
 
