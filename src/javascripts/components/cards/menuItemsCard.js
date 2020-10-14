@@ -1,7 +1,7 @@
 import menuData from '../../helpers/data/menuItemsData';
 
 const menuItemCardMaker = (item) => {
-  const domString = `<div class="card-menu m-4" id="${item.id}>
+  const domString = `<div class="card-menu m-4" id="${item.id}">
                       <div class="card-body-menu">
                         <div class="menu-item-title d-flex justify-content-between">
                           <h4 class="card-text-menu text-uppercase">${item.name}</h4>
@@ -15,7 +15,7 @@ const menuItemCardMaker = (item) => {
 };
 
 const authMenuItemCardMaker = (item) => {
-  const domString = `<div class="card-menu m-4" id="${item.id}>
+  const domString = `<div class="card-menu m-4" id="${item.id}">
                       <div class="card-body-menu">
                         <div class="menu-item-title d-flex justify-content-between">
                           <h4 class="card-text-menu text-uppercase">${item.name}</h4>
