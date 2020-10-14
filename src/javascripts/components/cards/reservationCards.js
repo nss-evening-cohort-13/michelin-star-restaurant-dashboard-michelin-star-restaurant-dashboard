@@ -1,7 +1,7 @@
 const reservationCardMaker = (reso) => {
   const domString = `<div id="${reso.uid}" class="card reservationCard" style="width: 16rem;">
-    <div class="card-header">
-      <h6 id="guestName">${reso.firstName} ${reso.lastName} </h6>
+    <div class="reservation-card-header">
+      <h4 id="guestName">${reso.firstName} ${reso.lastName} </h4>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Guests: ${reso.numberOfGuests}</li>
@@ -14,8 +14,8 @@ const reservationCardMaker = (reso) => {
 };
 const authReservationCardMaker = (reso) => {
   const domString = `<div id="${reso.uid}" class="card reservationCard" style="width: 16rem;">
-      <div class="card-header">
-        <h6 id="guestName">${reso.firstName} ${reso.lastName} </h6>
+      <div class="reservation-card-header">
+        <h4 id="guestName">${reso.firstName} ${reso.lastName} </h4>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Guests: ${reso.numberOfGuests}</li>

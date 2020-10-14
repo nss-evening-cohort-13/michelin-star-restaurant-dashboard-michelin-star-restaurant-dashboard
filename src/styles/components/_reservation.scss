@@ -11,6 +11,7 @@
     background-color: white;
     border-radius: 6px;
     padding: 20px;
+    background-color: #444444;
 }
 #input-group{
     display: flex;
@@ -28,6 +29,8 @@
  flex-flow: row wrap;
  width: 95%;
  justify-content: center;
+ background-color: #444444;
+ margin: 10px auto;
 }
 #add-reservation{
     width: 90%;
@@ -35,4 +38,12 @@
 }
 .reservationCard{
     margin: 5px;
+    background-color: #444444;
+
+}
+.reservation-card-header{
+    background-color: #444444;
+    #guestName{
+        color: white;
+    }
 }
