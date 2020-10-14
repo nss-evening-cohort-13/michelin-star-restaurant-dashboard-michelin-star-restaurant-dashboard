@@ -1,18 +1,35 @@
 const menuItemCardMaker = (item) => {
-  const domString = `<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                      <div class="d-flex justify-content-between">
-                        <h5 class="mb-1" id="menuItemName">${item.name}</h5>
-                        <small id="menuItemPrice">${item.price}</small>
+  const domString = `<div class="card-menu m-4" id="${item.id}>
+                      <div class="card-body-menu">
+                        <div class="menu-item-title d-flex justify-content-between">
+                          <h4 class="card-text-menu text-uppercase">${item.name}</h4>
+                          <p id="menuItemPrice">${item.price}</p>
+                        </div>
+                        <p id="listOfIngredients" class="text-lowercase">${item.ingredients.join(' ')}</p>
                       </div>
-                      <p class="mb-1" id="listOfIngredients">ingredients</p>
-                    </a>
+                    </div>
 `;
   return domString;
 };
 
-// const authMenuItemCardMaker = (item) => {
-//   const domString = ``;
-//   return domString;
-// };
+const authMenuItemCardMaker = (item) => {
+  const domString = `<div class="card-menu m-4" id="${item.id}>
+                      <div class="card-body-menu">
+                        <div class="menu-item-title d-flex justify-content-between">
+                          <h4 class="card-text-menu text-uppercase">${item.name}</h4>
+                          <p id="menuItemPrice">${item.price}</p>
+                        </div>
+                        <div id="menuItemInfo" class="d-flex justify-content-between">
+                          <p id="listOfIngredients" class="text-lowercase">${item.ingredients.join(' ')}</p>
+                          <div class="button-container-menu">
+                            <button id="${item.id}" class="btn btn-outline update-menu-item-btn" style="color: white"><i class="fas fa-edit"></i></button>
+                            <button id="${item.id}" class="btn btn-outline delete-menu-item"><i id="ingredient-icon" class="fas fa-times"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+`;
+  return domString;
+};
 
-export default { menuItemCardMaker };
+export default { menuItemCardMaker, authMenuItemCardMaker };

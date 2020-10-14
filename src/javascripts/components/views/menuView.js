@@ -2,33 +2,24 @@ import menuData from '../../helpers/data/menuItemsData';
 import card from '../cards/menuItemsCard';
 
 const menuView = (user) => {
-  $('#app').html(`<div id="error-message-menu"></div>
-                  <div class="container">
-                    <div class="row mt-5 mb-5">
-                      <div class="col">
-                        <button type="button" class="btn btn-outline" id="addMenuItemBtn">Add a Menu Item</button>
-                      </div>
-                      <div class="col">
-                        <button type="button" class="btn btn-outline" id="viewIngredientsBtn">View Ingredients</button>
-                      </div>
-                      <div class="col d-flex justify-content-end align-self-center">
-                        Search for ingredients.
-                      </div>
+  $('#app').html(`<div id="menuView" style="background-color: #444444; color: white;">
+                    <div id="error-message-menu"></div>
+                    <div class="menu-buttons pt-4 pb-4">
+                          <button type="button" class="btn btn-outline" id="addMenuItemBtn">Add a Menu Item</button>
+                          <button type="button" class="btn btn-outline" id="viewIngredientsBtn">View Ingredients</button>
                     </div>
-                    <div class="row">
-                      <div class="col"">
-                        MENU ITEMS
-                      </div>
-                      <div class="list-group" id="menuItems">
-                      </div>
+                    <p>Search for ingredients.</p>
+                    <div><h3>MENU ITEMS</h3></div>
+                    <div id="menuItems"></div>
                   </div>
   `);
   menuData.getMenuItems().then((response) => {
     if (user) {
       response.forEach((item) => {
-        $('#menuItems').append(card.menuItemCardMaker(item));
+        $('#menuItems').append(card.authMenuItemCardMaker(item));
       });
     } else {
+      $('.menu-buttons').remove();
       response.forEach((item) => {
         $('#menuItems').append(card.menuItemCardMaker(item));
       });

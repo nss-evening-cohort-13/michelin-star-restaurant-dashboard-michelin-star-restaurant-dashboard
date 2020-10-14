@@ -16,7 +16,7 @@ const viewHelper = (id) => {
     switch (id) {
       // targeting nav link id, returning respective link view
       case 'menuLink':
-        return menuView.menuView();
+        return menuView.menuView(user);
       case 'reservationLink':
         return reservationView.reservationView(user);
       case 'addReservation':
