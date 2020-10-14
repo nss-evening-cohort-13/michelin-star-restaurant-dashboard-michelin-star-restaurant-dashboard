@@ -27,13 +27,10 @@ const deleteMenuItem = (firebaseKey) => axios.delete(`${baseUrl}/menuItems/${fir
 const updateMenuItem = (firebaseKey, dataObject) => axios.patch(`${baseUrl}/menuItems/${firebaseKey}.json`, dataObject);
 
 const getSingleMenuItem = (id) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/menuItems.json?orderBy="id"&equalTo="${id}"`)
+  axios.get(`${baseUrl}/menuItems/${id}.json`)
     .then((response) => {
-      console.warn('get response', response.data);
-      const menuItem = Object.values(response.data);
-      const thisMenuItem = menuItem[0];
-      console.warn('this menu item', thisMenuItem);
-      resolve(thisMenuItem);
+      const menuItem = response.data;
+      resolve(menuItem);
     })
     .catch((error) => reject(error));
 });

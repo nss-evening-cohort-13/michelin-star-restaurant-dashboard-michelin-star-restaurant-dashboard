@@ -81,7 +81,7 @@ const viewListener = (view, user) => {
   });
   $('body').on('click', '.update-menu-item-btn', (e) => {
     const menuItemUid = e.currentTarget.id;
-    viewHelper('update-menu-item-link', user, menuItemUid);
+    viewHelper('update-menu-item-link', menuItemUid);
   });
 };
 

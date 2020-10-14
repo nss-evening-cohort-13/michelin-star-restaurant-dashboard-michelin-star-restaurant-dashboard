@@ -2,7 +2,7 @@ import menuData from '../../helpers/data/menuItemsData';
 import ingredientsData from '../../helpers/data/ingredientsData';
 
 const updateMenuItemForm = (menuObject) => {
-  $('#app').html(`<div id="update-menu-item-form">
+  $('#updateMenuItemForm').html(`<div id="update-menu-item-form">
                     <h2>Update Menu Item</h2>
                     <div id="success-message"></div>
                     <div id="error-message"></div>
@@ -20,7 +20,7 @@ const updateMenuItemForm = (menuObject) => {
                         <label for="price">Price</label>
                         <input class="form-control" id="price" class="timePicker" autocomplete="off" value="${menuObject.price}" placeholder="Enter a price">
                       </div>
-                      <button id="updateMenuItemBtn" type="button" class="btn btn-info"></i>Update Menu Item</button>
+                      <button id="updateMenuItemBtn" type="button" class="btn btn-outline"></i>Update Menu Item</button>
                     </div>
                   <div>
   `);

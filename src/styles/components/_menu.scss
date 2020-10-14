@@ -28,3 +28,19 @@
   border-radius: 6px;
   padding: 10px;
 }
+#updateMenuItemForm {
+  width: 80%;
+  margin:auto;
+  background-color: white;
+  border-radius: 6px;
+  padding: 10px;
+  h2{
+    font-family: 'Prata', serif;
+  }
+  label {
+    font-family: 'Prata', serif;
+  }
+  #updateMenuItemBtn {
+    font-family: 'Prata', serif;
+  }
+}
