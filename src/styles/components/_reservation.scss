@@ -1,0 +1,56 @@
+.ui-datepicker {
+    background: rgb(241, 240, 240);
+    border: 1px solid #555;
+    color: rgb(29, 24, 24);
+    padding: 10px;
+    
+}
+#add-reservation{
+    width: 80%;
+    margin:auto;
+    background-color: white;
+    border-radius: 6px;
+    padding: 20px;
+    background-color: #444444;
+}
+#input-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#ui-datepicker-div{
+    display: none;
+}
+#seatingChart{
+    width: 400px;
+}
+#reservationSection{
+ display: flex;
+ flex-flow: row wrap;
+ width: 95%;
+ justify-content: center;
+ background-color: #444444;
+ margin: 10px auto;
+}
+#add-reservation{
+    width: 90%;
+    height: auto;
+}
+.reservationCard{
+    margin: 5px;
+    background-color: #444444;
+    border: 5px white solid;
+
+}
+.reservation-card-header{
+    background-color: #444444;
+    #guestName{
+        color: white;
+    }
+}
+.reso-list{
+    li{
+    background-color: #555;
+    color: white;
+    }
+}

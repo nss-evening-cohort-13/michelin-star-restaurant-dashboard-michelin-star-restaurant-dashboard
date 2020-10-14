@@ -1,9 +1,16 @@
-.navbar {
-  color: black;
-  a {
-    color: black;
-  }
-  .nav-link {
-    color: black;
-  }
+.bg-light {
+  background-color: transparent!important;
+}
+.navbar-brand, .nav-link {
+  font-family: 'Prata', serif;
+}
+.navbar-brand {
+  font-size: 35px;
+}
+.nav-link {
+  font-size: 20px;
+}
+#userLink {
+  font-size: 40px;
+  color: white;
 }

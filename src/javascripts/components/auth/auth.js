@@ -6,9 +6,11 @@ const signMeIn = () => {
   firebase.auth().signInWithPopup(provider);
   $('#app').html('');
 };
+
 const logoutNavButton = () => {
   $('#loginLogout').html('<a class="userLinkLogout" href="#"><i class="fa fa-user" id="userLink" aria-hidden="true"></i></a>');
 };
+
 const loginNavButton = () => {
   $('#loginLogout').html('<a class="userLinkLogin" href="#"><i class="fa fa-user" id="userLink" aria-hidden="true"></i></a>');
 };

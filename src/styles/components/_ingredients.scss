@@ -1,0 +1,38 @@
+.categories-container {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  color: white;
+}
+.category-section {
+  margin: 2px;
+  font-family: 'Prata', serif;
+}
+.card {
+  background: none;
+  border: none;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  .card-text {
+    font-size: 20px;
+  }
+}
+#add-ingredient-btn,
+#addIngredientBtn{
+  font-family: 'Prata', serif;
+}
+.button-container-ingredient {
+  outline: none;
+}
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none;
+}
+#add-ingredients{
+  width: 80%;
+  margin:auto;
+  background-color: white;
+  border-radius: 6px;
+  padding: 10px;
+}
