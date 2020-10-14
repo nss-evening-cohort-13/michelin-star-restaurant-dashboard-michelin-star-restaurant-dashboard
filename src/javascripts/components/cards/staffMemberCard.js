@@ -1,3 +1,5 @@
+import deleteStaff from '../../helpers/data/staffData';
+
 const authStaffView = (staffObject) => {
   const domString = `
           <div class="staff-container card-container" id="${staffObject.firebaseKey}">
@@ -12,6 +14,13 @@ const authStaffView = (staffObject) => {
               <h6 class="staff-name">${staffObject.name}</h6>
             </div>
           </div>`;
+  $('body').on('click', '.delete-staff-btn', (e) => {
+    e.stopImmediatePropagation();
+    console.warn('clicky');
+    const firebaseKey = e.currentTarget.id;
+    $(`.staff-container#${firebaseKey}`).remove();
+    deleteStaff.deleteStaffMember(firebaseKey);
+  });
   return domString;
 };
 
