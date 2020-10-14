@@ -39,11 +39,18 @@
 .reservationCard{
     margin: 5px;
     background-color: #444444;
+    border: white 1px solid;
 
 }
 .reservation-card-header{
     background-color: #444444;
     #guestName{
         color: white;
+    }
+}
+.reso-list{
+    li{
+    background-color: #555;
+    color: white;
     }
 }

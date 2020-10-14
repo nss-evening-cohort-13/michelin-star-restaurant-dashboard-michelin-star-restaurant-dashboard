@@ -3,7 +3,7 @@ const reservationCardMaker = (reso) => {
     <div class="reservation-card-header">
       <h4 id="guestName">${reso.firstName} ${reso.lastName} </h4>
     </div>
-    <ul class="list-group list-group-flush">
+    <ul class="list-group reso-list list-group-flush">
       <li class="list-group-item">Guests: ${reso.numberOfGuests}</li>
       <li class="list-group-item">When: ${reso.time} on ${reso.date}</li>
       <li class="list-group-item">Phone Number: ${reso.phoneNumber}</li>
@@ -17,7 +17,7 @@ const authReservationCardMaker = (reso) => {
       <div class="reservation-card-header">
         <h4 id="guestName">${reso.firstName} ${reso.lastName} </h4>
       </div>
-      <ul class="list-group list-group-flush">
+      <ul class="list-group reso-list list-group-flush">
         <li class="list-group-item">Guests: ${reso.numberOfGuests}</li>
         <li class="list-group-item">When: ${reso.time} on ${reso.date}</li>
         <li class="list-group-item">Phone Number: ${reso.phoneNumber}</li>
