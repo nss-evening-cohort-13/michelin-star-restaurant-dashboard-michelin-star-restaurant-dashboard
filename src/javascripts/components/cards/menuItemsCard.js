@@ -1,3 +1,5 @@
+import menuData from '../../helpers/data/menuItemsData';
+
 const menuItemCardMaker = (item) => {
   const domString = `<div class="card-menu m-4" id="${item.id}>
                       <div class="card-body-menu">
@@ -29,6 +31,12 @@ const authMenuItemCardMaker = (item) => {
                       </div>
                     </div>
 `;
+  $('body').on('click', '.delete-menu-item', (e) => {
+    e.stopImmediatePropagation();
+    const firebaseKey = e.currentTarget.id;
+    $(`.card-menu#${firebaseKey}`).remove();
+    menuData.deleteMenuItem(firebaseKey);
+  });
   return domString;
 };
 
