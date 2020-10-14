@@ -25,6 +25,7 @@ const makeMenuItemForm = () => {
                   <div>
   `);
   ingredientsData.getAllIngredients().then((response) => {
+    $('#ingredientSelection').html('');
     response.forEach((ingredient) => {
       $('#ingredientSelection').append(`<option value="${ingredient.ingredient}">${ingredient.ingredient}</option>`);
     });
