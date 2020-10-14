@@ -22,4 +22,6 @@ const addReservation = (data) => axios.post(`${baseUrl}/reservations.json`, data
   axios.patch(`${baseUrl}/reservations/${response.data.name}.json`, update).catch((error) => console.warn(error));
 });
 
-export default { addReservation, getAllReservations };
+const deleteReservation = (firebaseKey) => axios.delete(`${baseUrl}/reservations/${firebaseKey}.json`);
+
+export default { addReservation, getAllReservations, deleteReservation };
