@@ -12,12 +12,10 @@ const staffView = (user) => {
   staffData.getAllStaff().then((response) => {
     if (user) {
       $('.staff-member-navigation').html(formBtn.staffFormBtn());
-      console.warn('staff response AUTH', response);
       response.forEach((item) => {
         $('.staff-member-container').append(card.authStaffView(item));
       });
     } else {
-      console.warn('staff response UNAUTH', response);
       response.forEach((item) => {
         $('.staff-member-container').append(card.unauthStaffView(item));
       });

@@ -41,7 +41,6 @@ const addStaffMemberForm = (user) => {
       staffData
         .addStaffMember(data)
         .then((response) => {
-          console.warn('staff member response', response);
           if (response === 'OK') {
             staffView.staffView(user);
           } else {
@@ -68,7 +67,6 @@ const addStaffMemberForm = (user) => {
     }
     $('#app').html('');
     staffView.staffView(user);
-    console.warn('staff form user', user);
   });
 };
 
