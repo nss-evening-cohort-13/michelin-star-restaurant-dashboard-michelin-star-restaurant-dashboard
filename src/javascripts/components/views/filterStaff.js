@@ -2,9 +2,8 @@ import staffData from '../../helpers/data/staffData';
 import card from '../cards/staffMemberCard';
 
 const filterStaffButtons = () => {
-  $('.filterStaff').html(` <div class="form-group">
-    <label for="filter">Filter</label>
-      <select class="form-control" id="roleOfStaff">
+  $('.filterStaff').html(` <div class="form-group filterForm">
+      <select class="form-control filterInput" id="roleOfStaff">
         <option value="">Staff Roles</option>
       </select>
       <button type="submit" id="filterStaffButton" class="btn btn-outline-success">Filter Staff</button>`);
