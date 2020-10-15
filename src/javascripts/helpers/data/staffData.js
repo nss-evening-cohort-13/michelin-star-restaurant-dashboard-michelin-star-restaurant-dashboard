@@ -30,4 +30,6 @@ const addStaffMember = (data) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { addStaffMember, getAllStaff };
+const deleteStaffMember = (Uid) => axios.delete(`${baseUrl}/staff/${Uid}.json`);
+
+export default { addStaffMember, getAllStaff, deleteStaffMember };
