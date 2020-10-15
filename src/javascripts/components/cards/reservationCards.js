@@ -1,3 +1,5 @@
+import reservationData from '../../helpers/data/reservationData';
+
 const reservationCardMaker = (reso) => {
   const domString = `<div id="${reso.uid}" class="card reservationCard" style="width: 16rem;">
     <div class="reservation-card-header">
@@ -29,6 +31,12 @@ const authReservationCardMaker = (reso) => {
        </div>
       </div>
   </div>`;
+  $('body').on('click', '.delete-reservation-btn', (e) => {
+    e.stopImmediatePropagation();
+    const firebaseKey = e.currentTarget.id;
+    $(`.reservationCard#${firebaseKey}`).remove();
+    reservationData.deleteReservation(firebaseKey);
+  });
   return domString;
 };
 
