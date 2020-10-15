@@ -1,5 +1,6 @@
 import categories from './addIngredientsForm';
 import ingredientsData from '../../helpers/data/ingredientsData';
+import ingredientsView from '../views/ingredientsView';
 
 const updateIngredientsForm = (ingredientObject) => {
   $('#updateIngredientsForm').html(`
@@ -49,6 +50,11 @@ const updateIngredientsForm = (ingredientObject) => {
           );
           setTimeout(() => {
             $('#success-message').html('');
+          }, 3000);
+        })
+        .then(() => {
+          setTimeout(() => {
+            ingredientsView.ingredientsView();
           }, 3000);
         })
         .catch((error) => console.warn(error));
