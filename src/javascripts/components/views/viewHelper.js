@@ -84,6 +84,10 @@ const viewListener = (view, user) => {
     $('.staff-form').css({ display: 'block' });
     addStaffForm.addStaffMemberForm(user);
   });
+
+  $('body').on('click', '.edit-reservation-btn', (e) => {
+    console.warn('edit clicked', e.currentTarget.id);
+  });
 };
 
 export default { viewListener, viewHelper };
