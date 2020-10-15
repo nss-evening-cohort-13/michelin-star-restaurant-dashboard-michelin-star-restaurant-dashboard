@@ -19,6 +19,13 @@ const getAllStaff = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getSingleStaffMember = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/staff/${firebaseKey}.json`).then((response) => {
+    const thisStaffMember = response.data;
+    resolve(thisStaffMember);
+  }).catch((error) => reject(error));
+});
+
 const addStaffMember = (data) => new Promise((resolve, reject) => {
   axios
     .post(`${baseUrl}/staff.json`, data)
@@ -33,4 +40,12 @@ const addStaffMember = (data) => new Promise((resolve, reject) => {
 
 const deleteStaffMember = (Uid) => axios.delete(`${baseUrl}/staff/${Uid}.json`);
 
-export default { addStaffMember, getAllStaff, deleteStaffMember };
+const updateStaffMember = (firebaseKey, staffObject) => axios.patch(`${baseUrl}/staff/${firebaseKey}.json`, staffObject);
+
+export default {
+  addStaffMember,
+  getAllStaff,
+  getSingleStaffMember,
+  deleteStaffMember,
+  updateStaffMember
+};
