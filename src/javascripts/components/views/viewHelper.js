@@ -10,6 +10,7 @@ import ingredientsView from './ingredientsView';
 import addIngredientsView from './addIngredientsView';
 import addMenuItemForm from './addMenuItemView';
 import homePage from './homePageView';
+import editReservationView from './editReservationView';
 
 const viewHelper = (id) => {
   $('#app').html('');
@@ -32,6 +33,8 @@ const viewHelper = (id) => {
         return addMenuItemForm.addMenuItemForm();
       case 'home':
         return homePage.homePageView();
+      case 'edit-reservation-btn':
+        return editReservationView.editReservationView();
       default:
         return console.warn('nothing clicked');
     }
@@ -87,6 +90,8 @@ const viewListener = (view, user) => {
 
   $('body').on('click', '.edit-reservation-btn', (e) => {
     console.warn('edit clicked', e.currentTarget.id);
+    viewHelper('edit-reservation-btn');
+    // const firebaseKey = e.currentTarget.id;
   });
 };
 
