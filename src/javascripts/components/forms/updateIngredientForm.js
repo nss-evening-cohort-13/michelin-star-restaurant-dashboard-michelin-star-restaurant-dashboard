@@ -55,7 +55,7 @@ const updateIngredientsForm = (ingredientObject) => {
         .then(() => {
           setTimeout(() => {
             ingredientsView.ingredientsView();
-          }, 3000);
+          }, 2000);
         })
         .catch((error) => console.warn(error));
       $('#ingredient').val('');
