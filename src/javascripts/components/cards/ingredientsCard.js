@@ -1,5 +1,7 @@
+import ingredientData from '../../helpers/data/ingredientsData';
+
 const ingredientMaker = (object) => {
-  const domString = `<div class="card d-flex flex-row m-2 p-1" style="width: 23rem;" id="${object.uid}">
+  const domString = `<div class="ingredient-card card d-flex flex-row m-2 p-1" style="width: 23rem;" id="${object.uid}">
   <div class="card-body d-flex">
     <h3 class="card-text mr-auto p-2">${object.ingredient}</h3>
     <div class="button-container-ingredient ml-2">
@@ -8,6 +10,14 @@ const ingredientMaker = (object) => {
     </div>
   </div>
 </div>`;
+
+  $('body').on('click', '.delete-ingredient', (e) => {
+    e.stopImmediatePropagation();
+    const firebaseKey = e.currentTarget.id;
+    $(`.ingredient-card#${firebaseKey}`).remove();
+    ingredientData.deleteIngredient(firebaseKey);
+  });
+
   return domString;
 };
 
