@@ -1,3 +1,4 @@
+import firebase from 'firebase/app';
 import staffData from '../../helpers/data/staffData';
 import staffView from '../views/staffView';
 
@@ -41,17 +42,17 @@ const updateStaffMemberForm = (staffObject) => {
       staffData.updateStaffMember(staffObject.firebaseKey, data)
         .then(() => {
           $('#success-message').html(
-            `<div class="alert alert-success" role="alert">
-            Right on! Staff member was updated!
-          </div>`
+            '<div class="alert alert-success" role="alert">Right on! Staff member was updated!</div>'
           );
           setTimeout(() => {
             $('#success-message').html('');
           }, 3000);
         }).then(() => {
           setTimeout(() => {
-            staffView.staffView();
-          });
+            firebase.auth().onAuthStateChanged((user) => {
+              staffView.staffView(user);
+            });
+          }, 3000);
         })
         .catch((error) => console.warn(error));
     }
