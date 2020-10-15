@@ -14,7 +14,6 @@ const ingredientMaker = (object) => {
   $('body').on('click', '.delete-ingredient', (e) => {
     e.stopImmediatePropagation();
     const firebaseKey = e.currentTarget.id;
-    console.warn('firebaseKey', firebaseKey);
     $(`.ingredient-card#${firebaseKey}`).remove();
     ingredientData.deleteIngredient(firebaseKey);
   });
