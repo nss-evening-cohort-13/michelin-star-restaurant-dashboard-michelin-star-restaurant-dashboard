@@ -2,7 +2,7 @@ import staffData from '../../helpers/data/staffData';
 import staffView from '../views/staffView';
 
 const updateStaffMemberForm = (user) => {
-  $('#update-staff-form').html(`
+  $('.staff-form').html(`
       <h2>Update Staff Member</h2>
       <div id="success-message"></div>
       <div id="error-message"></div>
