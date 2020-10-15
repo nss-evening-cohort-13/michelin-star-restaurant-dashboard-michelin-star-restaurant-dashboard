@@ -35,4 +35,11 @@ const getIngredientsByCategory = (category) => new Promise((resolve, reject) => 
     }).catch((error) => reject(error));
 });
 
-export default { getAllIngredients, addIngredient, getIngredientsByCategory };
+const deleteIngredient = (firebaseKey) => axios.delete(`${baseUrl}/ingredients/${firebaseKey}.json`);
+
+export default {
+  getAllIngredients,
+  addIngredient,
+  getIngredientsByCategory,
+  deleteIngredient
+};
