@@ -10,7 +10,7 @@ const staffView = (user) => {
                     <div class="staff-form form" id="staffForm"></div>
                     <div class="staff-member-container"></div>
                   </div>`);
-  filter.filterStaffButtons();
+  filter.filterStaffButtons(user);
   $('.staff-form').css({ display: 'none' });
   $('a.nav-link#reservationLink').css({ color: 'white' });
   $('a.nav-link#menuLink').css({ color: 'white' });
