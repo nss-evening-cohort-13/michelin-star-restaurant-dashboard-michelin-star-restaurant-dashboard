@@ -11,8 +11,9 @@ import addIngredientsView from './addIngredientsView';
 import addMenuItemForm from './addMenuItemView';
 import homePage from './homePageView';
 import updateMenuView from './updateMenuView';
+import updateIngredient from './updateIngredientsView';
 
-const viewHelper = (id, arg) => {
+const viewHelper = (id, argument) => {
   $('#app').html('');
   firebase.auth().onAuthStateChanged((user) => {
     switch (id) {
@@ -32,7 +33,9 @@ const viewHelper = (id, arg) => {
       case 'addMenuItemBtn':
         return addMenuItemForm.addMenuItemForm();
       case 'update-menu-item-link':
-        return updateMenuView.updateMenuItemsView(arg);
+        return updateMenuView.updateMenuItemsView(argument);
+      case 'update-ingredient-link':
+        return updateIngredient.updateIngredientView(argument);
       case 'home':
         return homePage.homePageView();
       default:
@@ -82,6 +85,10 @@ const viewListener = (view, user) => {
   $('body').on('click', '.update-menu-item-btn', (e) => {
     const menuItemUid = e.currentTarget.id;
     viewHelper('update-menu-item-link', menuItemUid);
+  });
+  $('body').on('click', '.update-ingredient-btn', (e) => {
+    const ingredientUid = e.currentTarget.id;
+    viewHelper('update-ingredient-link', ingredientUid);
   });
 };
 

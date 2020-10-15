@@ -1,5 +1,6 @@
 import image from '../../helpers/images/seating.png';
 import reservationData from '../../helpers/data/reservationData';
+import reservationView from '../views/reservationView';
 
 require('jquery-ui-bundle');
 
@@ -52,6 +53,10 @@ const addGuestInfo = (data) => {
           $('#success-message').html(
             '<div class="alert alert-success" role="alert">Your Reservation Was Added!</div>'
           );
+        }).then(() => {
+          setTimeout(() => {
+            reservationView.reservationView();
+          }, 2000);
         })
         .catch((error) => console.warn(error));
       setTimeout(() => {

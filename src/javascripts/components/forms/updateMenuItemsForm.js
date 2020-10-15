@@ -14,6 +14,7 @@ const updateMenuItemForm = (menuObject) => {
                       <div class="form-group">
                         <label for="ingredientSelection">Select Ingredients</label>
                         <select multiple class="form-control" id="ingredientSelection">
+                          <option value="${menuObject.ingredients}" selected ='selected'>${menuObject.ingredients}</option>
                         </select>
                       </div>
                       <div class="form-group">

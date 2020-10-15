@@ -64,4 +64,4 @@ const addIngredientsForm = () => {
   });
 };
 
-export default { addIngredientsForm };
+export default { addIngredientsForm, availableCategories };
