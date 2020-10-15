@@ -45,7 +45,7 @@ const updateIngredientsForm = (ingredientObject) => {
         .updateIngredient(ingredientObject.uid, data)
         .then(() => {
           $('#success-message').html(
-            '<div class="alert alert-success" role="alert">Your Ingredient Was Added!</div>'
+            '<div class="alert alert-success" role="alert">Your Ingredient Was Updated!</div>'
           );
           setTimeout(() => {
             $('#success-message').html('');
