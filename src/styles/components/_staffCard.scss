@@ -1,5 +1,5 @@
 .staff-member-page {
-  background-color: #262626;
+  background-color: #444444;
 }
 
 .staff-member-navigation {
@@ -22,7 +22,8 @@
 }
 
 .staff-form-btn:hover {
-  background-color: #EA859E;
+  // background-color: #EA859E;
+  // color: white;
   border: #EA859E 1px solid;
 }
 
@@ -31,11 +32,13 @@
   border-radius: 5px;
   background-color: #262626;
   color: white;
+  display: table-cell; 
+  vertical-align: bottom;
 }
 
 .staff-btn:hover {
-  background-color: #EA859E;
-  border: none;
+  color: white;
+  border: #EA859E 1px solid;
 }
 
 .card-container-page {
@@ -72,4 +75,14 @@
   text-align: left;
   color: white;
   padding-top: 25px;
+}
+.staff-container{
+  position: relative;
+
+}
+.staff-btn-container{
+  position: absolute;
+  bottom: 90px;
+
+  left: 60px;
 }

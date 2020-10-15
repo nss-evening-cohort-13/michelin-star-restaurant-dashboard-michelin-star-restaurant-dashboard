@@ -4,7 +4,7 @@ import card from '../cards/reservationCards';
 const reservationView = (user) => {
   $('#app').html(`<div id="add-reservation"> 
   <div id="error-message-reservation"></div>
-  <button id="addReservation" type="button" class="btn btn-info">Add Reservation</button>
+  <button id="addReservation" type="button" class="btn btn-outline">Add Reservation</button>
   <div id="reservationSection"</div></div>`);
   $('a.nav-link#menuLink').css({ color: 'white' });
   $('a.nav-link#staffLink').css({ color: 'white' });

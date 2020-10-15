@@ -25,9 +25,12 @@ const addStaffMember = (data) => new Promise((resolve, reject) => {
     .then((response) => {
       const update = { firebaseKey: response.data.name };
       axios.patch(`${baseUrl}/staff/${response.data.name}.json`, update);
+      console.warn(response.statusText);
       resolve(response.statusText);
     })
     .catch((error) => reject(error));
 });
 
-export default { addStaffMember, getAllStaff };
+const deleteStaffMember = (Uid) => axios.delete(`${baseUrl}/staff/${Uid}.json`);
+
+export default { addStaffMember, getAllStaff, deleteStaffMember };
