@@ -1,5 +1,5 @@
 import staffData from '../../helpers/data/staffData';
-import form from '../forms/updateStaffMember';
+import form from '../forms/updateStaffMemberForm';
 
 const updateStaffView = (firebaseKey) => {
   $('#app').html('<div id="update-staff-form"></div>');

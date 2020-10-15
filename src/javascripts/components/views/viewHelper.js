@@ -5,13 +5,14 @@ import menuView from './menuView';
 import reservationView from './reservationView';
 import staffView from './staffView';
 import addStaffForm from '../forms/addStaffMember';
+import updateStaffView from './updateStaffView';
 import addReservationView from './addReservationView';
 import ingredientsView from './ingredientsView';
 import addIngredientsView from './addIngredientsView';
 import addMenuItemForm from './addMenuItemView';
 import homePage from './homePageView';
 
-const viewHelper = (id) => {
+const viewHelper = (id, argument) => {
   $('#app').html('');
   firebase.auth().onAuthStateChanged((user) => {
     switch (id) {
@@ -24,6 +25,8 @@ const viewHelper = (id) => {
         return addReservationView.addReservationView();
       case 'staffLink':
         return staffView.staffView(user);
+      case 'edit-staff':
+        return updateStaffView.updateStaffView(argument);
       case 'viewIngredientsBtn':
         return ingredientsView.ingredientsView();
       case 'add-ingredient-btn':
@@ -83,6 +86,10 @@ const viewListener = (view, user) => {
     e.stopImmediatePropagation();
     $('.staff-form').css({ display: 'block' });
     addStaffForm.addStaffMemberForm(user);
+  });
+  $('body').on('click', '.edit-staff-btn', (e) => {
+    e.stopImmediatePropagation();
+    viewHelper('edit-staff', e.currentTarget.id);
   });
 };
 
