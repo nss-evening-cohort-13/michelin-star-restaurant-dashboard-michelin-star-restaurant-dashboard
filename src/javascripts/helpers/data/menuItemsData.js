@@ -22,4 +22,6 @@ const addMenuItem = (data) => axios.post(`${baseUrl}/menuItems.json`, data)
     axios.patch(`${baseUrl}/menuItems/${response.data.name}.json`, update);
   }).catch((error) => console.warn(error));
 
-export default { addMenuItem, getMenuItems };
+const deleteMenuItem = (firebaseKey) => axios.delete(`${baseUrl}/menuItems/${firebaseKey}.json`);
+
+export default { addMenuItem, getMenuItems, deleteMenuItem };
