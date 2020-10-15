@@ -1,4 +1,5 @@
 import staffData from '../../helpers/data/staffData';
+import staffView from '../views/staffView';
 
 const updateStaffMemberForm = (staffObject) => {
   $('#update-staff-form').html(`
@@ -47,6 +48,10 @@ const updateStaffMemberForm = (staffObject) => {
           setTimeout(() => {
             $('#success-message').html('');
           }, 3000);
+        }).then(() => {
+          setTimeout(() => {
+            staffView.staffView();
+          });
         })
         .catch((error) => console.warn(error));
     }

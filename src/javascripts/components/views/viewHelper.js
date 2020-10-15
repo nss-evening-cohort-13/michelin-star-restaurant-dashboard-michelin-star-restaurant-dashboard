@@ -11,6 +11,7 @@ import ingredientsView from './ingredientsView';
 import addIngredientsView from './addIngredientsView';
 import addMenuItemForm from './addMenuItemView';
 import homePage from './homePageView';
+import updateIngredient from './updateIngredientsView';
 
 const viewHelper = (id, argument) => {
   $('#app').html('');
@@ -33,6 +34,8 @@ const viewHelper = (id, argument) => {
         return addIngredientsView.addIngredientsView();
       case 'addMenuItemBtn':
         return addMenuItemForm.addMenuItemForm();
+      case 'update-ingredient-link':
+        return updateIngredient.updateIngredientView(argument);
       case 'home':
         return homePage.homePageView();
       default:
@@ -87,9 +90,15 @@ const viewListener = (view, user) => {
     $('.staff-form').css({ display: 'block' });
     addStaffForm.addStaffMemberForm(user);
   });
+
   $('body').on('click', '.edit-staff-btn', (e) => {
     e.stopImmediatePropagation();
     viewHelper('edit-staff', e.currentTarget.id);
+  });
+
+  $('body').on('click', '.update-ingredient-btn', (e) => {
+    const ingredientUid = e.currentTarget.id;
+    viewHelper('update-ingredient-link', ingredientUid);
   });
 };
 
