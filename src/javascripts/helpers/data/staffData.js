@@ -36,7 +36,6 @@ const deleteStaffMember = (Uid) => axios.delete(`${baseUrl}/staff/${Uid}.json`);
 const getStaffByRole = (role) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/staff.json?orderBy="role"&equalTo="${role}"`).then((response) => {
     const filteredStaff = response.data;
-    console.warn(response);
     const fileteredArray = [];
     if (filteredStaff) {
       Object.keys(filteredStaff).forEach((item) => {

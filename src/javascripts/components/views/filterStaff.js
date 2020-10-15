@@ -20,7 +20,6 @@ const filterStaffButtons = () => {
     $('.staff-member-container').html('');
     staffData.getStaffByRole(role).then((response) => {
       response.forEach((item) => {
-        console.warn('item', item);
         $('.staff-member-container').append(card.authStaffView(item));
       });
     });
