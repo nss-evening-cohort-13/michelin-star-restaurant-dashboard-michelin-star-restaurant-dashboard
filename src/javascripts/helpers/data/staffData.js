@@ -33,7 +33,7 @@ const addStaffMember = (data) => new Promise((resolve, reject) => {
       const update = { firebaseKey: response.data.name };
       axios.patch(`${baseUrl}/staff/${response.data.name}.json`, update)
         .then((patchResponse) => {
-          resolve(patchResponse.statusText);
+          resolve(patchResponse.statusCode);
         });
     })
     .catch((error) => reject(error));
