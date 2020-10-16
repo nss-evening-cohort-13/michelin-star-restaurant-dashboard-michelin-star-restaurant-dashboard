@@ -27,4 +27,40 @@
   background-color: white;
   border-radius: 6px;
   padding: 10px;
+  .menu-buttons {
+    font-family: 'Prata', serif;
+  }
+  p {
+    font-family: 'Montserrat', sans-serif;
+  }
+  h3 {
+    font-family: 'Prata', serif;
+  }
+}
+.card-menu {
+  h4{
+    font-family: 'Prata', serif;
+  }
+  p{
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+#updateMenuItemForm {
+  width: 80%;
+  margin:auto;
+  background-color: white;
+  border-radius: 6px;
+  padding: 10px;
+  h2{
+    font-family: 'Prata', serif;
+  }
+  label {
+    font-family: 'Prata', serif;
+  }
+  #updateMenuItemBtn {
+    font-family: 'Prata', serif;
+  }
+}
+#menu-item-form {
+  color: white;
 }
