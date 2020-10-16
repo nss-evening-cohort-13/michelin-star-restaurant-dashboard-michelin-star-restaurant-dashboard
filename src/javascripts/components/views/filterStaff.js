@@ -9,9 +9,12 @@ const filterStaffButtons = (user) => {
       <button type="submit" id="filterStaffButton" class="btn btn-outline-success">Filter Staff</button>`);
 
   staffData.getAllStaff().then((response) => {
+    const newArray = [];
     response.forEach((item) => {
+      newArray.push(item.role);
       $('select').append(`<option value="${item.role}">${item.role}</option>`);
     });
+    console.warn(newArray);
   });
   $('#filterStaffButton').on('click', (e) => {
     e.preventDefault();

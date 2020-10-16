@@ -19,14 +19,22 @@ const getAllStaff = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getSingleStaffMember = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/staff/${firebaseKey}.json`).then((response) => {
+    const thisStaffMember = response.data;
+    resolve(thisStaffMember);
+  }).catch((error) => reject(error));
+});
+
 const addStaffMember = (data) => new Promise((resolve, reject) => {
   axios
     .post(`${baseUrl}/staff.json`, data)
     .then((response) => {
       const update = { firebaseKey: response.data.name };
-      axios.patch(`${baseUrl}/staff/${response.data.name}.json`, update);
-      console.warn(response.statusText);
-      resolve(response.statusText);
+      axios.patch(`${baseUrl}/staff/${response.data.name}.json`, update)
+        .then((patchResponse) => {
+          resolve(patchResponse.statusCode);
+        });
     })
     .catch((error) => reject(error));
 });
@@ -45,10 +53,13 @@ const getStaffByRole = (role) => new Promise((resolve, reject) => {
     resolve(fileteredArray);
   }).catch((error) => reject(error));
 });
+const updateStaffMember = (firebaseKey, staffObject) => axios.patch(`${baseUrl}/staff/${firebaseKey}.json`, staffObject);
 
 export default {
   addStaffMember,
   getAllStaff,
   deleteStaffMember,
   getStaffByRole,
+  getSingleStaffMember,
+  updateStaffMember
 };
