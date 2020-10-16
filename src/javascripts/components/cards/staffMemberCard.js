@@ -16,7 +16,6 @@ const authStaffView = (staffObject) => {
           </div>`;
   $('body').on('click', '.delete-staff-btn', (e) => {
     e.stopImmediatePropagation();
-    console.warn('clicky');
     const firebaseKey = e.currentTarget.id;
     $(`.staff-container#${firebaseKey}`).remove();
     deleteStaff.deleteStaffMember(firebaseKey);

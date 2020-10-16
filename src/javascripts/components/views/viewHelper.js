@@ -5,6 +5,7 @@ import menuView from './menuView';
 import reservationView from './reservationView';
 import staffView from './staffView';
 import addStaffForm from '../forms/addStaffMember';
+import updateStaffView from './updateStaffView';
 import addReservationView from './addReservationView';
 import ingredientsView from './ingredientsView';
 import addIngredientsView from './addIngredientsView';
@@ -25,6 +26,8 @@ const viewHelper = (id, argument) => {
         return addReservationView.addReservationView();
       case 'staffLink':
         return staffView.staffView(user);
+      case 'edit-staff':
+        return updateStaffView.updateStaffView(argument);
       case 'viewIngredientsBtn':
         return ingredientsView.ingredientsView();
       case 'add-ingredient-btn':
@@ -87,6 +90,13 @@ const viewListener = (view, user) => {
     $('.staff-form').css({ display: 'block' });
     addStaffForm.addStaffMemberForm(user);
   });
+
+  $('body').on('click', '.edit-staff-btn', (e) => {
+    e.stopImmediatePropagation();
+    console.warn(e.currentTarget.id);
+    viewHelper('edit-staff', e.currentTarget.id);
+  });
+
   $('body').on('click', '.update-ingredient-btn', (e) => {
     const ingredientUid = e.currentTarget.id;
     viewHelper('update-ingredient-link', ingredientUid);
