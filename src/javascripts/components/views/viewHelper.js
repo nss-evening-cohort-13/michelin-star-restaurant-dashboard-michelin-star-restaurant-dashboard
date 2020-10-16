@@ -93,6 +93,7 @@ const viewListener = (view, user) => {
 
   $('body').on('click', '.edit-staff-btn', (e) => {
     e.stopImmediatePropagation();
+    console.warn(e.currentTarget.id);
     viewHelper('edit-staff', e.currentTarget.id);
   });
 
