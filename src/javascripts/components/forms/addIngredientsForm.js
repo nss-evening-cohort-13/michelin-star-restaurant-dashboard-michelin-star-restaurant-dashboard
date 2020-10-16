@@ -1,4 +1,6 @@
+import firebase from 'firebase/app';
 import ingredientsData from '../../helpers/data/ingredientsData';
+import ingredientsView from '../views/ingredientsView';
 
 const availableCategories = () => {
   const categories = ['Breads', 'Vegetables', 'Fruit', 'Dairy', 'Meat', 'Nuts'];
@@ -55,6 +57,12 @@ const addIngredientsForm = () => {
           );
           setTimeout(() => {
             $('#success-message').html('');
+          }, 3000);
+        }).then(() => {
+          setTimeout(() => {
+            firebase.auth().onAuthStateChanged((user) => {
+              ingredientsView.ingredientsView(user);
+            });
           }, 3000);
         })
         .catch((error) => console.warn(error));

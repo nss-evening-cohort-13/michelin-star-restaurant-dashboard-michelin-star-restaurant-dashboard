@@ -1,5 +1,7 @@
+import firebase from 'firebase/app';
 import menuData from '../../helpers/data/menuItemsData';
 import ingredientsData from '../../helpers/data/ingredientsData';
+import menuView from '../views/menuView';
 
 const makeMenuItemForm = () => {
   $('#app').html(`<div id="menu-item-form">
@@ -27,7 +29,9 @@ const makeMenuItemForm = () => {
   ingredientsData.getAllIngredients().then((response) => {
     $('#ingredientSelection').html('');
     response.forEach((ingredient) => {
-      $('#ingredientSelection').append(`<option value="${ingredient.ingredient}">${ingredient.ingredient}</option>`);
+      $('#ingredientSelection').append(
+        `<option value="${ingredient.ingredient}">${ingredient.ingredient}</option>`
+      );
     });
   });
   $('#submitMenuItemBtn').on('click', (e) => {
@@ -35,19 +39,32 @@ const makeMenuItemForm = () => {
     const menuItemData = {
       name: $('#menuItemName').val() || false,
       ingredients: $('#ingredientSelection').val() || false,
-      price: $('#price').val() || false
+      price: $('#price').val() || false,
     };
     if (Object.values(menuItemData).includes(false) || menuItemData.ingredients.length === 0) {
-      $('#error-message').html('<div class="alert alert-danger" role="alert">Please complete all fields</div>');
+      $('#error-message').html(
+        '<div class="alert alert-danger" role="alert">Please complete all fields</div>'
+      );
     } else {
       $('#error-message').html('');
-      menuData.addMenuItem(menuItemData)
+      menuData
+        .addMenuItem(menuItemData)
         .then(() => {
-          $('#success-message').html('<div class="alert alert-success" role="alert">Your menu item was added!</div>');
-        }).catch((error) => console.warn(error));
-      setTimeout(() => {
-        $('#success-message').html('');
-      }, 3000);
+          $('#success-message').html(
+            '<div class="alert alert-success" role="alert">Your menu item was added!</div>'
+          );
+          setTimeout(() => {
+            $('#success-message').html('');
+          }, 3000);
+        })
+        .then(() => {
+          setTimeout(() => {
+            firebase.auth().onAuthStateChanged((user) => {
+              menuView.menuView(user);
+            });
+          }, 3000);
+        })
+        .catch((error) => console.warn(error));
       $('#menuItemName').val('');
       $('#ingredientSelection').val('');
       $('#price').val('');

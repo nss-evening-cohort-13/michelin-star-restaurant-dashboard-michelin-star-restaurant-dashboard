@@ -1,5 +1,7 @@
+import firebase from 'firebase/app';
 import menuData from '../../helpers/data/menuItemsData';
 import ingredientsData from '../../helpers/data/ingredientsData';
+import menuView from '../views/menuView';
 
 const updateMenuItemForm = (menuObject) => {
   $('#updateMenuItemForm').html(`<div id="update-menu-item-form">
@@ -56,6 +58,12 @@ const updateMenuItemForm = (menuObject) => {
           $('#success-message').html(
             '<div class="alert alert-success" role="alert">Your menu item was added!</div>'
           );
+        }).then(() => {
+          setTimeout(() => {
+            firebase.auth().onAuthStateChanged((user) => {
+              menuView.menuView(user);
+            });
+          }, 3000);
         })
         .catch((error) => console.warn(error));
       setTimeout(() => {
