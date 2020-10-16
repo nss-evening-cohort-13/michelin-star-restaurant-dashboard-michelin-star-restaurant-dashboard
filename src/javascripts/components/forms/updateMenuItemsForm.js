@@ -14,7 +14,6 @@ const updateMenuItemForm = (menuObject) => {
                       <div class="form-group">
                         <label for="ingredientSelection">Select Ingredients</label>
                         <select multiple class="form-control" id="ingredientSelection">
-                          <option value="${menuObject.ingredients}" selected ='selected'>${menuObject.ingredients}</option>
                         </select>
                       </div>
                       <div class="form-group">
@@ -27,8 +26,15 @@ const updateMenuItemForm = (menuObject) => {
   `);
   ingredientsData.getAllIngredients().then((response) => {
     $('#ingredientSelection').html('');
-    response.forEach((ingredient) => {
-      $('#ingredientSelection').append(`<option value="${ingredient.ingredient}">${ingredient.ingredient}</option>`);
+    response.forEach((item) => {
+      const exists = menuObject.ingredients.find((i) => i === item.ingredient);
+      if (exists) {
+        $('select').append(
+          `<option value="${item.ingredient}" selected ='selected'>${item.ingredient}</option>`
+        );
+      } else {
+        $('select').append(`<option value="${item.ingredient}">${item.ingredient}</option>`);
+      }
     });
   });
   $('#updateMenuItemBtn').on('click', (e) => {
@@ -36,16 +42,22 @@ const updateMenuItemForm = (menuObject) => {
     const menuItemData = {
       name: $('#menuItemName').val() || false,
       ingredients: $('#ingredientSelection').val() || false,
-      price: $('#price').val() || false
+      price: $('#price').val() || false,
     };
     if (Object.values(menuItemData).includes(false) || menuItemData.ingredients.length === 0) {
-      $('#error-message').html('<div class="alert alert-danger" role="alert">Please complete all fields</div>');
+      $('#error-message').html(
+        '<div class="alert alert-danger" role="alert">Please complete all fields</div>'
+      );
     } else {
       $('#error-message').html('');
-      menuData.updateMenuItem(menuObject.id, menuItemData)
+      menuData
+        .updateMenuItem(menuObject.id, menuItemData)
         .then(() => {
-          $('#success-message').html('<div class="alert alert-success" role="alert">Your menu item was added!</div>');
-        }).catch((error) => console.warn(error));
+          $('#success-message').html(
+            '<div class="alert alert-success" role="alert">Your menu item was added!</div>'
+          );
+        })
+        .catch((error) => console.warn(error));
       setTimeout(() => {
         $('#success-message').html('');
       }, 3000);
