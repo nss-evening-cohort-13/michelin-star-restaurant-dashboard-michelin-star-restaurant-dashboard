@@ -11,7 +11,7 @@ const reservationTimes = () => {
 };
 
 // SECOND FORM TO APPEAR
-const editGuestInfo = (reservationObject) => {
+const editGuestInfo = (reservationObject, reservationFirebaseKey) => {
   console.warn('guest info object', reservationObject);
   $('#edit-reservation').html(`<h2>Edit Guest Info</h2>
         <div id="success-message"></div>
@@ -49,7 +49,7 @@ const editGuestInfo = (reservationObject) => {
       );
     } else {
       $('#error-message').html('');
-      reservationData.updateReservation(reservationObject, data)
+      reservationData.updateReservation(reservationFirebaseKey, data)
         .then(() => {
           $('#success-message').html(
             `<div class="alert alert-success" role="alert">
@@ -114,7 +114,7 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
   // Button click to chow edit guest info form
   $('body').on('click', '#edit-guest-btn', () => {
     console.warn('edit guest clicked');
-    editGuestInfo(reservationObject);
+    editGuestInfo(reservationObject, reservationFirebaseKey);
   });
 
   //  Code for seating chart dropdown
@@ -148,7 +148,7 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
       );
     } else {
       $('#error-message').html('');
-      editGuestInfo(reservationObject);
+      editGuestInfo(reservationObject, reservationFirebaseKey);
       reservationData.updateReservation(reservationFirebaseKey, data)
         .then(() => {
           console.warn('update uid', reservationObject);
