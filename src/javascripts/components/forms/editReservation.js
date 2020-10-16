@@ -1,3 +1,5 @@
+import firebase from 'firebase/app';
+import reservationView from '../views/reservationView';
 import image from '../../helpers/images/seating.png';
 import reservationData from '../../helpers/data/reservationData';
 
@@ -154,11 +156,17 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
           Your reservation was updated!
           </div>`
           );
+          setTimeout(() => {
+            $('#success-message').html('');
+          }, 3000);
+        }).then(() => {
+          setTimeout(() => {
+            firebase.auth().onAuthStateChanged((user) => {
+              reservationView.reservationView(user);
+            });
+          }, 3000);
         }).catch((error) => console.warn(error));
     }
-    setTimeout(() => {
-      $('#success-message').html('');
-    }, 3000);
   });
 };
 
