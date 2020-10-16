@@ -33,8 +33,8 @@ const viewHelper = (id) => {
         return addMenuItemForm.addMenuItemForm();
       case 'home':
         return homePage.homePageView();
-      case 'edit-reservation-btn':
-        return editReservationView.editReservationView();
+      // case 'edit-reservation-btn':
+      //   return editReservationView.editReservationView(arg);
       default:
         return console.warn('nothing clicked');
     }
@@ -90,7 +90,8 @@ const viewListener = (view, user) => {
 
   $('body').on('click', '.edit-reservation-btn', (e) => {
     console.warn('edit clicked', e.currentTarget.id);
-    viewHelper('edit-reservation-btn');
+    const reservationFirebaseKey = e.currentTarget.id;
+    editReservationView.editReservationView(reservationFirebaseKey);
     // const firebaseKey = e.currentTarget.id;
   });
 };

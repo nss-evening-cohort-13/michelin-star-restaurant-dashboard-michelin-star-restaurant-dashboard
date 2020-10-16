@@ -24,6 +24,15 @@ const addReservation = (data) => axios.post(`${baseUrl}/reservations.json`, data
 
 const deleteReservation = (firebaseKey) => axios.delete(`${baseUrl}/reservations/${firebaseKey}.json`);
 
+// Getting single reservation from firebase
+const getSingleReservation = (reservationFirebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/reservations/${reservationFirebaseKey}.json`)
+    .then((response) => {
+      const thisReservation = response.data;
+      resolve(thisReservation);
+    }).catch((error) => reject(error));
+});
+
 // This is updating the reservation data on friebase
 const updateReservation = (firebaseKey, reservationObject) => axios.patch(`${baseUrl}/reservations/${firebaseKey}.json`, reservationObject);
 
@@ -31,5 +40,6 @@ export default {
   addReservation,
   getAllReservations,
   deleteReservation,
-  updateReservation
+  updateReservation,
+  getSingleReservation
 };
