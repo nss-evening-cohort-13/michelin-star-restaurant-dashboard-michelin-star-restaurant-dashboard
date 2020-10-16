@@ -20,15 +20,15 @@ const editGuestInfo = (reservationObject) => {
     <div id="input-group">
         <div class="form-group">
           <label for="firstName">First Name</label>
-          <input type="text" class="form-control" id="firstName" placeholder="First Name">
+          <input value="${reservationObject.firstName}" type="text" class="form-control" id="firstName" placeholder="First Name">
         </div>
           <div class="form-group">
             <label for="lastName">Last Name</label>
-            <input class="form-control" id="lastName" autocomplete="off" placeholder="Last Name">
+            <input value="${reservationObject.lastName}" class="form-control" id="lastName" autocomplete="off" placeholder="Last Name">
           </div>
           <div class="form-group">
             <label for="phoneNumber">Phone Number</label>
-            <input type="tel" class="form-control" id="phoneNumber" class="timePicker" autocomplete="off" placeholder="ex: 615-123-4567">
+            <input value="${reservationObject.phoneNumber}" type="tel" class="form-control" id="phoneNumber" class="timePicker" autocomplete="off" placeholder="ex: 615-123-4567">
           </div>
           </div>
           <button id="updateGuestInfoBtn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Update Guest Info</button>
@@ -69,8 +69,8 @@ const editGuestInfo = (reservationObject) => {
 };
 
 // First Form to Appear
-const editReservationForm = (reservationObject) => {
-  console.warn(reservationObject, 'edit res form fbkey');
+const editReservationForm = (reservationObject, reservationFirebaseKey) => {
+  console.warn(reservationFirebaseKey, 'edit res form fbkey');
   $('#edit-reservation').html(`<h2>Edit Reservation</h2>
     <div id="success-message"></div>
     <div>
@@ -78,21 +78,21 @@ const editReservationForm = (reservationObject) => {
 <div id="input-group">
     <div class="form-group">
       <label for="image">Number of Guests</label>
-      <input type="text" class="form-control" id="numberOfGuests" placeholder="# of Guests">
+      <input value="${reservationObject.numberOfGuests}" type="text" class="form-control" id="numberOfGuests" placeholder="# of Guests">
     </div>
       <div class="form-group">
         <label for="date">Date</label>
-        <input class="form-control" id="datePicker" autocomplete="off" placeholder="Click to choose a date">
+        <input value="${reservationObject.date}" class="form-control" id="datePicker" autocomplete="off" placeholder="Click to choose a date">
       </div>
       <div class="form-group">
       <label for="time">Time</label>
       <select class="form-control" id="time">
-        <option value="">Select a Time</option>
+        <option selected ='selected' value="${reservationObject.time}">${reservationObject.time}</option>
       </select>
       </div>
       <div class="form-group">
       <label for="date">Seating Preference</label>
-      <input class="form-control" id="seatingPreference" placeholder="View Chart Below">
+      <input value="${reservationObject.seatingPreference}" class="form-control" id="seatingPreference" placeholder="View Chart Below">
     </div>
     </div>
     <div id="seating-section">
@@ -149,7 +149,7 @@ const editReservationForm = (reservationObject) => {
     } else {
       $('#error-message').html('');
       editGuestInfo(reservationObject);
-      reservationData.updateReservation(reservationObject, data)
+      reservationData.updateReservation(reservationFirebaseKey, data)
         .then(() => {
           console.warn('update uid', reservationObject);
           console.warn('update data', data);

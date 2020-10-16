@@ -7,7 +7,7 @@ const editReservationView = (reservationFirebaseKey) => {
   reservationData.getSingleReservation(reservationFirebaseKey).then((response) => {
     console.warn(reservationFirebaseKey, 'single res fbkey');
     console.warn(response, 'sing res response');
-    form.editReservationForm(response.uid);
+    form.editReservationForm(response, response.uid);
   });
 };
 
