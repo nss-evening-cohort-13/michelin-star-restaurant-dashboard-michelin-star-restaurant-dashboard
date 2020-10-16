@@ -12,9 +12,12 @@ const filterStaffButtons = (user) => {
     const newArray = [];
     response.forEach((item) => {
       newArray.push(item.role);
-      $('select').append(`<option value="${item.role}">${item.role}</option>`);
     });
-    console.warn(newArray);
+    const removeDuplicates = (data) => [...new Set(data)];
+    const filteredArray = removeDuplicates(newArray);
+    filteredArray.forEach((item) => {
+      $('select').append(`<option value="${item}">${item}</option>`);
+    });
   });
   $('#filterStaffButton').on('click', (e) => {
     e.preventDefault();
