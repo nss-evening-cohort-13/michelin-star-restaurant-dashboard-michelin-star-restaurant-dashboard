@@ -5,8 +5,9 @@ const editReservationView = (reservationFirebaseKey) => {
   $('#app').html('<div id="edit-reservation" style="background-color: white;">Hello</div>');
   console.warn(reservationFirebaseKey, 'res fbkey');
   reservationData.getSingleReservation(reservationFirebaseKey).then((response) => {
-    form.editReservationForm(response);
-    console.warn(response, 'single res');
+    console.warn(reservationFirebaseKey, 'single res fbkey');
+    console.warn(response, 'sing res response');
+    form.editReservationForm(response.uid);
   });
 };
 

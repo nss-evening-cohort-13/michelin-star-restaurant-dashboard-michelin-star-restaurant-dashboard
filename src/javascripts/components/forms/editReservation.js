@@ -31,9 +31,9 @@ const editGuestInfo = (reservationObject, data) => {
             <input type="tel" class="form-control" id="phoneNumber" class="timePicker" autocomplete="off" placeholder="ex: 615-123-4567">
           </div>
           </div>
-          <button id="editReservationBtn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Update Reservation</button>
+          <button id="updateGuestInfoBtn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Update Guest Info</button>
         </form>`);
-  $('#editReservationBtn').on('click', (e) => {
+  $('#updateGuestInfoBtn').on('click', (e) => {
     e.preventDefault();
     //   This is adding the new data to the first data object
     const guestData = data;
@@ -65,7 +65,8 @@ const editGuestInfo = (reservationObject, data) => {
   });
 };
 // First Form to Appear
-const editReservationForm = () => {
+const editReservationForm = (reservationObject) => {
+  console.warn(reservationObject, 'edit res form fbkey');
   $('#edit-reservation').html(`<h2>Edit Reservation</h2>
     <div id="success-message"></div>
     <div>
@@ -93,7 +94,8 @@ const editReservationForm = () => {
     <div id="seating-section">
     <div id="reservation-buttons">
     <button id="seatingBtn" type="button" class="btn btn-primary">View Seating Chart</button>
-    <button id="add-guest-btn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Edit Guest Info</button>
+    <button id="updateReservationBtn" type="button" class="btn btn-primary">Update Reservation</button>
+    <button id="edit-guest-btn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Edit Guest Info</button>
     </div>
     </div>
     <div id="viewSeats"></div>
@@ -104,6 +106,12 @@ const editReservationForm = () => {
 
   // RESERVATION TIMES DROPDOWN
   reservationTimes();
+
+  // Button click to chow edit guest info form
+  $('body').on('click', '#edit-guest-btn', () => {
+    console.warn('edit guest clicked');
+    editGuestInfo(reservationObject);
+  });
 
   //  Code for seating chart dropdown
   let seatingChartIsNotShown = true;
@@ -120,7 +128,7 @@ const editReservationForm = () => {
     }
   });
 
-  $('#edit-guest-btn').on('click', (e) => {
+  $('#updateReservationBtn').on('click', (e) => {
     e.preventDefault();
     // Capturing the first Segment of Data
     const data = {
@@ -136,7 +144,15 @@ const editReservationForm = () => {
       );
     } else {
       $('#error-message').html('');
-      editGuestInfo(data);
+      //   editGuestInfo(data);
+      reservationData.updateReservation(reservationObject.uid, data)
+        .then(() => {
+          $('#success-message').html(
+            `<div class="alert alert-success" role="alert">
+          Your reservation was updated!
+          </div>`
+          );
+        }).catch((error) => console.warn(error));
     }
     setTimeout(() => {
       $('#success-message').html('');
