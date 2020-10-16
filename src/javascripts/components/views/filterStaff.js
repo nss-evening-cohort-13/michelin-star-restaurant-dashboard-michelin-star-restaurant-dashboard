@@ -13,6 +13,7 @@ const filterStaffButtons = (user) => {
     response.forEach((item) => {
       newArray.push(item.role);
     });
+    // THIS FUNCTION MAKES AN ARRAY OF UNIQUE VALUES
     const removeDuplicates = (data) => [...new Set(data)];
     const filteredArray = removeDuplicates(newArray);
     filteredArray.forEach((item) => {
