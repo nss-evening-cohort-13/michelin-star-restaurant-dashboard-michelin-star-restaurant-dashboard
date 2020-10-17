@@ -11,6 +11,7 @@ import ingredientsView from './ingredientsView';
 import addIngredientsView from './addIngredientsView';
 import addMenuItemForm from './addMenuItemView';
 import homePage from './homePageView';
+import editReservationView from './editReservationView';
 import updateMenuView from './updateMenuView';
 import updateIngredient from './updateIngredientsView';
 
@@ -63,37 +64,51 @@ const viewListener = (view, user) => {
       );
     }
   });
+
   // View Ingredients Button
   $('body').on('click', '#viewIngredientsBtn', (e) => {
     viewHelper(e.currentTarget.id);
   });
+
   // Add Ingredients Button
   $('body').on('click', '#add-ingredient-btn', (e) => {
     viewHelper(e.currentTarget.id);
   });
+
   $('body').on('click', '#addMenuItemBtn', (e) => {
     viewHelper(e.currentTarget.id);
   });
+
   $('body').on('click', '.userLinkLogout', () => {
     auth.logoutButton();
   });
+
   $('body').on('click', '.userLinkLogin', () => {
     auth.loginButton();
   });
+
   $('body').on('click', '.staff-form-btn', (e) => {
     e.stopImmediatePropagation();
     $('.staff-form').css({ display: 'block' });
     addStaffForm.addStaffMemberForm(user);
   });
+
+  // Button click event to update reservation and return to reservation view
+  $('body').on('click', '.edit-reservation-btn', (e) => {
+    const reservationFirebaseKey = e.currentTarget.id;
+    editReservationView.editReservationView(reservationFirebaseKey);
+  });
+
   $('body').on('click', '.update-menu-item-btn', (e) => {
     const menuItemUid = e.currentTarget.id;
     viewHelper('update-menu-item-link', menuItemUid);
   });
+
   $('body').on('click', '.edit-staff-btn', (e) => {
     e.stopImmediatePropagation();
-    console.warn(e.currentTarget.id);
     viewHelper('edit-staff', e.currentTarget.id);
   });
+
   $('body').on('click', '.update-ingredient-btn', (e) => {
     const ingredientUid = e.currentTarget.id;
     viewHelper('update-ingredient-link', ingredientUid);
