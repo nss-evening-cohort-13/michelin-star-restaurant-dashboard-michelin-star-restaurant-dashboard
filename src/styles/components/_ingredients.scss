@@ -8,6 +8,36 @@
   margin: 2px;
   font-family: 'Prata', serif;
 }
+@media screen and (max-width: 400px){
+  .category-section {
+    margin: 2px;
+    font-family: 'Prata', serif;
+    display: flex;
+    flex-direction: column;
+  }
+  #addIngredients{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .ingredient-card{
+    width: 100%;
+  }
+  .categories-container{
+    display:flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .card-body{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+  }
+  .button-container-ingredient{
+    display: flex;
+    flex-direction: row;
+  }
+}
 .card {
   background: none;
   border: none;
@@ -44,4 +74,8 @@
 
 #ingredientSelection {
   height: 40vh;
+}
+.card-body{
+  display: flex;
+  flex-direction: row;
 }

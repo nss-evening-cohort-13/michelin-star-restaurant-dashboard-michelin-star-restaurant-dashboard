@@ -18,6 +18,13 @@
     flex-direction: row;
     justify-content: center;
 }
+@media screen and (max-width: 400px){
+    #input-group{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
 #ui-datepicker-div{
     display: none;
 }

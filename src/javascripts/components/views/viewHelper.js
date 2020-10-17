@@ -113,6 +113,9 @@ const viewListener = (view, user) => {
     const ingredientUid = e.currentTarget.id;
     viewHelper('update-ingredient-link', ingredientUid);
   });
+  $('body').on('click', 'a.navbar-brand', () => {
+    viewHelper('home');
+  });
 };
 
 export default { viewListener, viewHelper };
