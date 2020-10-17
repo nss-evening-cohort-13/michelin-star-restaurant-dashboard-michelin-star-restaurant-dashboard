@@ -15,31 +15,6 @@
   justify-content: center;
 }
 
-// .staff-form-btn {
-//   margin-top: 15px;
-//   border: #EA859E 1px solid;
-//   border-radius: 5px;
-//   background-color: #262626;
-//   color: white;
-// }
-
-// .staff-form-btn:hover {
-//   border: #EA859E 1px solid;
-// }
-
-// .staff-btn {
-//   border: none;
-//   border-radius: 5px;
-//   background-color: #262626;
-//   color: white;
-//   display: table-cell; 
-//   vertical-align: bottom;
-// }
-
-// .staff-btn:hover {
-//   color: white;
-//   border: #EA859E 1px solid;
-// }
 
 .card-container-page {
   margin-top: 10px;
@@ -79,11 +54,19 @@
 }
 .staff-container{
   position: relative;
-
 }
 .staff-btn-container{
   position: absolute;
   bottom: 90px;
 
   left: 60px;
+}
+.filterInput{
+  width: 40%;
+}
+.filterForm{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 25px;
 }

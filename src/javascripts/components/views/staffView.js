@@ -1,13 +1,16 @@
 import staffData from '../../helpers/data/staffData';
 import card from '../cards/staffMemberCard';
 import formBtn from './addStaffView';
+import filter from './filterStaff';
 
 const staffView = (user) => {
   $('#app').html(`<div class="staff-member-page">
+                    <div class="filterStaff"></div>
                     <div class="staff-member-navigation"></div>
                     <div class="staff-form form" id="staffForm"></div>
                     <div class="staff-member-container"></div>
                   </div>`);
+  filter.filterStaffButtons(user);
   $('.staff-form').css({ display: 'none' });
   $('a.nav-link#reservationLink').css({ color: 'white' });
   $('a.nav-link#menuLink').css({ color: 'white' });

@@ -41,32 +41,28 @@ const addStaffMemberForm = (user) => {
       staffData
         .addStaffMember(data)
         .then((response) => {
-          if (response === 200) {
-            staffView.staffView(user);
-          } else {
-            console.warn('failed, come back later');
-          }
-        })
-        .then(() => {
           $('#success-message').html(
             `<div class="alert" role="alert">
             Right on! New staff member was added!
           </div>`
           );
+          setTimeout(() => {
+            $('#success-message').html('');
+          }, 3000);
+          if (response === 200) {
+            setTimeout(() => {
+              staffView.staffView(user);
+            }, 3000);
+          } else {
+            console.warn('failed, come back later');
+          }
         })
         .catch((error) => console.warn(error));
-
-      setTimeout(() => {
-        $('#success-message').html('');
-      }, 3000);
 
       $('#name').val('');
       $('#role').val('');
       $('#staff-image-url').val('');
-      $('.staff-form').remove();
     }
-    $('#app').html('');
-    staffView.staffView(user);
   });
 };
 
