@@ -5,7 +5,7 @@
     padding: 10px;
     
 }
-#add-reservation{
+#add-reservation {
     width: 80%;
     margin:auto;
     background-color: white;
@@ -61,4 +61,17 @@
     background-color: #555;
     color: white;
     }
+}
+
+#updateReservationBtn, #seatingBtn {
+    background-color: $primary-color;
+}
+
+#edit-reservation {
+    width: 80%;
+    margin:auto;
+    border-radius: 6px;
+    padding: 20px;
+    background-color: #444444;
+    color: white;
 }
