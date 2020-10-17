@@ -1,10 +1,24 @@
+import firebase from 'firebase/app';
 import image from '../../helpers/images/seating.png';
 import reservationData from '../../helpers/data/reservationData';
+import reservationView from '../views/reservationView';
 
 require('jquery-ui-bundle');
 
 const reservationTimes = () => {
-  const times = ['5:00pm', '5:30pm', '6:00pm', '6:30pm', '7:00pm', '7:30pm', '8:00pm', '8:30pm', '9:00pm', '9:30pm', '10:00pm'];
+  const times = [
+    '5:00pm',
+    '5:30pm',
+    '6:00pm',
+    '6:30pm',
+    '7:00pm',
+    '7:30pm',
+    '8:00pm',
+    '8:30pm',
+    '9:00pm',
+    '9:30pm',
+    '10:00pm',
+  ];
   times.forEach((item) => {
     $('select').append(`<option value="${item}">${item}</option>`);
   });
@@ -52,6 +66,13 @@ const addGuestInfo = (data) => {
           $('#success-message').html(
             '<div class="alert alert-success" role="alert">Your Reservation Was Added!</div>'
           );
+        })
+        .then(() => {
+          setTimeout(() => {
+            firebase.auth().onAuthStateChanged((user) => {
+              reservationView.reservationView(user);
+            });
+          }, 2000);
         })
         .catch((error) => console.warn(error));
       setTimeout(() => {
@@ -109,9 +130,7 @@ const addReservationForm = () => {
   $('#seatingBtn').on('click', (e) => {
     e.preventDefault();
     if (seatingChartIsNotShown) {
-      $('#viewSeats').html(
-        `<img id="seatingChart"src="${image}" alt="seating chart">`
-      );
+      $('#viewSeats').html(`<img id="seatingChart"src="${image}" alt="seating chart">`);
       seatingChartIsNotShown = false;
     } else {
       $('#viewSeats').html('');

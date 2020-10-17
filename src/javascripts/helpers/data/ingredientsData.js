@@ -37,9 +37,20 @@ const getIngredientsByCategory = (category) => new Promise((resolve, reject) => 
 
 const deleteIngredient = (firebaseKey) => axios.delete(`${baseUrl}/ingredients/${firebaseKey}.json`);
 
+const getSingleIngredient = (ingredientUid) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/ingredients/${ingredientUid}.json`).then((response) => {
+    const singleIngredient = response.data;
+    resolve(singleIngredient);
+  }).catch((error) => reject(error));
+});
+
+const updateIngredient = (ingredientUid, dataObject) => axios.patch(`${baseUrl}/ingredients/${ingredientUid}.json`, dataObject);
+
 export default {
   getAllIngredients,
   addIngredient,
   getIngredientsByCategory,
-  deleteIngredient
+  deleteIngredient,
+  getSingleIngredient,
+  updateIngredient
 };

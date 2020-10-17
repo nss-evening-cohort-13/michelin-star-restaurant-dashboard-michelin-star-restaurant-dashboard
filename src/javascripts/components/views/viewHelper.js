@@ -5,6 +5,7 @@ import menuView from './menuView';
 import reservationView from './reservationView';
 import staffView from './staffView';
 import addStaffForm from '../forms/addStaffMember';
+import updateStaffView from './updateStaffView';
 import addReservationView from './addReservationView';
 import ingredientsView from './ingredientsView';
 import addIngredientsView from './addIngredientsView';
@@ -13,7 +14,6 @@ import homePage from './homePageView';
 import editReservationView from './editReservationView';
 import updateMenuView from './updateMenuView';
 import updateIngredient from './updateIngredientsView';
-import updateStaffView from './updateStaffView';
 
 const viewHelper = (id, argument) => {
   $('#app').html('');
@@ -50,13 +50,11 @@ const viewHelper = (id, argument) => {
 
 const viewListener = (view, user) => {
   viewHelper(view, user);
-
   // targeting nav link id on click event to print nav link respective view
   $('body').on('click', 'a.nav-link', (e) => {
     e.stopImmediatePropagation();
     viewHelper(e.currentTarget.id, user);
   });
-
   $('body').on('click', '#addReservation', (e) => {
     if (user) {
       viewHelper(e.currentTarget.id, user);
@@ -108,7 +106,6 @@ const viewListener = (view, user) => {
 
   $('body').on('click', '.edit-staff-btn', (e) => {
     e.stopImmediatePropagation();
-    console.warn(e.currentTarget.id);
     viewHelper('edit-staff', e.currentTarget.id);
   });
 
