@@ -11,3 +11,12 @@
     color: white;
     letter-spacing: 5px;
 }
+@media screen and (max-width: 400px){
+    #titleContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        font-family: 'Prata', serif;
+    }
+}

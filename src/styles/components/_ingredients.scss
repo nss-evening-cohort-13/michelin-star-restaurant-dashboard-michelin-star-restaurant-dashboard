@@ -8,6 +8,27 @@
   margin: 2px;
   font-family: 'Prata', serif;
 }
+@media screen and (max-width: 400px){
+  .category-section {
+    margin: 2px;
+    font-family: 'Prata', serif;
+    display: flex;
+    flex-direction: column;
+  }
+  #addIngredients{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .ingredient-card{
+    width: 100%;
+  }
+  .categories-container{
+    display:flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
 .card {
   background: none;
   border: none;
@@ -46,4 +67,8 @@
   label{
     font-size: 20px;
   }
+}
+.card-body{
+  display: flex;
+  flex-direction: row;
 }
