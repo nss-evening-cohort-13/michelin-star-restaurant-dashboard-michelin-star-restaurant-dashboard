@@ -38,7 +38,6 @@ const viewHelper = (id, argument) => {
   $('#app').html('');
   firebase.auth().onAuthStateChanged((user) => {
     switch (id) {
-      // targeting nav link id, returning respective link view
       case 'menuLink':
         return menuView.menuView(user);
       case 'reservationLink':
