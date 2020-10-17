@@ -4,23 +4,23 @@ import ingredientsView from '../views/ingredientsView';
 
 const updateIngredientsForm = (ingredientObject) => {
   $('#updateIngredientsForm').html(`
-    <h2 style="font-family: 'Prata', serif;">Update Ingredient</h2>
+    <h2 class="form-title">Update Ingredient</h2>
     <div id="success-message"></div>
     <div id="error-message"></div>
     <form>
       <div id="input-group">
         <div class="form-group">
-          <label for="Ingredient" style="font-family: 'Prata', serif;">Ingredient</label>
+          <label for="Ingredient" class="form-label">Ingredient</label>
           <input type="text" class="form-control pr-3" id="ingredient" value="${ingredientObject.ingredient}" placeholder="Sliced Pears" />
         </div>
         <div class="form-group">
-        <label for="category" style="font-family: 'Prata', serif;">Category</label>
+        <label for="category" class="form-label">Category</label>
         <select class="form-control" id="category">
           <option selected ='selected' value="${ingredientObject.category}">${ingredientObject.category}</option>
         </select>
         </div>
       </div>
-      <button id="updateIngredientBtn" type="button" class="btn btn-outline-light">
+      <button id="updateIngredientBtn" type="button" class="btn btn-outline">
         Update Ingredient
       </button>
     </form>
@@ -38,7 +38,7 @@ const updateIngredientsForm = (ingredientObject) => {
 
     if (Object.values(data).includes(false)) {
       $('#error-message').html(
-        '<div class="alert alert-danger" role="alert">Please complete all fields</div>'
+        '<div class="alert" role="alert">Please complete all fields</div>'
       );
     } else {
       $('#error-message').html('');
@@ -46,7 +46,7 @@ const updateIngredientsForm = (ingredientObject) => {
         .updateIngredient(ingredientObject.uid, data)
         .then(() => {
           $('#success-message').html(
-            '<div class="alert alert-success" role="alert">Your Ingredient Was Updated!</div>'
+            '<div class="alert" role="alert">Your Ingredient Was Updated!</div>'
           );
           setTimeout(() => {
             $('#success-message').html('');

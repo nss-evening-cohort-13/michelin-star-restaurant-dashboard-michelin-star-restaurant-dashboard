@@ -8,7 +8,7 @@ const signMeIn = () => {
 };
 
 const logoutNavButton = () => {
-  $('#loginLogout').html('<a class="userLinkLogout" href="#"><i class="fa fa-user" id="userLink" aria-hidden="true"></i></a>');
+  $('#loginLogout').html('<a class="userLinkLogout" href="#"><i class="fa fa-user" style="color: #EA859E;" id="userLink" aria-hidden="true"></i></a>');
 };
 
 const loginNavButton = () => {
@@ -24,7 +24,9 @@ const loginButton = () => {
                         </button>
                       </div>`;
   $('#app').html(domString);
-  $('#google-auth').on('click', signMeIn);
+  $('#google-auth').on('click', () => {
+    signMeIn();
+  });
 };
 
 const logoutEvent = () => {
