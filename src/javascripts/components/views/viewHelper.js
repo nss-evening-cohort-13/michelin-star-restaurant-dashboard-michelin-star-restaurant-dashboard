@@ -60,7 +60,7 @@ const viewListener = (view, user) => {
       viewHelper(e.currentTarget.id, user);
     } else {
       $('#error-message-reservation').html(
-        '<div class="alert alert-danger" role="alert">Please Sign in To Make a Reservation</div>'
+        '<div class="alert" role="alert">Please Sign in To Make a Reservation</div>'
       );
     }
   });
