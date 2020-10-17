@@ -3,7 +3,7 @@ import staffView from '../views/staffView';
 
 const addStaffMemberForm = (user) => {
   $('.staff-form').html(`
-      <h2>Add Staff Member</h2>
+      <h2 class="form-title">Add Staff Member</h2>
       <div id="success-message"></div>
       <div id="error-message"></div>
       <div class="form-group row">
@@ -18,7 +18,7 @@ const addStaffMemberForm = (user) => {
         <label for="imageUrl">Image</label>
         <input type="text" class="form-control" id="staff-image-url" placeholder="Place Image URL">
       </div>
-        <button id="add-staff-btn" type="button" class="btn btn-info form-btn"><i class="fas fa-plus-circle"></i> Add Staff Member</button>
+        <button id="add-staff-btn" type="button" class="btn btn-outline form-btn"><i class="fas fa-plus-circle"></i> Add Staff Member</button>
       </div>
     `);
 
@@ -31,7 +31,7 @@ const addStaffMemberForm = (user) => {
 
     if (Object.values(data).includes(false)) {
       $('#error-message').html(
-        `<div class="alert alert-danger" role="alert">
+        `<div class="alert" role="alert">
           Please complete all fields
         </div>`
       );
@@ -42,7 +42,7 @@ const addStaffMemberForm = (user) => {
         .addStaffMember(data)
         .then((response) => {
           $('#success-message').html(
-            `<div class="alert alert-success" role="alert">
+            `<div class="alert" role="alert">
             Right on! New staff member was added!
           </div>`
           );

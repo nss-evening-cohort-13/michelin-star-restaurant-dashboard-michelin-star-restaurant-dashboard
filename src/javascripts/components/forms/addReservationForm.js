@@ -27,7 +27,7 @@ const reservationTimes = () => {
 // SECOND FORM TO APPEAR
 
 const addGuestInfo = (data) => {
-  $('#add-reservation').html(`<h2>Enter User Info</h2>
+  $('#add-reservation').html(`<h2 class="form-title">Enter User Info</h2>
         <div id="success-message"></div>
           <div id="error-message"></div>
     <form>
@@ -45,7 +45,7 @@ const addGuestInfo = (data) => {
             <input type="tel" class="form-control" id="phoneNumber" class="timePicker" autocomplete="off" placeholder="ex: 615-123-4567">
           </div>
           </div>
-          <button id="addReservationBtn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Complete Reservation</button>
+          <button id="addReservationBtn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i> Complete Reservation</button>
         </form>`);
   $('#addReservationBtn').on('click', (e) => {
     e.preventDefault();
@@ -56,7 +56,7 @@ const addGuestInfo = (data) => {
     guestData.phoneNumber = $('#phoneNumber').val() || false;
     if (Object.values(guestData).includes(false)) {
       $('#error-message').html(
-        '<div class="alert alert-danger" role="alert">Please complete all fields</div>'
+        '<div class="alert" role="alert">Please complete all fields</div>'
       );
     } else {
       $('#error-message').html('');
@@ -64,7 +64,7 @@ const addGuestInfo = (data) => {
         .addReservation(data)
         .then(() => {
           $('#success-message').html(
-            '<div class="alert alert-success" role="alert">Your Reservation Was Added!</div>'
+            '<div class="alert" role="alert">Your Reservation Was Added!</div>'
           );
         })
         .then(() => {
@@ -86,7 +86,7 @@ const addGuestInfo = (data) => {
 };
 // First Form to Appear
 const addReservationForm = () => {
-  $('#add-reservation').html(`<h2>Add A Reservation</h2>
+  $('#add-reservation').html(`<h2 class="form-title">Add A Reservation</h2>
     <div id="success-message"></div>
     <div>
       <div id="error-message"></div>
@@ -112,8 +112,8 @@ const addReservationForm = () => {
     </div>
     <div id="seating-section">
     <div id="reservation-buttons">
-    <button id="seatingBtn" type="button" class="btn btn-primary">View Seating Chart</button>
-    <button id="add-guest-btn" type="button" class="btn btn-info"><i class="fas fa-plus-circle"></i> Add Guest Info</button>
+    <button id="seatingBtn" type="button" class="btn btn-outline">View Seating Chart</button>
+    <button id="add-guest-btn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i> Add Guest Info</button>
     </div>
     </div>
     <div id="viewSeats"></div>
@@ -150,7 +150,7 @@ const addReservationForm = () => {
 
     if (Object.values(data).includes(false)) {
       $('#error-message').html(
-        '<div class="alert alert-danger" role="alert">Please complete all fields</div>'
+        '<div class="alert" role="alert">Please complete all fields</div>'
       );
     } else {
       $('#error-message').html('');

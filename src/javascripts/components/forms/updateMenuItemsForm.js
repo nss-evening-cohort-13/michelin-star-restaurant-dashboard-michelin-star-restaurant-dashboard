@@ -5,21 +5,21 @@ import menuView from '../views/menuView';
 
 const updateMenuItemForm = (menuObject) => {
   $('#updateMenuItemForm').html(`<div id="update-menu-item-form">
-                    <h2>Update Menu Item</h2>
+                    <h2 class="form-title">Update Menu Item</h2>
                     <div id="success-message"></div>
                     <div id="error-message"></div>
                     <div id="input-group-menu">
                       <div class="form-group">
-                        <label for="menuItemName">Menu Item</label>
+                        <label for="menuItemName" class="form-label">Menu Item</label>
                         <input type="text" class="form-control" id="menuItemName" value="${menuObject.name}" placeholder="Menu Item">
                       </div>
                       <div class="form-group">
-                        <label for="ingredientSelection">Select Ingredients</label>
+                        <label for="ingredientSelection" class="form-label">Select Ingredients</label>
                         <select multiple class="form-control" id="ingredientSelection">
                         </select>
                       </div>
                       <div class="form-group">
-                        <label for="price">Price</label>
+                        <label for="price" class="form-label">Price</label>
                         <input class="form-control" id="price" class="timePicker" autocomplete="off" value="${menuObject.price}" placeholder="Enter a price">
                       </div>
                       <button id="updateMenuItemBtn" type="button" class="btn btn-outline"></i>Update Menu Item</button>
@@ -48,7 +48,7 @@ const updateMenuItemForm = (menuObject) => {
     };
     if (Object.values(menuItemData).includes(false) || menuItemData.ingredients.length === 0) {
       $('#error-message').html(
-        '<div class="alert alert-danger" role="alert">Please complete all fields</div>'
+        '<div class="alert" role="alert">Please complete all fields</div>'
       );
     } else {
       $('#error-message').html('');
@@ -56,7 +56,7 @@ const updateMenuItemForm = (menuObject) => {
         .updateMenuItem(menuObject.id, menuItemData)
         .then(() => {
           $('#success-message').html(
-            '<div class="alert alert-success" role="alert">Your menu item was added!</div>'
+            '<div class="alert" role="alert">Your menu item was added!</div>'
           );
         }).then(() => {
           setTimeout(() => {

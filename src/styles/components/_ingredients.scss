@@ -17,10 +17,7 @@
     font-size: 20px;
   }
 }
-#add-ingredient-btn,
-#addIngredientBtn{
-  font-family: 'Prata', serif;
-}
+
 .button-container-ingredient {
   outline: none;
 }
@@ -40,10 +37,11 @@
 #updateIngredientsForm{
   color: white;
   width: 50%;
-  h2{
-    font-size: 50px;
-  }
   label{
     font-size: 20px;
   }
+}
+
+#ingredientSelection {
+  height: 40vh;
 }

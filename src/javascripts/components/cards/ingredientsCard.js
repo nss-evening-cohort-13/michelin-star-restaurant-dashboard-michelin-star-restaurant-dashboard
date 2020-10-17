@@ -5,8 +5,8 @@ const ingredientMaker = (object) => {
   <div class="card-body d-flex">
     <h3 class="card-text mr-auto p-2">${object.ingredient}</h3>
     <div class="button-container-ingredient ml-2">
-      <button id="${object.uid}" class="btn btn-outline update-ingredient-btn" style="color: white"><i class="fas fa-edit"></i></button>
-      <button id="${object.uid}" class="btn btn-outline delete-ingredient"><i id="ingredient-icon" class="fas fa-times"></i></button>
+      <button id="${object.uid}" class="btn btn-outline update-ingredient-btn icon-btn" style="color: white"><i class="fas fa-edit"></i></button>
+      <button id="${object.uid}" class="btn btn-outline delete-ingredient icon-btn"><i id="ingredient-icon" class="fas fa-times"></i></button>
     </div>
   </div>
 </div>`;
