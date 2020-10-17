@@ -72,34 +72,34 @@ const reservationTimes = () => {
 
 // First Form to Appear
 const editReservationForm = (reservationObject, reservationFirebaseKey) => {
-  $('#edit-reservation').html(`<h2>Edit Reservation</h2>
+  $('#edit-reservation').html(`<h2 class="form-title">Edit Reservation</h2>
     <div id="success-message"></div>
     <div>
       <div id="error-message"></div>
 <div id="input-group">
     <div class="form-group">
-      <label for="image">Number of Guests</label>
+      <label for="image" class="form-label">Number of Guests</label>
       <input value="${reservationObject.numberOfGuests}" type="text" class="form-control" id="numberOfGuests" placeholder="# of Guests">
     </div>
       <div class="form-group">
-        <label for="date">Date</label>
+        <label for="date" class="form-label">Date</label>
         <input value="${reservationObject.date}" class="form-control" id="datePicker" autocomplete="off" placeholder="Click to choose a date">
       </div>
       <div class="form-group">
-      <label for="time">Time</label>
+      <label for="time" class="form-label">Time</label>
       <select class="form-control" id="time">
         <option selected ='selected' value="${reservationObject.time}">${reservationObject.time}</option>
       </select>
       </div>
       <div class="form-group">
-      <label for="date">Seating Preference</label>
+      <label for="date" class="form-label">Seating Preference</label>
       <input value="${reservationObject.seatingPreference}" class="form-control" id="seatingPreference" placeholder="View Chart Below">
     </div>
     </div>
     <div id="seating-section">
     <div id="reservation-buttons">
-    <button id="seatingBtn" type="button" class="btn btn-primary">View Seating Chart</button>
-    <button id="updateReservationBtn" type="button" class="btn btn-primary">Update Reservation</button>
+    <button id="seatingBtn" type="button" class="btn btn-outline">View Seating Chart</button>
+    <button id="updateReservationBtn" type="button" class="btn btn-outline">Update Reservation</button>
     </div>
     </div>
     <div id="viewSeats"></div>
@@ -144,7 +144,7 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
 
     if (Object.values(data).includes(false)) {
       $('#error-message').html(
-        '<div class="alert alert-danger" role="alert">Please complete all fields</div>'
+        '<div class="alert" role="alert">Please complete all fields</div>'
       );
     } else {
       $('#error-message').html('');
@@ -152,7 +152,7 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
       reservationData.updateReservation(reservationFirebaseKey, data)
         .then(() => {
           $('#success-message').html(
-            `<div class="alert alert-success" role="alert">
+            `<div class="alert" role="alert">
           Your reservation was updated!
           </div>`
           );

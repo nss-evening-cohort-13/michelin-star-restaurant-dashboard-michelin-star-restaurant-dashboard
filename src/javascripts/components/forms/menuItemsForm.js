@@ -5,7 +5,7 @@ import menuView from '../views/menuView';
 
 const makeMenuItemForm = () => {
   $('#app').html(`<div id="menu-item-form">
-                    <h2>Add Menu Item</h2>
+                    <h2 class="form-title">Add Menu Item</h2>
                     <div id="success-message"></div>
                     <div id="error-message"></div>
                     <div id="input-group-menu">
@@ -22,7 +22,7 @@ const makeMenuItemForm = () => {
                         <label for="price">Price</label>
                         <input class="form-control" id="price" class="timePicker" autocomplete="off" placeholder="Enter a price">
                       </div>
-                      <button id="submitMenuItemBtn" type="button" class="btn btn-info"></i>Add Menu Item</button>
+                      <button id="submitMenuItemBtn" type="button" class="btn btn-outline"></i>Add Menu Item</button>
                     </div>
                   <div>
   `);
@@ -43,7 +43,7 @@ const makeMenuItemForm = () => {
     };
     if (Object.values(menuItemData).includes(false) || menuItemData.ingredients.length === 0) {
       $('#error-message').html(
-        '<div class="alert alert-danger" role="alert">Please complete all fields</div>'
+        '<div class="alert" role="alert">Please complete all fields</div>'
       );
     } else {
       $('#error-message').html('');
@@ -51,7 +51,7 @@ const makeMenuItemForm = () => {
         .addMenuItem(menuItemData)
         .then(() => {
           $('#success-message').html(
-            '<div class="alert alert-success" role="alert">Your menu item was added!</div>'
+            '<div class="alert" role="alert">Your menu item was added!</div>'
           );
           setTimeout(() => {
             $('#success-message').html('');
