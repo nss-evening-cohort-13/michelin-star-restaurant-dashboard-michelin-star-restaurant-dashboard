@@ -41,12 +41,25 @@ const addStaffMember = (data) => new Promise((resolve, reject) => {
 
 const deleteStaffMember = (Uid) => axios.delete(`${baseUrl}/staff/${Uid}.json`);
 
+const getStaffByRole = (role) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/staff.json?orderBy="role"&equalTo="${role}"`).then((response) => {
+    const filteredStaff = response.data;
+    const fileteredArray = [];
+    if (filteredStaff) {
+      Object.keys(filteredStaff).forEach((item) => {
+        fileteredArray.push(filteredStaff[item]);
+      });
+    }
+    resolve(fileteredArray);
+  }).catch((error) => reject(error));
+});
 const updateStaffMember = (firebaseKey, staffObject) => axios.patch(`${baseUrl}/staff/${firebaseKey}.json`, staffObject);
 
 export default {
   addStaffMember,
   getAllStaff,
-  getSingleStaffMember,
   deleteStaffMember,
+  getStaffByRole,
+  getSingleStaffMember,
   updateStaffMember
 };

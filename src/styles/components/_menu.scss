@@ -65,4 +65,9 @@
   .menu-item-title{
     flex-direction: column;
   }
+  #listOfIngredients {
+    text-align: center;
+    display: flex;
+    flex-flow: row wrap;
+  }
 }

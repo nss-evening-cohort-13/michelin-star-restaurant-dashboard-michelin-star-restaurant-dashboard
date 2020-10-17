@@ -5,7 +5,7 @@ const menuView = (user) => {
   $('#app').html(`<div id="menuView" style="background-color: #444444; color: white;">
                     <div id="error-message-menu"></div>
                     <div class="menu-buttons pt-4 pb-4"></div>
-                    <p>Search for ingredients.</p>
+                    <p></p>
                     <div><h3>MENU ITEMS</h3></div>
                     <div id="menuItems"></div>
                   </div>
