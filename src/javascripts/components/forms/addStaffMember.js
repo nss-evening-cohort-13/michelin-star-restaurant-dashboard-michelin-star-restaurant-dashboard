@@ -41,7 +41,7 @@ const addStaffMemberForm = (user) => {
       staffData
         .addStaffMember(data)
         .then((response) => {
-          if (response === '200') {
+          if (response === 200) {
             staffView.staffView(user);
           } else {
             console.warn('failed, come back later');
