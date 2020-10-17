@@ -72,7 +72,7 @@ const addGuestInfo = (data) => {
             firebase.auth().onAuthStateChanged((user) => {
               reservationView.reservationView(user);
             });
-          }, 2000);
+          }, 3000);
         })
         .catch((error) => console.warn(error));
       setTimeout(() => {
