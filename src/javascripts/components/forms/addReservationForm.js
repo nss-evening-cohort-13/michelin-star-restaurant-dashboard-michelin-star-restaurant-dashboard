@@ -150,7 +150,7 @@ const addReservationForm = () => {
 
     if (Object.values(data).includes(false)) {
       $('#error-message').html(
-        '<div class="alert alert-danger" role="alert">Please complete all fields</div>'
+        '<div class="alert" role="alert">Please complete all fields</div>'
       );
     } else {
       $('#error-message').html('');
