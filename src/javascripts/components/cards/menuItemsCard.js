@@ -3,7 +3,7 @@ import menuData from '../../helpers/data/menuItemsData';
 const menuItemCardMaker = (item) => {
   const domString = `<div class="card-menu m-4" id="${item.id}">
                       <div class="card-body-menu">
-                        <div class="menu-item-title d-flex justify-content-between">
+                        <div class="menu-item-title">
                           <h4 class="card-text-menu text-uppercase">${item.name}</h4>
                           <p id="menuItemPrice">${item.price}</p>
                         </div>
@@ -17,11 +17,11 @@ const menuItemCardMaker = (item) => {
 const authMenuItemCardMaker = (item) => {
   const domString = `<div class="card-menu m-4" id="${item.id}">
                       <div class="card-body-menu">
-                        <div class="menu-item-title d-flex justify-content-between">
+                        <div class="menu-item-title">
                           <h4 class="card-text-menu text-uppercase">${item.name}</h4>
                           <p id="menuItemPrice">${item.price}</p>
                         </div>
-                        <div id="menuItemInfo" class="d-flex justify-content-between">
+                        <div id="menuItemInfo" class="menuItemInfo">
                           <p id="listOfIngredients" class="text-lowercase">${item.ingredients.join(' | ')}</p>
                           <div class="button-container-menu">
                             <button id="${item.id}" class="btn btn-outline update-menu-item-btn" style="color: white"><i class="fas fa-edit"></i></button>
