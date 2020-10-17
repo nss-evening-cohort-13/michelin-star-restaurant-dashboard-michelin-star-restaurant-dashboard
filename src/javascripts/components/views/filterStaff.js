@@ -6,7 +6,7 @@ const filterStaffButtons = (user) => {
       <select class="form-control filterInput" id="roleOfStaff">
         <option value="">Staff Roles</option>
       </select>
-      <button type="submit" id="filterStaffButton" class="btn btn-outline-success">Filter Staff</button>`);
+      <button type="submit" id="filterStaffButton" class="btn btn-outline">Filter Staff</button>`);
 
   staffData.getAllStaff().then((response) => {
     const newArray = [];
