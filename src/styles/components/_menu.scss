@@ -52,3 +52,22 @@
 #menu-item-form {
   color: white;
 }
+.menu-item-title, .menuItemInfo{
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (max-width: 400px){
+  .menu-item-title, .menuItemInfo {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  .menu-item-title{
+    flex-direction: column;
+  }
+  #listOfIngredients {
+    text-align: center;
+    display: flex;
+    flex-flow: row wrap;
+  }
+}
