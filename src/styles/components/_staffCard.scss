@@ -1,5 +1,7 @@
 .staff-member-page {
   background-color: #444444;
+  border-radius: 6px;
+  width: 80%;
 }
 
 .staff-member-navigation {
@@ -13,31 +15,31 @@
   justify-content: center;
 }
 
-.staff-form-btn {
-  margin-top: 15px;
-  border: #EA859E 1px solid;
-  border-radius: 5px;
-  background-color: #262626;
-  color: white;
-}
+// .staff-form-btn {
+//   margin-top: 15px;
+//   border: #EA859E 1px solid;
+//   border-radius: 5px;
+//   background-color: #262626;
+//   color: white;
+// }
 
-.staff-form-btn:hover {
-  border: #EA859E 1px solid;
-}
+// .staff-form-btn:hover {
+//   border: #EA859E 1px solid;
+// }
 
-.staff-btn {
-  border: none;
-  border-radius: 5px;
-  background-color: #262626;
-  color: white;
-  display: table-cell; 
-  vertical-align: bottom;
-}
+// .staff-btn {
+//   border: none;
+//   border-radius: 5px;
+//   background-color: #262626;
+//   color: white;
+//   display: table-cell; 
+//   vertical-align: bottom;
+// }
 
-.staff-btn:hover {
-  color: white;
-  border: #EA859E 1px solid;
-}
+// .staff-btn:hover {
+//   color: white;
+//   border: #EA859E 1px solid;
+// }
 
 .card-container-page {
   margin-top: 10px;
@@ -66,6 +68,7 @@
 
 .staff-info {
   margin-top: 5px;
+  font-family: 'Montserrat', sans-serif;
   color: white;
 }
 

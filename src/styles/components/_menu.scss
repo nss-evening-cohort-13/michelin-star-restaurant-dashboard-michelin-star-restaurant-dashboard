@@ -1,14 +1,8 @@
-.btn {
-  color: white;
-  border: 1px solid #EA859E;
-}
-
-.btn:hover {
-  color: #EA859E;
-}
-
 #menu-item-form {
-  width: 75%;
+  width: 80%;
+  background-color: #444444;
+  border-radius: 6px;
+  padding: 5%;
   margin: auto;
 }
 
@@ -50,14 +44,8 @@
   margin:auto;
   background-color: white;
   border-radius: 6px;
-  padding: 10px;
+  padding: 5%;
   h2{
-    font-family: 'Prata', serif;
-  }
-  label {
-    font-family: 'Prata', serif;
-  }
-  #updateMenuItemBtn {
     font-family: 'Prata', serif;
   }
 }
