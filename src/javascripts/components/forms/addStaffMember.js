@@ -57,23 +57,11 @@ const addStaffMemberForm = (user) => {
             console.warn('failed, come back later');
           }
         })
-        // .then(() => {
-        //   $('#success-message').html(
-        //     `<div class="alert alert-success" role="alert">
-        //     Right on! New staff member was added!
-        //   </div>`
-        //   );
-        // }).then(() => {
-        //   setTimeout(() => {
-        //     $('#success-message').html('');
-        //   }, 3000);
-        // })
         .catch((error) => console.warn(error));
 
       $('#name').val('');
       $('#role').val('');
       $('#staff-image-url').val('');
-      // $('.staff-form').remove();
     }
   });
 };
