@@ -12,8 +12,11 @@ const menuView = (user) => {
   `);
   menuData.getMenuItems().then((response) => {
     if (user) {
-      $('.menu-buttons').html(`<button type="button" class="btn btn-outline" id="addMenuItemBtn">Add a Menu Item</button>
-      <button type="button" class="btn btn-outline" id="viewIngredientsBtn">View Ingredients</button>`);
+      $('.menu-buttons').html(`<div class="d-flex justify-content-center">
+      <button type="button" class="btn btn-outline mx-1" id="addMenuItemBtn">Add a Menu Item</button>
+      <button type="button" class="btn btn-outline mx-5" id="viewIngredientsBtn">View Ingredients</button>
+      <input class="form-control w-25" type="text mx-5" placeholder="Search ingredients">
+      </div>`);
       response.forEach((item) => {
         $('#menuItems').append(card.authMenuItemCardMaker(item));
       });
