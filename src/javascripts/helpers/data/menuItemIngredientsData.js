@@ -1,6 +1,6 @@
-/* eslint-disable guard-for-in */
 import axios from 'axios';
 import apiKeys from '../apiKeys.json';
+// import ingredientsData from './ingredientsData';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
@@ -8,19 +8,20 @@ const addMenuItemIngredients = (data) => axios.post(`${baseUrl}/menuItems_ingred
   .catch((error) => console.warn(error));
 
 const getMenuItemIngredients = (menuItemId) => new Promise((resolve, reject) => {
+  const menuItemIngredientNames = [];
   axios
     .get(`${baseUrl}/menuItems_ingredients.json?orderBy="menuItemId"&equalTo="${menuItemId}"`)
-    .then((response) => {
-      // const menuItemIngredientsData = response.data;
-      // console.log(menuItemIngredientsData);
-      // const menuItemIngredientObjs = [];
-      // if (menuItemIngredientsData) {
-      //   Object.keys(menuItemIngredientsData).forEach((menuItemIngredientId) => {
-      //     menuItemIngredientObjs.push(menuItemIngredientsData[menuItemIngredientId]);
-      //   });
-      resolve(response);
-    })
-    .catch((error) => reject(error));
+    .then((res) => {
+      Object.keys(res.data).forEach((ingredientId) => {
+        axios.get(`${baseUrl}/ingredients/${res.data[ingredientId].ingredientId}.json`).then((response) => {
+          const singleIngredient = response.data;
+          menuItemIngredientNames.push(singleIngredient.ingredient);
+        });
+      });
+      if (menuItemIngredientNames.length === Object.keys(res.data).length) {
+        resolve(menuItemIngredientNames);
+      }
+    }).catch((error) => reject(error));
 });
 
 export default { addMenuItemIngredients, getMenuItemIngredients };
