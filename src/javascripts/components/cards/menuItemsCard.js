@@ -9,10 +9,15 @@ const menuItemCardMaker = (item) => {
                           <h4 class="card-text-menu text-uppercase">${item.name}</h4>
                           <p id="menuItemPrice">${item.price}</p>
                         </div>
-                        <p id="listOfIngredients" class="text-lowercase">${item.ingredients.join(' | ')}</p>
+                        <p id="listOfIngredients-${item.id}" class="text-lowercase"></p>
                       </div>
                     </div>
   `;
+  menuItemIngredientsData
+    .getMenuItemIngredients(item.id)
+    .then((response) => {
+      $(`#listOfIngredients-${item.id}`).html(response.join(' | '));
+    });
   return domString;
 };
 
