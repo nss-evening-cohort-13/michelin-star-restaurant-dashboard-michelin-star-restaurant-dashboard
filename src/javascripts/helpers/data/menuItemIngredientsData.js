@@ -16,25 +16,6 @@ const objToArray = (objOfObjs) => {
   return array;
 };
 
-const getMenuItemIngredientsNotArray = (menuItemId) => new Promise((resolve, reject) => {
-  axios
-    .get(
-      `${baseUrl}/menuItems_ingredients.json?orderBy="menuItemId"&equalTo="${menuItemId}"`
-    )
-    .then((response) => {
-      const allMenuItemIngredients = response.data;
-      const ingredients = [];
-      if (allMenuItemIngredients) {
-        Object.keys(allMenuItemIngredients).forEach((ingredientId) => {
-          ingredients.push(allMenuItemIngredients[ingredientId]);
-        });
-      }
-      console.log(ingredients);
-      resolve(ingredients);
-    })
-    .catch((error) => reject(error));
-});
-
 const getMenuItemIngredients = (menuItemId) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/menuItems_ingredients.json?orderBy="menuItemId"&equalTo="${menuItemId}"`)
     .then((menuRes) => {
@@ -57,5 +38,4 @@ const getMenuItemIngredients = (menuItemId) => new Promise((resolve, reject) => 
 export default {
   addMenuItemIngredients,
   getMenuItemIngredients,
-  getMenuItemIngredientsNotArray,
 };
