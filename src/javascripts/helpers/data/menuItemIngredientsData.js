@@ -4,25 +4,10 @@ import ingredientsData from './ingredientsData';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
-const addMenuItemIngredients = (data) => axios.post(`${baseUrl}/menuItems_ingredients.json`, data)
+const addMenuItemIngredients = (data) => axios
+  .post(`${baseUrl}/menuItems_ingredients.json`, data)
   .catch((error) => console.warn(error));
 
-// const getMenuItemIngredients = (menuItemId) => new Promise((resolve, reject) => {
-//   const menuItemIngredientNames = [];
-//   axios
-//     .get(`${baseUrl}/menuItems_ingredients.json?orderBy="menuItemId"&equalTo="${menuItemId}"`)
-//     .then((res) => {
-//       Object.keys(res.data).forEach((ingredientId) => {
-//         axios.get(`${baseUrl}/ingredients/${res.data[ingredientId].ingredientId}.json`).then((response) => {
-//           const singleIngredient = response.data;
-//           menuItemIngredientNames.push(singleIngredient.ingredient);
-//         });
-//       });
-//       if (menuItemIngredientNames.length === Object.keys(res.data).length) {
-//         resolve(menuItemIngredientNames);
-//       }
-//     }).catch((error) => reject(error));
-// });
 const objToArray = (objOfObjs) => {
   const array = [];
   Object.keys(objOfObjs).forEach((key) => {
@@ -38,13 +23,19 @@ const getMenuItemIngredients = (menuItemId) => new Promise((resolve, reject) => 
       ingredientsData.getAllIngredients().then((ingredientsRes) => {
         const ingredientNames = [];
         menuArray.forEach((menuIngredient) => {
-          const menuObject = ingredientsRes.find((ingredient) => ingredient.uid === menuIngredient.ingredientId);
+          const menuObject = ingredientsRes.find(
+            (ingredient) => ingredient.uid === menuIngredient.ingredientId
+          );
           const menuIngredientUse = menuObject.ingredient;
           ingredientNames.push(menuIngredientUse);
           resolve(ingredientNames);
         });
       });
-    }).catch((error) => reject(error));
+    })
+    .catch((error) => reject(error));
 });
 
-export default { addMenuItemIngredients, getMenuItemIngredients };
+export default {
+  addMenuItemIngredients,
+  getMenuItemIngredients,
+};
