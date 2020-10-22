@@ -1,6 +1,5 @@
 import menuData from '../../helpers/data/menuItemsData';
 import menuItemIngredientsData from '../../helpers/data/menuItemIngredientsData';
-// import ingredientsData from '../../helpers/data/ingredientsData';
 
 const menuItemCardMaker = (item) => {
   const domString = `<div class="card-menu m-4" id="${item.id}">
