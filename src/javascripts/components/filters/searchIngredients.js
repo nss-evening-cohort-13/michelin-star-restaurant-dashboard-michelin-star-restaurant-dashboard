@@ -1,8 +1,7 @@
-const searchIngredients = () => {
-  $('#searchIngredients').on('keyup', () => {
-    const input = $('#searchIngredients').val().toLowerCase();
-    console.log(input);
-  });
-};
+// const searchIngredients = () => {
+//   $('#searchIngredients').on('keyup', () => {
+//     const input = $('#searchIngredients').val().toLowerCase();
+//   });
+// };
 
-export default { searchIngredients };
+// export default { searchIngredients };
