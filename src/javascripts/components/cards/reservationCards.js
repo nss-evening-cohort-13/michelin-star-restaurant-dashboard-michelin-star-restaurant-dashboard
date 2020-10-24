@@ -33,12 +33,12 @@ const authReservationCardMaker = (reso) => {
        <div id="removeTarget" class="reservation-btn-container card-btn-container">
          <button class="btn edit-reservation-btn edit-btn btn-outline" id="${reso.uid}">Edit</button>
          <button class="btn delete-reservation-btn delete-btn btn-outline" id="${reso.uid}">Delete</button>
-         <button class="btn details-reservation-btn btn-outline" data-toggle="modal" data-target="#exampleModal" type="button" id="${reso.uid}">Details</button>
+         <button class="btn details-reservation-btn btn-outline" data-toggle="modal" data-target="#view-${reso.uid}" type="button" id="${reso.uid}">Details</button>
        </div>
       </div>
   </div>`;
 
-  domString += singleReservation.singleReservationView();
+  domString += singleReservation.singleReservationView(reso);
   $('body').on('click', '.delete-reservation-btn', (e) => {
     e.stopImmediatePropagation();
     const firebaseKey = e.currentTarget.id;
