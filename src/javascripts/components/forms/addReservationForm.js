@@ -21,13 +21,16 @@ const reservationTimes = () => {
     '10:00pm',
   ];
   times.forEach((item) => {
-    $('select').append(`<option value="${item}">${item}</option>`);
+    $('#time').append(`<option value="${item}">${item}</option>`);
   });
 };
 
 const tables = () => {
-  const allTables = tablesData.getAllTables();
-  console.log(allTables);
+  tablesData.getAllTables().then((response) => {
+    response.sort((a, b) => a.number - b.number).forEach((item) => {
+      $('#table').append(`<option value="${item.tableId}">${item.number}</option>`);
+    });
+  });
 };
 
 // SECOND FORM TO APPEAR
@@ -111,9 +114,11 @@ const addReservationForm = () => {
       </select>
       </div>
       <div class="form-group">
-      <label for="date">Seating Preference</label>
-      <input class="form-control" id="seatingPreference" placeholder="View Chart Below">
-    </div>
+        <label for="table">Table</label>
+        <select class="form-control" id="table">
+          <option value="">Select a Table</option>
+        </select>
+      </div>
     </div>
     <div id="seating-section">
     <div id="reservation-buttons">
@@ -153,7 +158,7 @@ const addReservationForm = () => {
       date: $('#datePicker').val() || false,
       numberOfGuests: $('#numberOfGuests').val() || false,
       time: $('#time').val() || false,
-      seatingPreference: $('#seatingPreference').val() || false,
+      table: $('#table').val() || false,
     };
 
     if (Object.values(data).includes(false)) {
