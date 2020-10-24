@@ -26,10 +26,19 @@ const reservationTimes = () => {
   });
 };
 
-const tables = () => {
+const guestNumber = () => {
+  const numGuests = [1, 2, 3, 4];
+  numGuests.forEach((guest) => {
+    $('#numberOfGuests').append(`<option value="${guest}">${guest}</option>`);
+  });
+};
+
+const tables = (guests) => {
   tablesData.getAllTables().then((response) => {
     response.sort((a, b) => a.number - b.number).forEach((item) => {
-      $('#table').append(`<option value="${item.number}">${item.number}</option>`);
+      if (guests <= item.numberOfSeats) {
+        $('#table').append(`<option value="${item.number}">Table ${item.number} - ${item.numberOfSeats} Seats</option>`);
+      }
     });
   });
 };
@@ -100,6 +109,14 @@ const addStaffInfo = (data) => {
           <div id="error-message"></div>
     <form>
     <div id="input-group">
+      <div class="form-group">
+          <label for="table">Table</label>
+          <select class="form-control" id="table">
+            <option value="">Select a Table</option>
+          </select>
+      </div>
+      </div>
+    <div id="input-group">
         <div class="form-group">
           <label for="server">Server</label>
           <select class="form-control" id="Server">
@@ -125,7 +142,11 @@ const addStaffInfo = (data) => {
               </select>
           </div>
           </div>
+          <div id="seating-section">
+          <button id="seatingBtn" type="button" class="btn btn-outline">View Seating Chart</button>
           <button id="add-guest-btn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i> Add Guest Info</button>
+          <div id="viewSeats"></div>
+          </div>
         </form>`);
 
   staffData.getAllStaff().then((response) => {
@@ -135,9 +156,26 @@ const addStaffInfo = (data) => {
     });
   });
 
+  // TABLES DROPDOWN
+  tables(data.numberOfGuests);
+
+  //  Code for seating chart dropdown
+  let seatingChartIsNotShown = true;
+  $('#seatingBtn').on('click', (e) => {
+    e.preventDefault();
+    if (seatingChartIsNotShown) {
+      $('#viewSeats').html(`<img id="seatingChart"src="${image}" alt="seating chart">`);
+      seatingChartIsNotShown = false;
+    } else {
+      $('#viewSeats').html('');
+      seatingChartIsNotShown = true;
+    }
+  });
+
   $('#add-guest-btn').on('click', (e) => {
     e.preventDefault();
     const staffReservationData = data;
+    staffReservationData.table = $('#table').val() || '';
     staffReservationData.server = $('#Server').val() || '';
     staffReservationData.busser = $('#Busser').val() || '';
     staffReservationData.bartender = $('#Bartender').val() || '';
@@ -156,10 +194,12 @@ const addReservationForm = () => {
     <div>
       <div id="error-message"></div>
 <div id="input-group">
-    <div class="form-group">
-      <label for="image">Number of Guests</label>
-      <input type="text" class="form-control" id="numberOfGuests" placeholder="# of Guests">
-    </div>
+      <div class="form-group">
+        <label for="image">Number of Guests</label>
+        <select class="form-control" id="numberOfGuests">
+            <option value="">Number of Guests</option>
+          </select>
+      </div>
       <div class="form-group">
         <label for="date">Date</label>
         <input class="form-control" id="datePicker" autocomplete="off" placeholder="Click to choose a date">
@@ -170,20 +210,11 @@ const addReservationForm = () => {
         <option value="">Select a Time</option>
       </select>
       </div>
-      <div class="form-group">
-        <label for="table">Table</label>
-        <select class="form-control" id="table">
-          <option value="">Select a Table</option>
-        </select>
-      </div>
     </div>
-    <div id="seating-section">
     <div id="reservation-buttons">
-    <button id="seatingBtn" type="button" class="btn btn-outline">View Seating Chart</button>
     <button id="staffReservationBtn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i> Add Staff Info</button>
     </div>
     </div>
-    <div id="viewSeats"></div>
     </div>`);
 
   // Code for Date dropdown
@@ -192,21 +223,8 @@ const addReservationForm = () => {
   // RESERVATION TIMES DROPDOWN
   reservationTimes();
 
-  // TABLES DROPDOWN
-  tables();
-
-  //  Code for seating chart dropdown
-  let seatingChartIsNotShown = true;
-  $('#seatingBtn').on('click', (e) => {
-    e.preventDefault();
-    if (seatingChartIsNotShown) {
-      $('#viewSeats').html(`<img id="seatingChart"src="${image}" alt="seating chart">`);
-      seatingChartIsNotShown = false;
-    } else {
-      $('#viewSeats').html('');
-      seatingChartIsNotShown = true;
-    }
-  });
+  // Number of Guests Dropdown
+  guestNumber();
 
   $('#staffReservationBtn').on('click', (e) => {
     e.preventDefault();
@@ -215,7 +233,6 @@ const addReservationForm = () => {
       date: $('#datePicker').val() || false,
       numberOfGuests: $('#numberOfGuests').val() || false,
       time: $('#time').val() || false,
-      table: $('#table').val() || false,
     };
 
     if (Object.values(data).includes(false)) {
