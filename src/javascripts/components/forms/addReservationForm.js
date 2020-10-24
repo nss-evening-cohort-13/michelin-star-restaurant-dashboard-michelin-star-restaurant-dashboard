@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import image from '../../helpers/images/seating.png';
 import reservationData from '../../helpers/data/reservationData';
 import reservationView from '../views/reservationView';
+import tablesData from '../../helpers/data/tablesData';
 import staffData from '../../helpers/data/staffData';
 
 require('jquery-ui-bundle');
@@ -21,12 +22,19 @@ const reservationTimes = () => {
     '10:00pm',
   ];
   times.forEach((item) => {
-    $('select').append(`<option value="${item}">${item}</option>`);
+    $('#time').append(`<option value="${item}">${item}</option>`);
+  });
+};
+
+const tables = () => {
+  tablesData.getAllTables().then((response) => {
+    response.sort((a, b) => a.number - b.number).forEach((item) => {
+      $('#table').append(`<option value="${item.number}">${item.number}</option>`);
+    });
   });
 };
 
 // SECOND FORM TO APPEAR
-
 const addGuestInfo = (data) => {
   $('#add-reservation').html(`<h2 class="form-title">Enter User Info</h2>
         <div id="success-message"></div>
@@ -140,6 +148,7 @@ const addStaffInfo = (data) => {
     }, 3000);
   });
 };
+
 // First Form to Appear
 const addReservationForm = () => {
   $('#add-reservation').html(`<h2 class="form-title">Add A Reservation</h2>
@@ -162,14 +171,16 @@ const addReservationForm = () => {
       </select>
       </div>
       <div class="form-group">
-      <label for="date">Seating Preference</label>
-      <input class="form-control" id="seatingPreference" placeholder="View Chart Below">
-    </div>
+        <label for="table">Table</label>
+        <select class="form-control" id="table">
+          <option value="">Select a Table</option>
+        </select>
+      </div>
     </div>
     <div id="seating-section">
     <div id="reservation-buttons">
     <button id="seatingBtn" type="button" class="btn btn-outline">View Seating Chart</button>
-    <button id="staffReservationBtn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i> Add Staff</button>
+    <button id="staffReservationBtn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i> Add Staff Info</button>
     </div>
     </div>
     <div id="viewSeats"></div>
@@ -180,6 +191,9 @@ const addReservationForm = () => {
 
   // RESERVATION TIMES DROPDOWN
   reservationTimes();
+
+  // TABLES DROPDOWN
+  tables();
 
   //  Code for seating chart dropdown
   let seatingChartIsNotShown = true;
@@ -201,7 +215,7 @@ const addReservationForm = () => {
       date: $('#datePicker').val() || false,
       numberOfGuests: $('#numberOfGuests').val() || false,
       time: $('#time').val() || false,
-      seatingPreference: $('#seatingPreference').val() || false,
+      table: $('#table').val() || false,
     };
 
     if (Object.values(data).includes(false)) {

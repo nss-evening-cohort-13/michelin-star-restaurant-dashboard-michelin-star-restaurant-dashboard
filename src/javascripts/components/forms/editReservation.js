@@ -3,6 +3,7 @@ import reservationView from '../views/reservationView';
 import image from '../../helpers/images/seating.png';
 import reservationData from '../../helpers/data/reservationData';
 import staffData from '../../helpers/data/staffData';
+import tablesData from '../../helpers/data/tablesData';
 
 require('jquery-ui-bundle');
 
@@ -10,6 +11,14 @@ const reservationTimes = () => {
   const times = ['5:00pm', '5:30pm', '6:00pm', '6:30pm', '7:00pm', '7:30pm', '8:00pm', '8:30pm', '9:00pm', '9:30pm', '10:00pm'];
   times.forEach((item) => {
     $('#time').append(`<option value="${item}">${item}</option>`);
+  });
+};
+
+const tables = () => {
+  tablesData.getAllTables().then((response) => {
+    response.sort((a, b) => a.number - b.number).forEach((item) => {
+      $('#table').append(`<option value="${item.number}">${item.number}</option>`);
+    });
   });
 };
 
@@ -35,9 +44,11 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
       </select>
       </div>
       <div class="form-group">
-      <label for="date" class="form-label">Seating Preference</label>
-      <input value="${reservationObject.seatingPreference}" class="form-control" id="seatingPreference" placeholder="View Chart Below">
-    </div>
+      <label for="table" class="form-label">Table</label>
+      <select class="form-control" id="table">
+        <option selected hidden value="${reservationObject.table}">${reservationObject.table}</option>
+      </select>
+      </div>
     </div>
     <div id="input-group">
         <div class="form-group">
@@ -80,6 +91,9 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
   // RESERVATION TIMES DROPDOWN
   reservationTimes();
 
+  // TABLES DROPDOWN
+  tables();
+
   //  Code for seating chart dropdown
   let seatingChartIsNotShown = true;
   $('#seatingBtn').on('click', (e) => {
@@ -113,7 +127,7 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
       date: $('#datePicker').val() || false,
       numberOfGuests: $('#numberOfGuests').val() || false,
       time: $('#time').val() || false,
-      seatingPreference: $('#seatingPreference').val() || false,
+      table: $('#table').val() || false,
       server: $('#Server').val() || '',
       busser: $('#Busser').val() || '',
       bartender: $('#Bartender').val() || '',

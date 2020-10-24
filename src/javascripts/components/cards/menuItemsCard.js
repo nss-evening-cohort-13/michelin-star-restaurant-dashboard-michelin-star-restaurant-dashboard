@@ -40,7 +40,18 @@ const authMenuItemCardMaker = (item) => {
     e.stopImmediatePropagation();
     const firebaseKey = e.currentTarget.id;
     $(`.card-menu#${firebaseKey}`).remove();
-    menuData.deleteMenuItem(firebaseKey);
+    menuData.getMenuItems().then((response) => {
+      response.forEach((menuItem) => {
+        menuItemIngredientsData.getIngredientObjs(menuItem.id).then((res) => {
+          res.forEach((menuId) => {
+            if (menuId.menuItemId === firebaseKey) {
+              menuData.deleteMenuItem(firebaseKey);
+              menuItemIngredientsData.deleteMenuIngredients(menuId.fbKey);
+            }
+          });
+        });
+      });
+    });
   });
   menuItemIngredientsData
     .getMenuItemIngredients(item.id)

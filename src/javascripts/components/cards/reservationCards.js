@@ -10,7 +10,7 @@ const reservationCardMaker = (reso) => {
       <li class="list-group-item">Guests: ${reso.numberOfGuests}</li>
       <li class="list-group-item">When: ${reso.time} on ${reso.date}</li>
       <li class="list-group-item">Phone Number: ${reso.phoneNumber}</li>
-      <li class="list-group-item">Table Preference: Table ${reso.seatingPreference}</li>
+      <li class="list-group-item">Table Preference: Table ${reso.table}</li>
     </ul>
 </div>`;
   return domString;
