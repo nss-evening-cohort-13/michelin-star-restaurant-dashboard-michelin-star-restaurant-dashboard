@@ -1,5 +1,5 @@
 const singleReservationView = (reso) => {
-  const domString = `<div class="modal fade reservation-modal" id="view-${reso.uid}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  const domString = `<div class="modal fade reservation-modal" id="view-${reso.uid}" tabindex="-1" aria-labelledby="reservationModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -9,7 +9,7 @@ const singleReservationView = (reso) => {
       </div>
       <div class="modal-body">
         <h2 class="modal-header">${reso.firstName} ${reso.lastName}</h2>
-        <h5>Reservation for a party of ${reso.numberOfGuests}, ${reso.date} at ${reso.time}</h5>
+        <p class="modal-header">Reservation for a party of ${reso.numberOfGuests}, ${reso.date} at ${reso.time}</p>
         <div id="reservationStaff">
           <h3 class="modal-header">Assigned Staff</h3>
           <p>Host: ${reso.host}</p>
