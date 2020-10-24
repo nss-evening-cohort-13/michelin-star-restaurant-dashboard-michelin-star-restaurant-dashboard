@@ -123,7 +123,7 @@ const addStaffInfo = (data) => {
   staffData.getAllStaff().then((response) => {
     response.forEach((item) => {
       const { role } = item;
-      $(`#${role}`).append(`<option value="${item.firebaseKey}">${item.name}</option>`);
+      $(`#${role}`).append(`<option value="${item.name}">${item.name}</option>`);
     });
   });
 
@@ -131,21 +131,12 @@ const addStaffInfo = (data) => {
     e.preventDefault();
     const staffReservationData = data;
     staffReservationData.staffArray = [
-      {
-        server: $('#Server').val() || false,
-        busser: $('#Busser').val() || false,
-        bartender: $('#Bartender').val() || false,
-        host: $('#Host').val() || false,
-      }
+      $('#Server').val() || 'No Server Selected',
+      $('#Busser').val() || 'No Busser Selected',
+      $('#Bartender').val() || 'No Bartender Selected',
+      $('#Host').val() || 'No Host Selected',
     ];
-    if (Object.values(staffReservationData).includes(false)) {
-      $('#error-message').html(
-        '<div class="alert" role="alert">Please complete all fields</div>'
-      );
-    } else {
-      $('#error-message').html('');
-      addGuestInfo(data);
-    }
+    addGuestInfo(data);
     setTimeout(() => {
       $('#success-message').html('');
     }, 3000);

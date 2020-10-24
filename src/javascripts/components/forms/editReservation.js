@@ -2,13 +2,14 @@ import firebase from 'firebase/app';
 import reservationView from '../views/reservationView';
 import image from '../../helpers/images/seating.png';
 import reservationData from '../../helpers/data/reservationData';
+import staffData from '../../helpers/data/staffData';
 
 require('jquery-ui-bundle');
 
 const reservationTimes = () => {
   const times = ['5:00pm', '5:30pm', '6:00pm', '6:30pm', '7:00pm', '7:30pm', '8:00pm', '8:30pm', '9:00pm', '9:30pm', '10:00pm'];
   times.forEach((item) => {
-    $('select').append(`<option value="${item}">${item}</option>`);
+    $('#time').append(`<option value="${item}">${item}</option>`);
   });
 };
 
@@ -38,6 +39,32 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
       <input value="${reservationObject.seatingPreference}" class="form-control" id="seatingPreference" placeholder="View Chart Below">
     </div>
     </div>
+    <div id="input-group">
+        <div class="form-group">
+          <label for="server">Server</label>
+          <select class="form-control" id="Server">
+                <option selected ='selected' value="${reservationObject.staffArray[0]}">${reservationObject.staffArray[0]}</option>
+              </select>
+        </div>
+          <div class="form-group">
+            <label for="Busser">Busser</label>
+            <select class="form-control" id="Busser">
+                <option selected ='selected' value="${reservationObject.staffArray[1]}">${reservationObject.staffArray[1]}</option>
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="Bartender">Bartender</label>
+            <select class="form-control" id="Bartender">
+                <option selected ='selected' value="${reservationObject.staffArray[2]}">${reservationObject.staffArray[2]}</option>
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="Host">Host</label>
+            <select class="form-control" id="Host">
+                <option selected ='selected' value="${reservationObject.staffArray[3]}">${reservationObject.staffArray[3]}</option>
+              </select>
+          </div>
+          </div>
     <div id="seating-section">
     <div id="reservation-buttons">
     <button id="seatingBtn" type="button" class="btn btn-outline">View Seating Chart</button>
@@ -68,6 +95,13 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
     }
   });
 
+  staffData.getAllStaff().then((response) => {
+    response.forEach((item) => {
+      const { role } = item;
+      $(`#${role}`).append(`<option value="${item.name}">${item.name}</option>`);
+    });
+  });
+
   $('#updateReservationBtn').on('click', (e) => {
     e.preventDefault();
     // Capturing the first Segment of Data
@@ -76,6 +110,12 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
       numberOfGuests: $('#numberOfGuests').val() || false,
       time: $('#time').val() || false,
       seatingPreference: $('#seatingPreference').val() || false,
+      staffArray: [
+        $('#Server').val() || 'No Server Selected',
+        $('#Busser').val() || 'No Busser Selected',
+        $('#Bartender').val() || 'No Bartender Selected',
+        $('#Host').val() || 'No Host Selected',
+      ]
     };
 
     if (Object.values(data).includes(false)) {
