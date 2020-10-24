@@ -94,6 +94,10 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
       seatingChartIsNotShown = true;
     }
   });
+  $('#Server').append('<option value=""></option>');
+  $('#Busser').append('<option value=""></option>');
+  $('#Bartender').append('<option value=""></option>');
+  $('#Host').append('<option value=""></option>');
 
   staffData.getAllStaff().then((response) => {
     response.forEach((item) => {
