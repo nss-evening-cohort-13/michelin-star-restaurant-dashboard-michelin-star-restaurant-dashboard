@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import menuData from '../../helpers/data/menuItemsData';
 import ingredientsData from '../../helpers/data/ingredientsData';
 import menuView from '../views/menuView';
+import menuItemIngredientsData from '../../helpers/data/menuItemIngredientsData';
 
 const updateMenuItemForm = (menuObject) => {
   $('#updateMenuItemForm').html(`<div id="update-menu-item-form">
@@ -27,31 +28,55 @@ const updateMenuItemForm = (menuObject) => {
                   <div>
   `);
   ingredientsData.getAllIngredients().then((response) => {
-    $('#ingredientSelection').html('');
-    response.forEach((item) => {
-      const exists = menuObject.ingredients.find((i) => i === item.ingredient);
-      if (exists) {
-        $('select').append(
-          `<option value="${item.ingredient}" selected ='selected'>${item.ingredient}</option>`
-        );
-      } else {
-        $('select').append(`<option value="${item.ingredient}">${item.ingredient}</option>`);
-      }
+    menuItemIngredientsData.getMenuItemIngredients(menuObject.id).then((res) => {
+      $('#ingredientSelection').html('');
+      response.forEach((item) => {
+        if (res.find((ingredient) => ingredient === item.ingredient)) {
+          $('select').append(
+            `<option value="${item.uid}" selected>${item.ingredient}</option>`
+          );
+        } else {
+          $('select').append(`<option value="${item.uid}">${item.ingredient}</option>`);
+        }
+      });
     });
   });
-  $('#updateMenuItemBtn').on('click', (e) => {
-    e.preventDefault(e);
+
+  $('#updateMenuItemBtn').on('click', () => {
     const menuItemData = {
       name: $('#menuItemName').val() || false,
-      ingredients: $('#ingredientSelection').val() || false,
       price: $('#price').val() || false,
     };
-    if (Object.values(menuItemData).includes(false) || menuItemData.ingredients.length === 0) {
+
+    if (Object.values(menuItemData).includes(false)) {
       $('#error-message').html(
         '<div class="alert" role="alert">Please complete all fields</div>'
       );
     } else {
       $('#error-message').html('');
+
+      menuItemIngredientsData
+        .getIngredientObjs(menuObject.id)
+        .then((response) => {
+          const selectedIngredients = $('#ingredientSelection').val();
+
+          selectedIngredients.forEach((ingredient) => {
+            if (response.filter((ingredientObj) => ingredientObj.ingredientId === ingredient).length === 0) {
+              const newIngredient = {
+                menuItemId: menuObject.id,
+                ingredientId: ingredient,
+              };
+              menuItemIngredientsData.addMenuItemIngredients(newIngredient);
+            }
+          });
+
+          response.forEach((ingredientObj) => {
+            if (!selectedIngredients.includes(ingredientObj.ingredientId)) {
+              menuItemIngredientsData.deleteMenuIngredients(ingredientObj.fbKey);
+            }
+          });
+        });
+
       menuData
         .updateMenuItem(menuObject.id, menuItemData)
         .then(() => {
@@ -66,14 +91,11 @@ const updateMenuItemForm = (menuObject) => {
           }, 3000);
         })
         .catch((error) => console.warn(error));
+
       setTimeout(() => {
         $('#success-message').html('');
       }, 3000);
-      $('#menuItemName').val('');
-      $('#ingredientSelection').val('');
-      $('#price').val('');
     }
   });
 };
-
 export default { updateMenuItemForm };
