@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import image from '../../helpers/images/seating.png';
 import reservationData from '../../helpers/data/reservationData';
 import reservationView from '../views/reservationView';
-import staffData from '../../helpers/data/staffData';
+import tablesData from '../../helpers/data/tablesData';
 
 require('jquery-ui-bundle');
 
@@ -25,8 +25,12 @@ const reservationTimes = () => {
   });
 };
 
-// SECOND FORM TO APPEAR
+const tables = () => {
+  const allTables = tablesData.getAllTables();
+  console.log(allTables);
+};
 
+// SECOND FORM TO APPEAR
 const addGuestInfo = (data) => {
   $('#add-reservation').html(`<h2 class="form-title">Enter User Info</h2>
         <div id="success-message"></div>
@@ -85,61 +89,6 @@ const addGuestInfo = (data) => {
     }
   });
 };
-
-const addStaffInfo = (data) => {
-  $('#add-reservation').html(`<h2 class="form-title">Add Staff to Reservation</h2>
-        <div id="success-message"></div>
-          <div id="error-message"></div>
-    <form>
-    <div id="input-group">
-        <div class="form-group">
-          <label for="server">Server</label>
-          <select class="form-control" id="Server">
-                <option value="">Select a Server</option>
-              </select>
-        </div>
-          <div class="form-group">
-            <label for="Busser">Busser</label>
-            <select class="form-control" id="Busser">
-                <option value="">Select a Busser</option>
-              </select>
-          </div>
-          <div class="form-group">
-            <label for="Bartender">Bartender</label>
-            <select class="form-control" id="Bartender">
-                <option value="">Select a Bartender</option>
-              </select>
-          </div>
-          <div class="form-group">
-            <label for="Host">Host</label>
-            <select class="form-control" id="Host">
-                <option value="">Select a Host</option>
-              </select>
-          </div>
-          </div>
-          <button id="add-guest-btn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i> Add Guest Info</button>
-        </form>`);
-
-  staffData.getAllStaff().then((response) => {
-    response.forEach((item) => {
-      const { role } = item;
-      $(`#${role}`).append(`<option value="${item.name}">${item.name}</option>`);
-    });
-  });
-
-  $('#add-guest-btn').on('click', (e) => {
-    e.preventDefault();
-    const staffReservationData = data;
-    staffReservationData.server = $('#Server').val() || '';
-    staffReservationData.busser = $('#Busser').val() || '';
-    staffReservationData.bartender = $('#Bartender').val() || '';
-    staffReservationData.host = $('#Host').val() || '';
-    addGuestInfo(data);
-    setTimeout(() => {
-      $('#success-message').html('');
-    }, 3000);
-  });
-};
 // First Form to Appear
 const addReservationForm = () => {
   $('#add-reservation').html(`<h2 class="form-title">Add A Reservation</h2>
@@ -169,7 +118,7 @@ const addReservationForm = () => {
     <div id="seating-section">
     <div id="reservation-buttons">
     <button id="seatingBtn" type="button" class="btn btn-outline">View Seating Chart</button>
-    <button id="staffReservationBtn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i> Add Staff</button>
+    <button id="add-guest-btn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i> Add Guest Info</button>
     </div>
     </div>
     <div id="viewSeats"></div>
@@ -180,6 +129,9 @@ const addReservationForm = () => {
 
   // RESERVATION TIMES DROPDOWN
   reservationTimes();
+
+  // TABLES DROPDOWN
+  tables();
 
   //  Code for seating chart dropdown
   let seatingChartIsNotShown = true;
@@ -194,7 +146,7 @@ const addReservationForm = () => {
     }
   });
 
-  $('#staffReservationBtn').on('click', (e) => {
+  $('#add-guest-btn').on('click', (e) => {
     e.preventDefault();
     // Capturing the first Segment of Data
     const data = {
@@ -210,7 +162,7 @@ const addReservationForm = () => {
       );
     } else {
       $('#error-message').html('');
-      addStaffInfo(data);
+      addGuestInfo(data);
     }
     setTimeout(() => {
       $('#success-message').html('');
