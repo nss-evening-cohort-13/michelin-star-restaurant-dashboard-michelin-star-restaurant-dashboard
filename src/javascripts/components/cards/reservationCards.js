@@ -24,6 +24,10 @@ const authReservationCardMaker = (reso) => {
         <li class="list-group-item">When: ${reso.time} on ${reso.date}</li>
         <li class="list-group-item">Phone Number: ${reso.phoneNumber}</li>
         <li class="list-group-item">Table Preference: Table ${reso.seatingPreference}</li>
+        <li class="list-group-item">Server: ${reso.server}</li>
+        <li class="list-group-item">Busser: ${reso.busser}</li>
+        <li class="list-group-item">Bartender: ${reso.bartender}</li>
+        <li class="list-group-item">Host: ${reso.host}</li>
       </ul>
        <div id="removeTarget" class="reservation-btn-container card-btn-container">
          <button class="btn edit-reservation-btn edit-btn btn-outline" id="${reso.uid}">Edit</button>
