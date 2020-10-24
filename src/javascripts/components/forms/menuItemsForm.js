@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import menuData from '../../helpers/data/menuItemsData';
 import ingredientsData from '../../helpers/data/ingredientsData';
 import menuView from '../views/menuView';
+import menuItemIngredients from '../../helpers/data/menuItemIngredientsData';
 
 const makeMenuItemForm = () => {
   $('#app').html(`<div id="menu-item-form">
@@ -30,7 +31,7 @@ const makeMenuItemForm = () => {
     $('#ingredientSelection').html('');
     response.forEach((ingredient) => {
       $('#ingredientSelection').append(
-        `<option value="${ingredient.ingredient}">${ingredient.ingredient}</option>`
+        `<option value="${ingredient.uid}">${ingredient.ingredient}</option>`
       );
     });
   });
@@ -38,10 +39,10 @@ const makeMenuItemForm = () => {
     e.preventDefault(e);
     const menuItemData = {
       name: $('#menuItemName').val() || false,
-      ingredients: $('#ingredientSelection').val() || false,
       price: $('#price').val() || false,
     };
-    if (Object.values(menuItemData).includes(false) || menuItemData.ingredients.length === 0) {
+    const ingredientsIdArrray = $('#ingredientSelection').val();
+    if (Object.values(menuItemData).includes(false)) {
       $('#error-message').html(
         '<div class="alert" role="alert">Please complete all fields</div>'
       );
@@ -49,7 +50,14 @@ const makeMenuItemForm = () => {
       $('#error-message').html('');
       menuData
         .addMenuItem(menuItemData)
-        .then(() => {
+        .then((response) => {
+          ingredientsIdArrray.forEach((ingredient) => {
+            const menuItemIngredientsData = {
+              menuItemId: response.data.name,
+              ingredientId: ingredient,
+            };
+            menuItemIngredients.addMenuItemIngredients(menuItemIngredientsData);
+          });
           $('#success-message').html(
             '<div class="alert" role="alert">Your menu item was added!</div>'
           );
