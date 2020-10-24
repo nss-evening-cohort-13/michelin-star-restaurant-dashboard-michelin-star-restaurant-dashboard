@@ -33,10 +33,10 @@ const updateMenuItemForm = (menuObject) => {
       response.forEach((item) => {
         if (res.find((ingredient) => ingredient === item.ingredient)) {
           $('select').append(
-            `<option value="${item.ingredient}" selected ='selected'>${item.ingredient}</option>`
+            `<option value="${item.uid}" selected>${item.ingredient}</option>`
           );
         } else {
-          $('select').append(`<option value="${item.ingredient}">${item.ingredient}</option>`);
+          $('select').append(`<option value="${item.uid}">${item.ingredient}</option>`);
         }
       });
     });
@@ -47,19 +47,33 @@ const updateMenuItemForm = (menuObject) => {
   //     $('select').append(`<option id="${ingredientName}" value="${ingredientName}" selected ='selected'>${ingredientName}</option>`);
   //   });
   // });
-  $('#updateMenuItemBtn').on('click', (e) => {
-    e.preventDefault(e);
+  $('#updateMenuItemBtn').on('click', () => {
     const menuItemData = {
       name: $('#menuItemName').val() || false,
-      ingredients: $('#ingredientSelection').val() || false,
       price: $('#price').val() || false,
     };
-    if (Object.values(menuItemData).includes(false) || menuItemData.ingredients.length === 0) {
+
+    // const ingredientsData = {
+    //   ingredientId: $('#ingredientSelection').val(),
+    //   menuItemId: menuObject.id,
+    // };
+
+    if (Object.values(menuItemData).includes(false)) {
       $('#error-message').html(
         '<div class="alert" role="alert">Please complete all fields</div>'
       );
     } else {
       $('#error-message').html('');
+
+      menuItemIngredientsData
+        .getMenuIngredientIds(menuObject.id)
+        .then((response) => {
+        // const selectedIngredients = $('#ingredientSelection').val();
+        // const changes = response.filter((ingredient) => !selectedIngredients.includes(ingredient));
+          console.log(response);
+          console.log($('#ingredientSelection').val());
+        });
+
       menuData
         .updateMenuItem(menuObject.id, menuItemData)
         .then(() => {
@@ -74,6 +88,7 @@ const updateMenuItemForm = (menuObject) => {
           }, 3000);
         })
         .catch((error) => console.warn(error));
+
       setTimeout(() => {
         $('#success-message').html('');
       }, 3000);

@@ -6,6 +6,10 @@ const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
 const addMenuItemIngredients = (data) => axios
   .post(`${baseUrl}/menuItems_ingredients.json`, data)
+  .then((response) => {
+    const update = { fbKey: response.data.name };
+    axios.patch(`${baseUrl}/menuItems_ingredients/${response.data.name}.json`, update);
+  })
   .catch((error) => console.warn(error));
 
 const objToArray = (objOfObjs) => {
@@ -35,7 +39,28 @@ const getMenuItemIngredients = (menuItemId) => new Promise((resolve, reject) => 
     .catch((error) => reject(error));
 });
 
+const getMenuIngredientIds = (menuItemId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/menuItems_ingredients.json?orderBy="menuItemId"&equalTo="${menuItemId}"`)
+    .then((menuRes) => {
+      const menuArray = objToArray(menuRes.data);
+      ingredientsData.getAllIngredients().then((ingredientsRes) => {
+        const ingredientNames = [];
+        menuArray.forEach((menuIngredient) => {
+          const menuObject = ingredientsRes.find(
+            (ingredient) => ingredient.uid === menuIngredient.ingredientId
+          );
+          const menuIngredientUse = menuObject.uid;
+          ingredientNames.push(menuIngredientUse);
+          console.log(ingredientNames);
+          resolve(ingredientNames);
+        });
+      });
+    })
+    .catch((error) => reject(error));
+});
+
 export default {
   addMenuItemIngredients,
   getMenuItemIngredients,
+  getMenuIngredientIds
 };
