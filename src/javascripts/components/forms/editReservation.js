@@ -43,25 +43,25 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
         <div class="form-group">
           <label for="server">Server</label>
           <select class="form-control" id="Server">
-                <option selected ='selected' value="${reservationObject.staffArray[0]}">${reservationObject.staffArray[0]}</option>
+                <option selected ='selected' value="${reservationObject.server}">${reservationObject.server}</option>
               </select>
         </div>
           <div class="form-group">
             <label for="Busser">Busser</label>
             <select class="form-control" id="Busser">
-                <option selected ='selected' value="${reservationObject.staffArray[1]}">${reservationObject.staffArray[1]}</option>
+                <option selected ='selected' value="${reservationObject.busser}">${reservationObject.busser}</option>
               </select>
           </div>
           <div class="form-group">
             <label for="Bartender">Bartender</label>
             <select class="form-control" id="Bartender">
-                <option selected ='selected' value="${reservationObject.staffArray[2]}">${reservationObject.staffArray[2]}</option>
+                <option selected ='selected' value="${reservationObject.busser}">${reservationObject.busser}</option>
               </select>
           </div>
           <div class="form-group">
             <label for="Host">Host</label>
             <select class="form-control" id="Host">
-                <option selected ='selected' value="${reservationObject.staffArray[3]}">${reservationObject.staffArray[3]}</option>
+                <option selected ='selected' value="${reservationObject.host}">${reservationObject.host}</option>
               </select>
           </div>
           </div>
@@ -110,12 +110,10 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
       numberOfGuests: $('#numberOfGuests').val() || false,
       time: $('#time').val() || false,
       seatingPreference: $('#seatingPreference').val() || false,
-      staffArray: [
-        $('#Server').val() || 'No Server Selected',
-        $('#Busser').val() || 'No Busser Selected',
-        $('#Bartender').val() || 'No Bartender Selected',
-        $('#Host').val() || 'No Host Selected',
-      ]
+      server: $('#Server').val() || '',
+      busser: $('#Busser').val() || '',
+      bartender: $('#Bartender').val() || '',
+      host: $('#Host').val() || ''
     };
 
     if (Object.values(data).includes(false)) {

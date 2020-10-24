@@ -130,12 +130,10 @@ const addStaffInfo = (data) => {
   $('#add-guest-btn').on('click', (e) => {
     e.preventDefault();
     const staffReservationData = data;
-    staffReservationData.staffArray = [
-      $('#Server').val() || 'No Server Selected',
-      $('#Busser').val() || 'No Busser Selected',
-      $('#Bartender').val() || 'No Bartender Selected',
-      $('#Host').val() || 'No Host Selected',
-    ];
+    staffReservationData.server = $('#Server').val() || '';
+    staffReservationData.busser = $('#Busser').val() || '';
+    staffReservationData.bartender = $('#Bartender').val() || '';
+    staffReservationData.host = $('#Host').val() || '';
     addGuestInfo(data);
     setTimeout(() => {
       $('#success-message').html('');
