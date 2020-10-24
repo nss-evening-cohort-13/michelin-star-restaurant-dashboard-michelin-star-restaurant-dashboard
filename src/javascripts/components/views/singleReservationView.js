@@ -8,7 +8,7 @@ const singleReservationView = (reso) => {
         </button>
       </div>
       <div class="modal-body">
-        <h2 class="modal-header">${reso.firstName} ${reso.lastName}</h2>
+        <h2 class="modal-header">${reso.firstName} ${reso.lastName} — Table ${reso.table}</h2>
         <p class="modal-header">Reservation for a party of ${reso.numberOfGuests}, ${reso.date} at ${reso.time}</p>
         <div id="reservationStaff">
           <h3 class="modal-header">Assigned Staff</h3>
