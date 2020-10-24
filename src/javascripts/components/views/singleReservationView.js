@@ -12,10 +12,10 @@ const singleReservationView = (reso) => {
         <p class="modal-header">Reservation for a party of ${reso.numberOfGuests}, ${reso.date} at ${reso.time}</p>
         <div id="reservationStaff">
           <h3 class="modal-header">Assigned Staff</h3>
-          <p>Host: ${reso.host}</p>
-          <p>Server: ${reso.server}</p>
-          <p>Busser: ${reso.busser}</p>
-          <p>Bartender: ${reso.bartender}</p>
+          <p>Host: ${reso.host || 'Not Assigned'}</p>
+          <p>Server: ${reso.server || 'Not Assigned'}</p>
+          <p>Busser: ${reso.busser || 'Not Assigned'}</p>
+          <p>Bartender: ${reso.bartender || 'Not Assigned'}</p>
         </div>
         <div id="guestInfo">
           <h3 class="modal-header">Guest Information</h3>

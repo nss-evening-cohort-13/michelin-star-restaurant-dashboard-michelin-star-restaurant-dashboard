@@ -107,11 +107,11 @@ const editStaffReservation = (data, reservationObject, reservationFirebaseKey) =
   $('#updateReservationStaffBtn').on('click', (e) => {
     e.preventDefault();
     const reservData = data;
-    reservData.table = $('#table').val() || '';
-    reservData.server = $('#Server').val() || '';
-    reservData.busser = $('#Busser').val() || '';
-    reservData.bartender = $('#Bartender').val() || '';
-    reservData.host = $('#Host').val() || '';
+    reservData.table = $('#table').val() || 'Not Assigned';
+    reservData.server = $('#Server').val() || 'Not Assigned';
+    reservData.busser = $('#Busser').val() || 'Not Assigned';
+    reservData.bartender = $('#Bartender').val() || 'Not Assigned';
+    reservData.host = $('#Host').val() || 'Not Assigned';
     reservationData.updateReservation(reservationFirebaseKey, data)
       .then(() => {
         $('#success-message').html(

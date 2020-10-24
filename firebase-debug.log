@@ -1,0 +1,140 @@
+[debug] [2020-10-24T18:57:27.805Z] ----------------------------------------------------------------------
+[debug] [2020-10-24T18:57:27.807Z] Command:       /usr/bin/node /usr/bin/firebase deploy
+[debug] [2020-10-24T18:57:27.807Z] CLI Version:   8.11.2
+[debug] [2020-10-24T18:57:27.807Z] Platform:      linux
+[debug] [2020-10-24T18:57:27.807Z] Node Version:  v13.14.0
+[debug] [2020-10-24T18:57:27.808Z] Time:          Sat Oct 24 2020 13:57:27 GMT-0500 (Central Daylight Time)
+[debug] [2020-10-24T18:57:27.808Z] ----------------------------------------------------------------------
+[debug] [2020-10-24T18:57:27.808Z] 
+[debug] [2020-10-24T18:57:27.818Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-10-24T18:57:27.819Z] > authorizing via signed-in user
+[debug] [2020-10-24T18:57:27.819Z] [iam] checking project michelin-star-35c92 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-10-24T18:57:27.821Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-10-24T18:57:27.821Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-10-24T18:57:27.959Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Sat, 24 Oct 2020 18:57:26 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-24T18:57:27.965Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/michelin-star-35c92:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-10-24T18:57:28.277Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 24 Oct 2020 18:57:26 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=211","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-24T18:57:28.277Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project michelin-star-35c92:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2020-10-24T18:57:28.278Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/michelin-star-35c92  
+ 
+[debug] [2020-10-24T18:57:28.476Z] <<< HTTP RESPONSE 403 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Sat, 24 Oct 2020 18:57:27 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-24T18:57:28.477Z] <<< HTTP RESPONSE BODY {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2020-10-24T18:57:28.478Z] HTTP Error: 403, The caller does not have permission
+[debug] [2020-10-24T18:57:28.563Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (/usr/lib/node_modules/firebase-tools/lib/responseToError.js:38:12)
+    at Request._callback (/usr/lib/node_modules/firebase-tools/lib/api.js:41:35)
+    at Request.self.callback (/usr/lib/node_modules/firebase-tools/node_modules/request/request.js:185:22)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:485:12)
+    at Request.<anonymous> (/usr/lib/node_modules/firebase-tools/node_modules/request/request.js:1154:10)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:485:12)
+    at IncomingMessage.<anonymous> (/usr/lib/node_modules/firebase-tools/node_modules/request/request.js:1076:12)
+    at Object.onceWrapper (events.js:421:28)
+    at IncomingMessage.emit (events.js:327:22)
+    at IncomingMessage.EventEmitter.emit (domain.js:485:12)
+    at endReadableNT (_stream_readable.js:1201:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+[error] 
+[error] Error: Failed to get Firebase project michelin-star-35c92. Please make sure the project exists and your account has permission to access it.
+[debug] [2020-10-24T19:04:55.228Z] ----------------------------------------------------------------------
+[debug] [2020-10-24T19:04:55.229Z] Command:       /usr/bin/node /mnt/c/Users/fifsf/workspace/projects/michelin-star-restaurant-dashboard-michelin-star-restaurant-dashboard/node_modules/.bin/firebase deploy
+[debug] [2020-10-24T19:04:55.230Z] CLI Version:   8.13.1
+[debug] [2020-10-24T19:04:55.230Z] Platform:      linux
+[debug] [2020-10-24T19:04:55.230Z] Node Version:  v13.14.0
+[debug] [2020-10-24T19:04:55.230Z] Time:          Sat Oct 24 2020 14:04:55 GMT-0500 (Central Daylight Time)
+[debug] [2020-10-24T19:04:55.230Z] ----------------------------------------------------------------------
+[debug] [2020-10-24T19:04:55.231Z] 
+[debug] [2020-10-24T19:04:55.238Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-10-24T19:04:55.239Z] > authorizing via signed-in user
+[debug] [2020-10-24T19:04:55.239Z] [iam] checking project michelin-star-35c92 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-10-24T19:04:55.241Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/michelin-star-35c92:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-10-24T19:04:55.502Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 24 Oct 2020 19:04:54 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=99","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-24T19:04:55.503Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project michelin-star-35c92:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2020-10-24T19:04:55.504Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/michelin-star-35c92  
+ 
+[debug] [2020-10-24T19:04:55.897Z] <<< HTTP RESPONSE 403 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Sat, 24 Oct 2020 19:04:54 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-24T19:04:55.898Z] <<< HTTP RESPONSE BODY {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2020-10-24T19:04:55.898Z] HTTP Error: 403, The caller does not have permission
+[debug] [2020-10-24T19:04:55.990Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (/mnt/c/Users/fifsf/workspace/projects/michelin-star-restaurant-dashboard-michelin-star-restaurant-dashboard/node_modules/firebase-tools/lib/responseToError.js:38:12)
+    at Request._callback (/mnt/c/Users/fifsf/workspace/projects/michelin-star-restaurant-dashboard-michelin-star-restaurant-dashboard/node_modules/firebase-tools/lib/api.js:41:35)
+    at Request.self.callback (/mnt/c/Users/fifsf/workspace/projects/michelin-star-restaurant-dashboard-michelin-star-restaurant-dashboard/node_modules/request/request.js:185:22)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:485:12)
+    at Request.<anonymous> (/mnt/c/Users/fifsf/workspace/projects/michelin-star-restaurant-dashboard-michelin-star-restaurant-dashboard/node_modules/request/request.js:1154:10)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:485:12)
+    at IncomingMessage.<anonymous> (/mnt/c/Users/fifsf/workspace/projects/michelin-star-restaurant-dashboard-michelin-star-restaurant-dashboard/node_modules/request/request.js:1076:12)
+    at Object.onceWrapper (events.js:421:28)
+    at IncomingMessage.emit (events.js:327:22)
+    at IncomingMessage.EventEmitter.emit (domain.js:485:12)
+    at endReadableNT (_stream_readable.js:1201:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+[error] 
+[error] Error: Failed to get Firebase project michelin-star-35c92. Please make sure the project exists and your account has permission to access it.
+[debug] [2020-10-24T19:05:19.727Z] ----------------------------------------------------------------------
+[debug] [2020-10-24T19:05:19.728Z] Command:       /usr/bin/node /usr/bin/firebase init
+[debug] [2020-10-24T19:05:19.729Z] CLI Version:   8.11.2
+[debug] [2020-10-24T19:05:19.729Z] Platform:      linux
+[debug] [2020-10-24T19:05:19.729Z] Node Version:  v13.14.0
+[debug] [2020-10-24T19:05:19.729Z] Time:          Sat Oct 24 2020 14:05:19 GMT-0500 (Central Daylight Time)
+[debug] [2020-10-24T19:05:19.729Z] ----------------------------------------------------------------------
+[debug] [2020-10-24T19:05:19.729Z] 
+[debug] [2020-10-24T19:05:19.734Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-10-24T19:05:19.735Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /mnt/c/Users/fifsf/workspace/projects/michelin-star-restaurant-dashboard-michelin-star-restaurant-dashboard
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using michelin-star-35c92. 
+[debug] [2020-10-24T19:05:27.512Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/michelin-star-35c92  
+ 
+[debug] [2020-10-24T19:05:27.689Z] <<< HTTP RESPONSE 403 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Sat, 24 Oct 2020 19:05:26 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-24T19:05:27.689Z] <<< HTTP RESPONSE BODY {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2020-10-24T19:05:27.690Z] HTTP Error: 403, The caller does not have permission
+[debug] [2020-10-24T19:05:27.764Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (/usr/lib/node_modules/firebase-tools/lib/responseToError.js:38:12)
+    at Request._callback (/usr/lib/node_modules/firebase-tools/lib/api.js:41:35)
+    at Request.self.callback (/usr/lib/node_modules/firebase-tools/node_modules/request/request.js:185:22)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:485:12)
+    at Request.<anonymous> (/usr/lib/node_modules/firebase-tools/node_modules/request/request.js:1154:10)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:485:12)
+    at IncomingMessage.<anonymous> (/usr/lib/node_modules/firebase-tools/node_modules/request/request.js:1076:12)
+    at Object.onceWrapper (events.js:421:28)
+    at IncomingMessage.emit (events.js:327:22)
+    at IncomingMessage.EventEmitter.emit (domain.js:485:12)
+    at endReadableNT (_stream_readable.js:1201:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+[error] 
+[error] Error: Failed to get Firebase project michelin-star-35c92. Please make sure the project exists and your account has permission to access it.
