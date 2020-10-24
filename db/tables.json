@@ -1,0 +1,277 @@
+{
+  "table1": {
+    "tableId": "table1",
+    "number": 1,
+    "numberOfSeats": 2
+  },
+  "table2": {
+    "tableId": "table2",
+    "number": 2,
+    "numberOfSeats": 2
+  },
+  "table3": {
+    "tableId": "table3",
+    "number": 3,
+    "numberOfSeats": 2
+  },
+  "table4": {
+    "tableId": "table4",
+    "number": 4,
+    "numberOfSeats": 2
+  },
+  "table5": {
+    "tableId": "table5",
+    "number": 5,
+    "numberOfSeats": 2
+  },
+  "table6": {
+    "tableId": "table6",
+    "number": 6,
+    "numberOfSeats": 2
+  },
+  "table7": {
+    "tableId": "table7",
+    "number": 7,
+    "numberOfSeats": 2
+  },
+  "table8": {
+    "tableId": "table8",
+    "number": 8,
+    "numberOfSeats": 2
+  },
+  "table9": {
+    "tableId": "table9",
+    "number": 9,
+    "numberOfSeats": 2
+  },
+  "table10": {
+    "tableId": "table10",
+    "number": 10,
+    "numberOfSeats": 2
+  },
+  "table11": {
+    "tableId": "table11",
+    "number": 11,
+    "numberOfSeats": 2
+  },
+  "table12": {
+    "tableId": "table12",
+    "number": 12,
+    "numberOfSeats": 2
+  },
+  "table13": {
+    "tableId": "table13",
+    "number": 13,
+    "numberOfSeats": 2
+  },
+  "table14": {
+    "tableId": "table14",
+    "number": 14,
+    "numberOfSeats": 2
+  },
+  "table15": {
+    "tableId": "table15",
+    "number": 15,
+    "numberOfSeats": 2
+  },
+  "table16": {
+    "tableId": "table16",
+    "number": 16,
+    "numberOfSeats": 2
+  },
+  "table17": {
+    "tableId": "table17",
+    "number": 17,
+    "numberOfSeats": 2
+  },
+  "table18": {
+    "tableId": "table18",
+    "number": 18,
+    "numberOfSeats": 2
+  },
+  "table19": {
+    "tableId": "table19",
+    "number": 19,
+    "numberOfSeats": 2
+  },
+  "table20": {
+    "tableId": "table20",
+    "number": 20,
+    "numberOfSeats": 2
+  },
+  "table21": {
+    "tableId": "table21",
+    "number": 21,
+    "numberOfSeats": 2
+  },
+  "table22": {
+    "tableId": "table22",
+    "number": 22,
+    "numberOfSeats": 2
+  },
+  "table23": {
+    "tableId": "table23",
+    "number": 23,
+    "numberOfSeats": 4
+  },
+  "table24": {
+    "tableId": "table24",
+    "number": 24,
+    "numberOfSeats": 4
+  },
+  "table25": {
+    "tableId": "table25",
+    "number": 25,
+    "numberOfSeats": 4
+  },
+  "table26": {
+    "tableId": "table26",
+    "number": 26,
+    "numberOfSeats": 4
+  },
+  "table27": {
+    "tableId": "table27",
+    "number": 27,
+    "numberOfSeats": 4
+  },
+  "table28": {
+    "tableId": "table28",
+    "number": 28,
+    "numberOfSeats": 4
+  },
+  "table29": {
+    "tableId": "table29",
+    "number": 29,
+    "numberOfSeats": 4
+  },
+  "table30": {
+    "tableId": "table30",
+    "number": 30,
+    "numberOfSeats": 4
+  },
+  "table31": {
+    "tableId": "table31",
+    "number": 31,
+    "numberOfSeats": 2
+  },
+  "table32": {
+    "tableId": "table32",
+    "number": 32,
+    "numberOfSeats": 2
+  },
+  "table33": {
+    "tableId": "table33",
+    "number": 33,
+    "numberOfSeats": 2
+  },
+  "table34": {
+    "tableId": "table34",
+    "number": 34,
+    "numberOfSeats": 2
+  },
+  "table35": {
+    "tableId": "table35",
+    "number": 35,
+    "numberOfSeats": 2
+  },
+  "table36": {
+    "tableId": "table36",
+    "number": 36,
+    "numberOfSeats": 2
+  },
+  "table37": {
+    "tableId": "table37",
+    "number": 37,
+    "numberOfSeats": 2
+  },
+  "table38": {
+    "tableId": "table38",
+    "number": 38,
+    "numberOfSeats": 2
+  },
+  "table39": {
+    "tableId": "table39",
+    "number": 39,
+    "numberOfSeats": 2
+  },
+  "table40": {
+    "tableId": "table40",
+    "number": 40,
+    "numberOfSeats": 4
+  },
+  "table41": {
+    "tableId": "table41",
+    "number": 41,
+    "numberOfSeats": 4
+  },
+  "table42": {
+    "tableId": "table42",
+    "number": 42,
+    "numberOfSeats": 4
+  },
+  "table43": {
+    "tableId": "table43",
+    "number": 43,
+    "numberOfSeats": 4
+  },
+  "table44": {
+    "tableId": "table44",
+    "number": 44,
+    "numberOfSeats": 4
+  },
+  "table45": {
+    "tableId": "table45",
+    "number": 45,
+    "numberOfSeats": 4
+  },
+  "table46": {
+    "tableId": "table46",
+    "number": 46,
+    "numberOfSeats": 4
+  },
+  "table47": {
+    "tableId": "table47",
+    "number": 47,
+    "numberOfSeats": 4
+  },
+  "table48": {
+    "tableId": "table48",
+    "number": 48,
+    "numberOfSeats": 4
+  },
+  "table49": {
+    "tableId": "table49",
+    "number": 49,
+    "numberOfSeats": 4
+  },
+  "table50": {
+    "tableId": "table50",
+    "number": 50,
+    "numberOfSeats": 4
+  },
+  "table51": {
+    "tableId": "table51",
+    "number": 51,
+    "numberOfSeats": 4
+  },
+  "table52": {
+    "tableId": "table52",
+    "number": 52,
+    "numberOfSeats": 4
+  },
+  "table53": {
+    "tableId": "table53",
+    "number": 53,
+    "numberOfSeats": 4
+  },
+  "table54": {
+    "tableId": "table54",
+    "number": 54,
+    "numberOfSeats": 4
+  },
+  "table55": {
+    "tableId": "table55",
+    "number": 55,
+    "numberOfSeats": 4
+  }
+}
