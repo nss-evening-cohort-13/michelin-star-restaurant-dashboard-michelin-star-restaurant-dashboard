@@ -180,7 +180,7 @@ const addReservationForm = () => {
     <div id="seating-section">
     <div id="reservation-buttons">
     <button id="seatingBtn" type="button" class="btn btn-outline">View Seating Chart</button>
-    <button id="add-guest-btn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i> Add Guest Info</button>
+    <button id="staffReservationBtn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i> Add Staff Info</button>
     </div>
     </div>
     <div id="viewSeats"></div>
@@ -208,7 +208,7 @@ const addReservationForm = () => {
     }
   });
 
-  $('#add-guest-btn').on('click', (e) => {
+  $('#staffReservationBtn').on('click', (e) => {
     e.preventDefault();
     // Capturing the first Segment of Data
     const data = {
@@ -224,7 +224,7 @@ const addReservationForm = () => {
       );
     } else {
       $('#error-message').html('');
-      addGuestInfo(data);
+      addStaffInfo(data);
     }
     setTimeout(() => {
       $('#success-message').html('');
