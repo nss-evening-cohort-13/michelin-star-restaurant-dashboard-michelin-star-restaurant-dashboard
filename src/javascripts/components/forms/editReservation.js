@@ -31,7 +31,7 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
       <div class="form-group">
       <label for="time" class="form-label">Time</label>
       <select class="form-control" id="time">
-        <option selected ='selected' value="${reservationObject.time}">${reservationObject.time}</option>
+        <option selected hidden value="${reservationObject.time}">${reservationObject.time}</option>
       </select>
       </div>
       <div class="form-group">
@@ -43,25 +43,25 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
         <div class="form-group">
           <label for="server">Server</label>
           <select class="form-control" id="Server">
-                <option selected ='selected' value="${reservationObject.server}">${reservationObject.server}</option>
+                <option selected hidden value="${reservationObject.server}">${reservationObject.server}</option>
               </select>
         </div>
           <div class="form-group">
             <label for="Busser">Busser</label>
             <select class="form-control" id="Busser">
-                <option selected ='selected' value="${reservationObject.busser}">${reservationObject.busser}</option>
+                <option selected hidden value="${reservationObject.busser}">${reservationObject.busser}</option>
               </select>
           </div>
           <div class="form-group">
             <label for="Bartender">Bartender</label>
             <select class="form-control" id="Bartender">
-                <option selected ='selected' value="${reservationObject.busser}">${reservationObject.busser}</option>
+                <option selected hidden value="${reservationObject.bartender}">${reservationObject.bartender}</option>
               </select>
           </div>
           <div class="form-group">
             <label for="Host">Host</label>
             <select class="form-control" id="Host">
-                <option selected ='selected' value="${reservationObject.host}">${reservationObject.host}</option>
+                <option selected hidden value="${reservationObject.host}">${reservationObject.host}</option>
               </select>
           </div>
           </div>
