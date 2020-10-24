@@ -28,7 +28,7 @@ const reservationTimes = () => {
 const tables = () => {
   tablesData.getAllTables().then((response) => {
     response.sort((a, b) => a.number - b.number).forEach((item) => {
-      $('#table').append(`<option value="${item.tableId}">${item.number}</option>`);
+      $('#table').append(`<option value="${item.number}">${item.number}</option>`);
     });
   });
 };
