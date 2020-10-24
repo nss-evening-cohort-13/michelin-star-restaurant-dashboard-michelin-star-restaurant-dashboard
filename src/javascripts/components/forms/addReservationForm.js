@@ -175,11 +175,11 @@ const addStaffInfo = (data) => {
   $('#add-guest-btn').on('click', (e) => {
     e.preventDefault();
     const staffReservationData = data;
-    staffReservationData.table = $('#table').val() || 'Not Assigned';
-    staffReservationData.server = $('#Server').val() || 'Not Assigned';
-    staffReservationData.busser = $('#Busser').val() || 'Not Assigned';
-    staffReservationData.bartender = $('#Bartender').val() || 'Not Assigned';
-    staffReservationData.host = $('#Host').val() || 'Not Assigned';
+    staffReservationData.table = $('#table').val() || '';
+    staffReservationData.server = $('#Server').val() || '';
+    staffReservationData.busser = $('#Busser').val() || '';
+    staffReservationData.bartender = $('#Bartender').val() || '';
+    staffReservationData.host = $('#Host').val() || '';
     addGuestInfo(data);
     setTimeout(() => {
       $('#success-message').html('');
