@@ -1,4 +1,7 @@
+// import Axios from 'axios';
 import ingredientData from '../../helpers/data/ingredientsData';
+import menuItemIngredientData from '../../helpers/data/menuItemIngredientsData';
+import menuItemsData from '../../helpers/data/menuItemsData';
 
 const ingredientMaker = (object) => {
   const domString = `<div class="ingredient-card card" style="width: 23rem;" id="${object.uid}">
@@ -15,7 +18,18 @@ const ingredientMaker = (object) => {
     e.stopImmediatePropagation();
     const firebaseKey = e.currentTarget.id;
     $(`.ingredient-card#${firebaseKey}`).remove();
-    ingredientData.deleteIngredient(firebaseKey);
+    menuItemsData.getMenuItems().then((response) => {
+      response.forEach((item) => {
+        menuItemIngredientData.getIngredientObjs(item.id).then((res) => {
+          res.forEach((menuId) => {
+            if (menuId.ingredientId === firebaseKey) {
+              ingredientData.deleteIngredient(firebaseKey);
+              menuItemIngredientData.deleteMenuIngredients(menuId.fbKey);
+            }
+          });
+        });
+      });
+    });
   });
 
   return domString;
