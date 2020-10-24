@@ -1,7 +1,7 @@
 import staffData from '../../helpers/data/staffData';
 import card from '../cards/staffMemberCard';
 import formBtn from './addStaffView';
-import filter from './filterStaff';
+import filter from '../filters/filterStaff';
 
 const staffView = (user) => {
   $('#app').html(`<div class="staff-member-page">

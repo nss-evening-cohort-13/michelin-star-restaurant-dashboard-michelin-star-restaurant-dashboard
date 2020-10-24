@@ -68,13 +68,19 @@ const viewHelper = (id, argument) => {
 ```
 
 ## ERD
-![ERD](https://i.postimg.cc/bNRHYqzb/ERD-michelin-star.png)
+![ERD - First Group](https://i.postimg.cc/bNRHYqzb/ERD-michelin-star.png)
+![ERD - Second Group](https://i.postimg.cc/NMS3NsvM/le-baguette-screenshot.png)
 
 ## Wireframe
-[Wireframe](https://www.figma.com/file/mgcTKkbXSx81KxopQasZaw/Wireframe?node-id=0%3A1)
+[Wireframe - First Group](https://www.figma.com/file/mgcTKkbXSx81KxopQasZaw/Wireframe?node-id=0%3A1)
+[Wireframe - Second Group](https://www.figma.com/file/ATU4hLOwUy8eMZMyvc34M8/Wireframe?node-id=0%3A1)
 
 ## Contributors
 * [Chris Lojacono](https://github.com/chrislojacono)
 * [Joseph Martin](https://github.com/josephtmartin)
 * [Kaitlyn VanHook](https://github.com/kaitvan)
 * [Liz Barnes](https://github.com/liz-barnes)
+* [Dana Pham](https://github.com/danapham)
+* [Deanna Mix](https://github.com/DeannaMix)
+* [Michael Pfohl](https://github.com/michaelpfohl)
+* [Rob Bandstra](https://github.com/bandstrar)

@@ -4,7 +4,7 @@ import card from '../cards/staffMemberCard';
 const filterStaffButtons = (user) => {
   $('.filterStaff').html(` <div class="form-group filterForm">
       <select class="form-control filterInput" id="roleOfStaff">
-        <option value="">Staff Roles</option>
+        <option value="">All Staff</option>
       </select>
       <button type="submit" id="filterStaffButton" class="btn btn-outline">Filter Staff</button>`);
 
@@ -26,14 +26,28 @@ const filterStaffButtons = (user) => {
     $('.staff-member-container').html('');
 
     if (user) {
+      if ($('#roleOfStaff').val() !== '') {
+        staffData.getStaffByRole(role).then((response) => {
+          response.forEach((item) => {
+            $('.staff-member-container').append(card.authStaffView(item));
+          });
+        });
+      } else {
+        staffData.getAllStaff().then((res) => {
+          res.forEach((item) => {
+            $('.staff-member-container').append(card.authStaffView(item));
+          });
+        });
+      }
+    } else if ($('#roleOfStaff').val() !== '') {
       staffData.getStaffByRole(role).then((response) => {
         response.forEach((item) => {
-          $('.staff-member-container').append(card.authStaffView(item));
+          $('.staff-member-container').append(card.unauthStaffView(item));
         });
       });
     } else {
-      staffData.getStaffByRole(role).then((response) => {
-        response.forEach((item) => {
+      staffData.getAllStaff().then((res) => {
+        res.forEach((item) => {
           $('.staff-member-container').append(card.unauthStaffView(item));
         });
       });
