@@ -70,7 +70,7 @@ const editStaffReservation = (data, reservationObject, reservationFirebaseKey) =
         </div>
         <div id="seating-section">
           <button id="seatingBtn" type="button" class="btn btn-outline">View Seating Chart</button>
-          <button id="updateReservationStaffBtn" type="button" class="btn btn-outline">Update Staff</button>
+          <button id="updateReservationStaffBtn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i>Update Staff</button>
           <div id="viewSeats"></div>
         </div>`);
 
@@ -156,7 +156,7 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
       </div>
     </div>
     <div id="reservation-buttons">
-    <button id="updateReservationBtn" type="button" class="btn btn-outline">Update Reservation</button>
+    <button id="updateReservationBtn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i>Update Reservation</button>
     </div>
     </div>
     `);
