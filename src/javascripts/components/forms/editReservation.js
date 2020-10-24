@@ -14,43 +14,35 @@ const reservationTimes = () => {
   });
 };
 
-const tables = () => {
+const guestNumber = () => {
+  const numGuests = [1, 2, 3, 4];
+  numGuests.forEach((guest) => {
+    $('#numberOfGuests').append(`<option value="${guest}">${guest}</option>`);
+  });
+};
+
+const tables = (guests) => {
   tablesData.getAllTables().then((response) => {
     response.sort((a, b) => a.number - b.number).forEach((item) => {
-      $('#table').append(`<option value="${item.number}">${item.number}</option>`);
+      if (guests <= item.numberOfSeats) {
+        $('#table').append(`<option value="${item.number}">Table ${item.number} - ${item.numberOfSeats} Seats</option>`);
+      }
     });
   });
 };
 
-// First Form to Appear
-const editReservationForm = (reservationObject, reservationFirebaseKey) => {
+const editStaffReservation = (data, reservationObject, reservationFirebaseKey) => {
   $('#edit-reservation').html(`<h2 class="form-title">Edit Reservation</h2>
-    <div id="success-message"></div>
-    <div>
-      <div id="error-message"></div>
-<div id="input-group">
+  <div id="success-message"></div>
+  <div id="input-group">
     <div class="form-group">
-      <label for="image" class="form-label">Number of Guests</label>
-      <input value="${reservationObject.numberOfGuests}" type="text" class="form-control" id="numberOfGuests" placeholder="# of Guests">
-    </div>
-      <div class="form-group">
-        <label for="date" class="form-label">Date</label>
-        <input value="${reservationObject.date}" class="form-control" id="datePicker" autocomplete="off" placeholder="Click to choose a date">
-      </div>
-      <div class="form-group">
-      <label for="time" class="form-label">Time</label>
-      <select class="form-control" id="time">
-        <option selected hidden value="${reservationObject.time}">${reservationObject.time}</option>
-      </select>
-      </div>
-      <div class="form-group">
       <label for="table" class="form-label">Table</label>
       <select class="form-control" id="table">
-        <option selected hidden value="${reservationObject.table}">${reservationObject.table}</option>
+        <option selected hidden value="${reservationObject.table}">Table ${reservationObject.table}</option>
       </select>
-      </div>
     </div>
-    <div id="input-group">
+  </div>
+      <div id="input-group">
         <div class="form-group">
           <label for="server">Server</label>
           <select class="form-control" id="Server">
@@ -75,24 +67,15 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
                 <option selected hidden value="${reservationObject.host}">${reservationObject.host}</option>
               </select>
           </div>
-          </div>
-    <div id="seating-section">
-    <div id="reservation-buttons">
-    <button id="seatingBtn" type="button" class="btn btn-outline">View Seating Chart</button>
-    <button id="updateReservationBtn" type="button" class="btn btn-outline">Update Reservation</button>
-    </div>
-    </div>
-    <div id="viewSeats"></div>
-    </div>`);
-
-  // Code for Date dropdown
-  $('#datePicker').datepicker();
-
-  // RESERVATION TIMES DROPDOWN
-  reservationTimes();
+        </div>
+        <div id="seating-section">
+          <button id="seatingBtn" type="button" class="btn btn-outline">View Seating Chart</button>
+          <button id="updateReservationStaffBtn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i>Update Staff</button>
+          <div id="viewSeats"></div>
+        </div>`);
 
   // TABLES DROPDOWN
-  tables();
+  tables(data.numberOfGuests);
 
   //  Code for seating chart dropdown
   let seatingChartIsNotShown = true;
@@ -108,6 +91,7 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
       seatingChartIsNotShown = true;
     }
   });
+
   $('#Server').append('<option value=""></option>');
   $('#Busser').append('<option value=""></option>');
   $('#Bartender').append('<option value=""></option>');
@@ -120,6 +104,72 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
     });
   });
 
+  $('#updateReservationStaffBtn').on('click', (e) => {
+    e.preventDefault();
+    const reservData = data;
+    reservData.table = $('#table').val() || '';
+    reservData.server = $('#Server').val() || '';
+    reservData.busser = $('#Busser').val() || '';
+    reservData.bartender = $('#Bartender').val() || '';
+    reservData.host = $('#Host').val() || '';
+    reservationData.updateReservation(reservationFirebaseKey, data)
+      .then(() => {
+        $('#success-message').html(
+          `<div class="alert" role="alert">
+    Your reservation was updated!
+    </div>`
+        );
+        setTimeout(() => {
+          $('#success-message').html('');
+        }, 3000);
+      }).then(() => {
+        setTimeout(() => {
+          firebase.auth().onAuthStateChanged((user) => {
+            reservationView.reservationView(user);
+          });
+        }, 3000);
+      }).catch((error) => console.warn(error));
+  });
+};
+
+// First Form to Appear
+const editReservationForm = (reservationObject, reservationFirebaseKey) => {
+  $('#edit-reservation').html(`<h2 class="form-title">Edit Reservation</h2>
+    <div>
+      <div id="error-message"></div>
+<div id="input-group">
+<div class="form-group">
+<label for="image">Number of Guests</label>
+<select class="form-control" id="numberOfGuests">
+    <option selected hidden value="${reservationObject.numberOfGuests}">${reservationObject.numberOfGuests}</option>
+  </select>
+</div>
+      <div class="form-group">
+        <label for="date" class="form-label">Date</label>
+        <input value="${reservationObject.date}" class="form-control" id="datePicker" autocomplete="off" placeholder="Click to choose a date">
+      </div>
+      <div class="form-group">
+      <label for="time" class="form-label">Time</label>
+      <select class="form-control" id="time">
+        <option selected hidden value="${reservationObject.time}">${reservationObject.time}</option>
+      </select>
+      </div>
+    </div>
+    <div id="reservation-buttons">
+    <button id="updateReservationBtn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i>Update Reservation</button>
+    </div>
+    </div>
+    `);
+
+  // Code for Date dropdown
+  $('#datePicker').datepicker();
+
+  // RESERVATION TIMES DROPDOWN
+  reservationTimes();
+
+  // Number of Guests Dropdown
+  guestNumber();
+
   $('#updateReservationBtn').on('click', (e) => {
     e.preventDefault();
     // Capturing the first Segment of Data
@@ -127,11 +177,6 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
       date: $('#datePicker').val() || false,
       numberOfGuests: $('#numberOfGuests').val() || false,
       time: $('#time').val() || false,
-      table: $('#table').val() || false,
-      server: $('#Server').val() || '',
-      busser: $('#Busser').val() || '',
-      bartender: $('#Bartender').val() || '',
-      host: $('#Host').val() || ''
     };
 
     if (Object.values(data).includes(false)) {
@@ -140,24 +185,7 @@ const editReservationForm = (reservationObject, reservationFirebaseKey) => {
       );
     } else {
       $('#error-message').html('');
-      // editGuestInfo(reservationObject, reservationFirebaseKey);
-      reservationData.updateReservation(reservationFirebaseKey, data)
-        .then(() => {
-          $('#success-message').html(
-            `<div class="alert" role="alert">
-          Your reservation was updated!
-          </div>`
-          );
-          setTimeout(() => {
-            $('#success-message').html('');
-          }, 3000);
-        }).then(() => {
-          setTimeout(() => {
-            firebase.auth().onAuthStateChanged((user) => {
-              reservationView.reservationView(user);
-            });
-          }, 3000);
-        }).catch((error) => console.warn(error));
+      editStaffReservation(data, reservationObject, reservationFirebaseKey);
     }
   });
 };
