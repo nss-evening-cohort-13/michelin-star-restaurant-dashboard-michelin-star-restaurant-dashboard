@@ -5,7 +5,7 @@
     padding: 10px;
     
 }
-#add-reservation{
+#add-reservation {
     width: 80%;
     margin:auto;
     background-color: white;
@@ -17,6 +17,13 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+@media screen and (max-width: 400px){
+    #input-group{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
 #ui-datepicker-div{
     display: none;
@@ -35,6 +42,7 @@
 #add-reservation{
     width: 80%;
     height: auto;
+    color: white;
 }
 .reservationCard{
     margin: 5px;
@@ -53,4 +61,13 @@
     background-color: #555;
     color: white;
     }
+}
+
+#edit-reservation {
+    width: 80%;
+    margin:auto;
+    border-radius: 6px;
+    padding: 20px;
+    background-color: #444444;
+    color: white;
 }

@@ -1,28 +1,29 @@
+import firebase from 'firebase/app';
 import staffData from '../../helpers/data/staffData';
 import staffView from '../views/staffView';
 
-const addStaffMemberForm = (user) => {
-  $('.staff-form').html(`
-      <h2 class="form-title">Add Staff Member</h2>
+const updateStaffMemberForm = (staffObject) => {
+  $('#update-staff-form').html(`
+      <h2 class="form-title">Update Staff Member</h2>
       <div id="success-message"></div>
       <div id="error-message"></div>
       <div class="form-group row">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Example: Gordon Ramsay ">
+        <input type="text" class="form-control" id="name" value="${staffObject.name}">
       </div>
       <div class="form-group row">
         <label for="role">Role</label>
-        <input type="text" class="form-control" id="role" placeholder="Example: Chef">
+        <input type="text" class="form-control" id="role" value="${staffObject.role}">
       </div>
       <div class="form-group row">
         <label for="imageUrl">Image</label>
-        <input type="text" class="form-control" id="staff-image-url" placeholder="Place Image URL">
+        <input type="text" class="form-control" id="staff-image-url" value="${staffObject.imageUrl}">
       </div>
-        <button id="add-staff-btn" type="button" class="btn btn-outline form-btn"><i class="fas fa-plus-circle"></i> Add Staff Member</button>
+        <button id="update-staff-btn" type="button" class="btn btn-outline form-btn"><i class="fas fa-plus-circle"></i> Update Staff Member</button>
       </div>
     `);
 
-  $('#add-staff-btn').on('click', () => {
+  $('#update-staff-btn').on('click', () => {
     const data = {
       name: $('#name').val() || false,
       role: $('#role').val() || false,
@@ -38,32 +39,24 @@ const addStaffMemberForm = (user) => {
     } else {
       $('#error-message').html('');
 
-      staffData
-        .addStaffMember(data)
-        .then((response) => {
+      staffData.updateStaffMember(staffObject.firebaseKey, data)
+        .then(() => {
           $('#success-message').html(
-            `<div class="alert" role="alert">
-            Right on! New staff member was added!
-          </div>`
+            '<div class="alert" role="alert">Right on! Staff member was updated!</div>'
           );
           setTimeout(() => {
             $('#success-message').html('');
           }, 3000);
-          if (response === 200) {
-            setTimeout(() => {
+        }).then(() => {
+          setTimeout(() => {
+            firebase.auth().onAuthStateChanged((user) => {
               staffView.staffView(user);
-            }, 3000);
-          } else {
-            console.warn('failed, come back later');
-          }
+            });
+          }, 3000);
         })
         .catch((error) => console.warn(error));
-
-      $('#name').val('');
-      $('#role').val('');
-      $('#staff-image-url').val('');
     }
   });
 };
 
-export default { addStaffMemberForm };
+export default { updateStaffMemberForm };

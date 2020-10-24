@@ -1,14 +1,8 @@
-.btn {
-  color: white;
-  border: 1px solid #EA859E;
-}
-
-.btn:hover {
-  color: #EA859E;
-}
-
 #menu-item-form {
-  width: 75%;
+  width: 80%;
+  background-color: #444444;
+  border-radius: 6px;
+  padding: 5%;
   margin: auto;
 }
 
@@ -27,4 +21,53 @@
   background-color: white;
   border-radius: 6px;
   padding: 10px;
+  .menu-buttons {
+    font-family: 'Prata', serif;
+  }
+  p {
+    font-family: 'Montserrat', sans-serif;
+  }
+  h3 {
+    font-family: 'Prata', serif;
+  }
+}
+.card-menu {
+  h4{
+    font-family: 'Prata', serif;
+  }
+  p{
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+#updateMenuItemForm {
+  width: 80%;
+  margin:auto;
+  background-color: white;
+  border-radius: 6px;
+  padding: 5%;
+  h2{
+    font-family: 'Prata', serif;
+  }
+}
+#menu-item-form {
+  color: white;
+}
+.menu-item-title, .menuItemInfo{
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (max-width: 400px){
+  .menu-item-title, .menuItemInfo {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  .menu-item-title{
+    flex-direction: column;
+  }
+  #listOfIngredients {
+    text-align: center;
+    display: flex;
+    flex-flow: row wrap;
+  }
 }

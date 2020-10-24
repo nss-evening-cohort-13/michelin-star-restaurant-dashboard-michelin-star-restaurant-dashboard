@@ -16,12 +16,35 @@ const getMenuItems = () => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
-const addMenuItem = (data) => axios.post(`${baseUrl}/menuItems.json`, data)
-  .then((response) => {
-    const update = { id: response.data.name };
-    axios.patch(`${baseUrl}/menuItems/${response.data.name}.json`, update);
-  }).catch((error) => console.warn(error));
+const addMenuItem = (data) => new Promise((resolve, reject) => {
+  axios.post(`${baseUrl}/menuItems.json`, data)
+    .then((response) => {
+      const update = { id: response.data.name };
+      axios
+        .patch(`${baseUrl}/menuItems/${response.data.name}.json`, update)
+        .then(() => {
+          resolve(response);
+        });
+    }).catch((error) => reject(error));
+});
 
 const deleteMenuItem = (firebaseKey) => axios.delete(`${baseUrl}/menuItems/${firebaseKey}.json`);
 
-export default { addMenuItem, getMenuItems, deleteMenuItem };
+const updateMenuItem = (firebaseKey, dataObject) => axios.patch(`${baseUrl}/menuItems/${firebaseKey}.json`, dataObject);
+
+const getSingleMenuItem = (id) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/menuItems/${id}.json`)
+    .then((response) => {
+      const menuItem = response.data;
+      resolve(menuItem);
+    })
+    .catch((error) => reject(error));
+});
+
+export default {
+  addMenuItem,
+  getMenuItems,
+  deleteMenuItem,
+  updateMenuItem,
+  getSingleMenuItem
+};

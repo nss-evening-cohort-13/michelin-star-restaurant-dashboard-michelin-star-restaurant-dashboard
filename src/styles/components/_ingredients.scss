@@ -8,6 +8,7 @@
   margin: 2px;
   font-family: 'Prata', serif;
 }
+
 .card {
   background: none;
   border: none;
@@ -17,12 +18,14 @@
     font-size: 20px;
   }
 }
-#add-ingredient-btn,
-#addIngredientBtn{
-  font-family: 'Prata', serif;
-}
+
 .button-container-ingredient {
   outline: none;
+  display: flex;
+  flex-direction: row;
+  height: 80%;
+  margin-left: auto;
+  margin-right: 0;
 }
 .btn:focus,
 .btn:active {
@@ -35,4 +38,55 @@
   background-color: white;
   border-radius: 6px;
   padding: 10px;
+}
+
+#updateIngredientsForm{
+  color: white;
+  width: 50%;
+  label{
+    font-size: 20px;
+  }
+}
+
+#ingredientSelection {
+  height: 40vh;
+}
+.card-body{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  white-space: none;
+}
+@media screen and (max-width: 400px){
+  .category-section {
+    margin: 2px;
+    font-family: 'Prata', serif;
+    display: flex;
+    flex-direction: column;
+  }
+  #addIngredients{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+  .ingredient-card{
+    width: 70%;
+  }
+  .categories-container{
+    display:flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .card-body{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .button-container-ingredient{
+    display: flex;
+    flex-direction: row;
+  }
 }

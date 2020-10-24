@@ -1,4 +1,6 @@
+import firebase from 'firebase/app';
 import ingredientsData from '../../helpers/data/ingredientsData';
+import ingredientsView from '../views/ingredientsView';
 
 const availableCategories = () => {
   const categories = ['Breads', 'Vegetables', 'Fruit', 'Dairy', 'Meat', 'Nuts'];
@@ -9,17 +11,17 @@ const availableCategories = () => {
 
 const addIngredientsForm = () => {
   $('#add-ingredients').html(`
-  <h2 style="font-family: 'Prata', serif;">Add An Ingredient</h2>
+  <h2 class="form-title">Add An Ingredient</h2>
   <div id="success-message"></div>
   <div id="error-message"></div>
   <form>
     <div id="input-group">
       <div class="form-group">
-        <label for="Ingredient" style="font-family: 'Prata', serif;">Ingredient</label>
+        <label for="Ingredient" class="form-label">Ingredient</label>
         <input type="text" class="form-control pr-3" id="ingredient" placeholder="Sliced Pears" />
       </div>
       <div class="form-group">
-      <label for="category" style="font-family: 'Prata', serif;">Category</label>
+      <label for="category" class="form-label">Category</label>
       <select class="form-control" id="category">
         <option value="">Select a Category</option>
       </select>
@@ -43,7 +45,7 @@ const addIngredientsForm = () => {
 
     if (Object.values(data).includes(false)) {
       $('#error-message').html(
-        '<div class="alert alert-danger" role="alert">Please complete all fields</div>'
+        '<div class="alert" role="alert">Please complete all fields</div>'
       );
     } else {
       $('#error-message').html('');
@@ -51,10 +53,16 @@ const addIngredientsForm = () => {
         .addIngredient(data)
         .then(() => {
           $('#success-message').html(
-            '<div class="alert alert-success" role="alert">Your Ingredient Was Added!</div>'
+            '<div class="alert" role="alert">Your Ingredient Was Added!</div>'
           );
           setTimeout(() => {
             $('#success-message').html('');
+          }, 3000);
+        }).then(() => {
+          setTimeout(() => {
+            firebase.auth().onAuthStateChanged((user) => {
+              ingredientsView.ingredientsView(user);
+            });
           }, 3000);
         })
         .catch((error) => console.warn(error));
@@ -64,4 +72,4 @@ const addIngredientsForm = () => {
   });
 };
 
-export default { addIngredientsForm };
+export default { addIngredientsForm, availableCategories };

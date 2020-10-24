@@ -1,5 +1,3 @@
-// TODO: call the logout function at the bottom of the navbar function and pass the current user name to the welcome li
-
 const navbar = () => {
   $('#nav').html(`
   <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
