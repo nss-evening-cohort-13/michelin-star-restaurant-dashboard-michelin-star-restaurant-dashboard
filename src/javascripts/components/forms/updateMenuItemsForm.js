@@ -41,22 +41,12 @@ const updateMenuItemForm = (menuObject) => {
       });
     });
   });
-  // menuItemIngredientsData.getMenuItemIngredients(menuObject.id).then((res) => {
-  //   res.forEach((ingredientName) => {
-  //     $(`select#${ingredientName}`).remove();
-  //     $('select').append(`<option id="${ingredientName}" value="${ingredientName}" selected ='selected'>${ingredientName}</option>`);
-  //   });
-  // });
+
   $('#updateMenuItemBtn').on('click', () => {
     const menuItemData = {
       name: $('#menuItemName').val() || false,
       price: $('#price').val() || false,
     };
-
-    // const ingredientsData = {
-    //   ingredientId: $('#ingredientSelection').val(),
-    //   menuItemId: menuObject.id,
-    // };
 
     if (Object.values(menuItemData).includes(false)) {
       $('#error-message').html(
@@ -66,12 +56,25 @@ const updateMenuItemForm = (menuObject) => {
       $('#error-message').html('');
 
       menuItemIngredientsData
-        .getMenuIngredientIds(menuObject.id)
+        .getIngredientObjs(menuObject.id)
         .then((response) => {
-        // const selectedIngredients = $('#ingredientSelection').val();
-        // const changes = response.filter((ingredient) => !selectedIngredients.includes(ingredient));
-          console.log(response);
-          console.log($('#ingredientSelection').val());
+          const selectedIngredients = $('#ingredientSelection').val();
+
+          selectedIngredients.forEach((ingredient) => {
+            if (response.filter((ingredientObj) => ingredientObj.ingredientId === ingredient).length === 0) {
+              const newIngredient = {
+                menuItemId: menuObject.id,
+                ingredientId: ingredient,
+              };
+              menuItemIngredientsData.addMenuItemIngredients(newIngredient);
+            }
+          });
+
+          response.forEach((ingredientObj) => {
+            if (!selectedIngredients.includes(ingredientObj.ingredientId)) {
+              menuItemIngredientsData.deleteMenuIngredients(ingredientObj.fbKey);
+            }
+          });
         });
 
       menuData
@@ -92,11 +95,7 @@ const updateMenuItemForm = (menuObject) => {
       setTimeout(() => {
         $('#success-message').html('');
       }, 3000);
-      $('#menuItemName').val('');
-      $('#ingredientSelection').val('');
-      $('#price').val('');
     }
   });
 };
-
 export default { updateMenuItemForm };

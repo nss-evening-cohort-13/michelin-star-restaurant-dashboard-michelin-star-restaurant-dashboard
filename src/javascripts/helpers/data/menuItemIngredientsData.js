@@ -51,7 +51,6 @@ const getMenuIngredientIds = (menuItemId) => new Promise((resolve, reject) => {
           );
           const menuIngredientUse = menuObject.uid;
           ingredientNames.push(menuIngredientUse);
-          console.log(ingredientNames);
           resolve(ingredientNames);
         });
       });
@@ -59,8 +58,27 @@ const getMenuIngredientIds = (menuItemId) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getIngredientObjs = (menuItemId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/menuItems_ingredients.json?orderBy="menuItemId"&equalTo="${menuItemId}"`)
+    .then((response) => {
+      const ingredients = response.data;
+      const ingredientsArray = [];
+      if (ingredients) {
+        Object.keys(ingredients).forEach((item) => {
+          ingredientsArray.push(ingredients[item]);
+        });
+      }
+      resolve(ingredientsArray);
+    })
+    .catch((error) => reject(error));
+});
+
+const deleteMenuIngredients = (joinTableId) => axios.delete(`${baseUrl}/menuItems_ingredients/${joinTableId}.json`);
+
 export default {
   addMenuItemIngredients,
   getMenuItemIngredients,
-  getMenuIngredientIds
+  getMenuIngredientIds,
+  deleteMenuIngredients,
+  getIngredientObjs
 };
