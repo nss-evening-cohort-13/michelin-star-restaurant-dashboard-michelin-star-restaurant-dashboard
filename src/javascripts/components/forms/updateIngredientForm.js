@@ -21,7 +21,7 @@ const updateIngredientsForm = (ingredientObject) => {
         </div>
         <div class="form-group">
           <label for="Quantity" class="form-label">Quantity</label>
-          <input type="number" class="form-control pr-3" id="ingredientQuantity" value="${ingredientObject.quantity}" placeholder=1 />
+          <input type="number" class="form-control pr-3" id="ingredientQuantity" value="${ingredientObject.quantity}" placeholder=0 />
         </div>
       </div>
       <button id="updateIngredientBtn" type="button" class="btn btn-outline">

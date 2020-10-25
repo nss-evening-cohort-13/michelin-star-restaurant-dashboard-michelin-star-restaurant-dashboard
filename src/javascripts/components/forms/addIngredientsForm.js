@@ -28,7 +28,7 @@ const addIngredientsForm = () => {
       </div>
       <div class="form-group">
         <label for="Quantity" class="form-label">Quantity</label>
-        <input type="number" class="form-control pr-3" id="ingredientQuantity" placeholder=1 />
+        <input type="number" class="form-control pr-3" id="ingredientQuantity" placeholder=0 />
       </div>
     </div>
     <button id="addIngredientBtn" type="button" class="btn btn-outline">
