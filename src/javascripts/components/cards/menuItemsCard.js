@@ -45,13 +45,13 @@ const authMenuItemCardMaker = (item) => {
         menuItemIngredientsData.getIngredientObjs(menuItem.id).then((res) => {
           res.forEach((menuId) => {
             if (menuId.menuItemId === firebaseKey) {
-              menuData.deleteMenuItem(firebaseKey);
               menuItemIngredientsData.deleteMenuIngredients(menuId.fbKey);
             }
           });
         });
       });
     });
+    menuData.deleteMenuItem(firebaseKey);
   });
   menuItemIngredientsData
     .getMenuItemIngredients(item.id)

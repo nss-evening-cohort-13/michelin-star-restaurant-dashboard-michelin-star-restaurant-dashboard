@@ -26,6 +26,10 @@ const addIngredientsForm = () => {
         <option value="">Select a Category</option>
       </select>
       </div>
+      <div class="form-group">
+        <label for="Quantity" class="form-label">Quantity</label>
+        <input type="number" class="form-control pr-3" id="ingredientQuantity" placeholder=1 />
+      </div>
     </div>
     <button id="addIngredientBtn" type="button" class="btn btn-outline">
       Submit New Ingredient
@@ -41,6 +45,7 @@ const addIngredientsForm = () => {
     const data = {
       ingredient: $('#ingredient').val() || false,
       category: $('#category').val() || false,
+      quantity: $('#ingredientQuantity').val() || false,
     };
 
     if (Object.values(data).includes(false)) {
@@ -68,6 +73,7 @@ const addIngredientsForm = () => {
         .catch((error) => console.warn(error));
       $('#ingredient').val('');
       $('#category').val('');
+      $('#ingredientQuantity').val('');
     }
   });
 };
