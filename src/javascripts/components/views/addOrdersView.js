@@ -18,7 +18,7 @@ const addOrdersView = () => {
         $('#menuItemsDiv').append(orderCards.buildOrdersCard(menuItem));
       });
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.warn(error));
 };
 
 export default { addOrdersView };

@@ -124,7 +124,7 @@ const viewListener = (view, user) => {
     viewHelper('orders', e.currentTarget.id);
   });
   $('body').on('click', '.order-card', () => {
-    console.log('card clicked');
+    console.warn('card clicked');
   });
 };
 
