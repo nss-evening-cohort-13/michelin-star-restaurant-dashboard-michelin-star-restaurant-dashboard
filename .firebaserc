@@ -1,5 +1,6 @@
 {
   "projects": {
     "default": "le-baguette-e03bd"
+    "le-baguette": "le-baguette-e03bd"
   }
 }
