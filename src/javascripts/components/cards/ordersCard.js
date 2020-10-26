@@ -4,6 +4,7 @@ const buildOrdersCard = (menuItem) => {
                         <h5 class="card-title"><i class="far fa-plus-square"></i> ${menuItem.name}</h5>
                       </div>
                     </div>`;
+
   return domString;
 };
 

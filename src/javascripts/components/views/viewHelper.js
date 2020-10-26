@@ -44,7 +44,7 @@ const viewHelper = (id, argument) => {
       case 'home':
         return homePage.homePageView();
       case 'orders':
-        return ordersView.addOrdersView();
+        return ordersView.addOrdersView(argument);
       default:
         return console.warn('nothing clicked');
     }
@@ -122,9 +122,6 @@ const viewListener = (view, user) => {
   });
   $('body').on('click', '.orders-reservation-btn', (e) => {
     viewHelper('orders', e.currentTarget.id);
-  });
-  $('body').on('click', '.order-card', () => {
-    console.warn('card clicked');
   });
 };
 
