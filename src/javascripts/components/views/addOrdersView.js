@@ -8,7 +8,6 @@ import reservationView from './reservationView';
 const displayTentativeOrders = (reservationId) => {
   const tentativeOrders = orderData.getTentativeOrders(reservationId);
   if (tentativeOrders !== null) {
-    console.log($('#itemsOrders').text());
     $('#itemsOrdered').html('');
     tentativeOrders.forEach((menuItem) => {
       $('#itemsOrdered').append(`
