@@ -1,0 +1,48 @@
+#ordersDiv {
+  color: white;
+  background-color: #444444;
+  width: 80%;
+  // font-family: 'Prata', serif;
+  padding: 2%;
+}
+
+.order-card {
+  background-color: #555;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.checkoutDiv {
+  background-color: #555;
+  height: 90%;
+}
+
+.mont-font {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.prat-font {
+  font-family: 'Prata', serif;
+}
+.orderedItem {
+  display: flex;
+  list-style-type: none;
+}
+
+td.td-orders {
+  margin: 1% 5% 1% 5%;
+  text-align: left;
+}
+
+td.td-small {
+  width: 2rem;
+}
+
+td.order-name {
+  width: 18rem;
+}
+
+#itemsOrdered {
+  color: white;
+}

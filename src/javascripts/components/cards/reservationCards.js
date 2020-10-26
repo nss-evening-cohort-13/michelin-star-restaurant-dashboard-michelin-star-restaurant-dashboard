@@ -29,6 +29,7 @@ const authReservationCardMaker = (reso) => {
        <div id="removeTarget" class="reservation-btn-container card-btn-container">
          <button class="btn edit-reservation-btn edit-btn btn-outline" id="${reso.uid}">Edit</button>
          <button class="btn delete-reservation-btn delete-btn btn-outline" id="${reso.uid}">Delete</button>
+         <button class="btn orders-reservation-btn btn-outline" id="${reso.uid}">Orders</button>
          <button class="btn details-reservation-btn btn-outline" data-toggle="modal" data-target="#view-${reso.uid}" type="button" id="${reso.uid}">Details</button>
        </div>
       </div>
