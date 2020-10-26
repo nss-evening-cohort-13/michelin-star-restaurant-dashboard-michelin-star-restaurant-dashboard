@@ -68,20 +68,21 @@ const addOrdersView = (reservationId) => {
   });
 
   $('body').on('click', '.delete-order-btn', (e) => {
+    e.stopImmediatePropagation();
     orderData.removeItem(reservationId, e.currentTarget.id);
-    displayTentativeOrders();
+    displayTentativeOrders(reservationId);
   });
 
   $('body').on('click', '.add-order-btn', (e) => {
     const reservId = e.currentTarget.id;
-    const tentativeOrders = orderData.getTentativeOrders(reservationId);
+    const tentOrders = orderData.getTentativeOrders(reservationId);
 
-    if (tentativeOrders === null) {
+    if (tentOrders === null) {
       $('#errorMsg').html(`<div class="alert alert-secondary" role="alert">
       Please select an order.
     </div>`);
     } else {
-      tentativeOrders.forEach((menuItem) => {
+      tentOrders.forEach((menuItem) => {
         const data = {
           menuItemId: menuItem.id,
           reservationId: reservId
