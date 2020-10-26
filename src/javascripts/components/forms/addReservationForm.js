@@ -2,6 +2,8 @@ import firebase from 'firebase/app';
 import image from '../../helpers/images/seating.png';
 import reservationData from '../../helpers/data/reservationData';
 import reservationView from '../views/reservationView';
+import tablesData from '../../helpers/data/tablesData';
+import staffData from '../../helpers/data/staffData';
 
 require('jquery-ui-bundle');
 
@@ -20,12 +22,28 @@ const reservationTimes = () => {
     '10:00pm',
   ];
   times.forEach((item) => {
-    $('select').append(`<option value="${item}">${item}</option>`);
+    $('#time').append(`<option value="${item}">${item}</option>`);
+  });
+};
+
+const guestNumber = () => {
+  const numGuests = [1, 2, 3, 4];
+  numGuests.forEach((guest) => {
+    $('#numberOfGuests').append(`<option value="${guest}">${guest}</option>`);
+  });
+};
+
+const tables = (guests) => {
+  tablesData.getAllTables().then((response) => {
+    response.sort((a, b) => a.number - b.number).forEach((item) => {
+      if (guests <= item.numberOfSeats) {
+        $('#table').append(`<option value="${item.number}">Table ${item.number} - ${item.numberOfSeats} Seats</option>`);
+      }
+    });
   });
 };
 
 // SECOND FORM TO APPEAR
-
 const addGuestInfo = (data) => {
   $('#add-reservation').html(`<h2 class="form-title">Enter User Info</h2>
         <div id="success-message"></div>
@@ -84,46 +102,62 @@ const addGuestInfo = (data) => {
     }
   });
 };
-// First Form to Appear
-const addReservationForm = () => {
-  $('#add-reservation').html(`<h2 class="form-title">Add A Reservation</h2>
-    <div id="success-message"></div>
-    <div>
-      <div id="error-message"></div>
-<div id="input-group">
-    <div class="form-group">
-      <label for="image">Number of Guests</label>
-      <input type="text" class="form-control" id="numberOfGuests" placeholder="# of Guests">
-    </div>
-      <div class="form-group">
-        <label for="date">Date</label>
-        <input class="form-control" id="datePicker" autocomplete="off" placeholder="Click to choose a date">
-      </div>
-      <div class="form-group">
-      <label for="time">Time</label>
-      <select class="form-control" id="time">
-        <option value="">Select a Time</option>
-      </select>
-      </div>
-      <div class="form-group">
-      <label for="date">Seating Preference</label>
-      <input class="form-control" id="seatingPreference" placeholder="View Chart Below">
-    </div>
-    </div>
-    <div id="seating-section">
-    <div id="reservation-buttons">
-    <button id="seatingBtn" type="button" class="btn btn-outline">View Seating Chart</button>
-    <button id="add-guest-btn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i> Add Guest Info</button>
-    </div>
-    </div>
-    <div id="viewSeats"></div>
-    </div>`);
 
-  // Code for Date dropdown
-  $('#datePicker').datepicker();
+const addStaffInfo = (data) => {
+  $('#add-reservation').html(`<h2 class="form-title">Add Staff to Reservation</h2>
+        <div id="success-message"></div>
+          <div id="error-message"></div>
+    <form>
+    <div id="input-group">
+      <div class="form-group">
+          <label for="table">Table</label>
+          <select class="form-control" id="table">
+            <option value="">Select a Table</option>
+          </select>
+      </div>
+      </div>
+    <div id="input-group">
+        <div class="form-group">
+          <label for="server">Server</label>
+          <select class="form-control" id="Server">
+                <option value="">Select a Server</option>
+              </select>
+        </div>
+          <div class="form-group">
+            <label for="Busser">Busser</label>
+            <select class="form-control" id="Busser">
+                <option value="">Select a Busser</option>
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="Bartender">Bartender</label>
+            <select class="form-control" id="Bartender">
+                <option value="">Select a Bartender</option>
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="Host">Host</label>
+            <select class="form-control" id="Host">
+                <option value="">Select a Host</option>
+              </select>
+          </div>
+          </div>
+          <div id="seating-section">
+          <button id="seatingBtn" type="button" class="btn btn-outline">View Seating Chart</button>
+          <button id="add-guest-btn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i> Add Guest Info</button>
+          <div id="viewSeats"></div>
+          </div>
+        </form>`);
 
-  // RESERVATION TIMES DROPDOWN
-  reservationTimes();
+  staffData.getAllStaff().then((response) => {
+    response.forEach((item) => {
+      const { role } = item;
+      $(`#${role}`).append(`<option value="${item.name}">${item.name}</option>`);
+    });
+  });
+
+  // TABLES DROPDOWN
+  tables(data.numberOfGuests);
 
   //  Code for seating chart dropdown
   let seatingChartIsNotShown = true;
@@ -140,12 +174,65 @@ const addReservationForm = () => {
 
   $('#add-guest-btn').on('click', (e) => {
     e.preventDefault();
+    const staffReservationData = data;
+    staffReservationData.table = $('#table').val() || '';
+    staffReservationData.server = $('#Server').val() || '';
+    staffReservationData.busser = $('#Busser').val() || '';
+    staffReservationData.bartender = $('#Bartender').val() || '';
+    staffReservationData.host = $('#Host').val() || '';
+    addGuestInfo(data);
+    setTimeout(() => {
+      $('#success-message').html('');
+    }, 3000);
+  });
+};
+
+// First Form to Appear
+const addReservationForm = () => {
+  $('#add-reservation').html(`<h2 class="form-title">Add A Reservation</h2>
+    <div id="success-message"></div>
+    <div>
+      <div id="error-message"></div>
+<div id="input-group">
+      <div class="form-group">
+        <label for="image">Number of Guests</label>
+        <select class="form-control" id="numberOfGuests">
+            <option value="">Number of Guests</option>
+          </select>
+      </div>
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input class="form-control" id="datePicker" autocomplete="off" placeholder="Click to choose a date">
+      </div>
+      <div class="form-group">
+      <label for="time">Time</label>
+      <select class="form-control" id="time">
+        <option value="">Select a Time</option>
+      </select>
+      </div>
+    </div>
+    <div id="reservation-buttons">
+    <button id="staffReservationBtn" type="button" class="btn btn-outline"><i class="fas fa-plus-circle"></i> Add Staff Info</button>
+    </div>
+    </div>
+    </div>`);
+
+  // Code for Date dropdown
+  $('#datePicker').datepicker();
+
+  // RESERVATION TIMES DROPDOWN
+  reservationTimes();
+
+  // Number of Guests Dropdown
+  guestNumber();
+
+  $('#staffReservationBtn').on('click', (e) => {
+    e.preventDefault();
     // Capturing the first Segment of Data
     const data = {
       date: $('#datePicker').val() || false,
       numberOfGuests: $('#numberOfGuests').val() || false,
       time: $('#time').val() || false,
-      seatingPreference: $('#seatingPreference').val() || false,
     };
 
     if (Object.values(data).includes(false)) {
@@ -154,7 +241,7 @@ const addReservationForm = () => {
       );
     } else {
       $('#error-message').html('');
-      addGuestInfo(data);
+      addStaffInfo(data);
     }
     setTimeout(() => {
       $('#success-message').html('');

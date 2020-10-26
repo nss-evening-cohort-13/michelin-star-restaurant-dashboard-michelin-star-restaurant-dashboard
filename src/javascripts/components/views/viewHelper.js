@@ -67,6 +67,7 @@ const viewListener = (view, user) => {
 
   // View Ingredients Button
   $('body').on('click', '#viewIngredientsBtn', (e) => {
+    e.stopImmediatePropagation();
     viewHelper(e.currentTarget.id);
   });
 
