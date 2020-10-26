@@ -23,13 +23,13 @@ const ingredientMaker = (object) => {
         menuItemIngredientData.getIngredientObjs(item.id).then((res) => {
           res.forEach((menuId) => {
             if (menuId.ingredientId === firebaseKey) {
-              ingredientData.deleteIngredient(firebaseKey);
               menuItemIngredientData.deleteMenuIngredients(menuId.fbKey);
             }
           });
         });
       });
     });
+    ingredientData.deleteIngredient(firebaseKey);
   });
 
   return domString;
