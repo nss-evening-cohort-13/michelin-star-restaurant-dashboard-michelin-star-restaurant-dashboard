@@ -8,14 +8,15 @@ import reservationView from './reservationView';
 const displayTentativeOrders = (reservationId) => {
   const tentativeOrders = orderData.getTentativeOrders(reservationId);
   if (tentativeOrders !== null) {
+    console.log($('#itemsOrders').text());
     $('#itemsOrdered').html('');
     tentativeOrders.forEach((menuItem) => {
       $('#itemsOrdered').append(`
-      <ul>
-        <li>${menuItem.name}</li>
-        <li>${menuItem.price}</li>
-        <li class="delete-order-btn" id="${menuItem.id}"><i class="far fa-trash-alt"></i></li>
-      </ul>`);
+      <tr class="orderedItem mont-font">
+        <td class="order-name td-orders">${menuItem.name}</td>
+        <td class="td-small td-orders">${menuItem.price}</td>
+        <td class="td-orders delete-order-btn" id="${menuItem.id}"><i class="far fa-trash-alt"></i></td>
+      </tr>`);
     });
   } else if (tentativeOrders === null) {
     $('#itemsOrdered').html('');
@@ -24,17 +25,17 @@ const displayTentativeOrders = (reservationId) => {
 
 const addOrdersView = (reservationId) => {
   $('#app').html(`
-  <div id="ordersDiv">
-    <h2>Add an Order</h2>
+  <div id="ordersDiv" class="container">
+    <h2 class="prat-font">Add an Order</h2>
     <div id="errorMsg"></div>
-    <div id="menuItemsDiv">
-    </div>
-    <div id="checkoutDiv">
-      <h5 id="tableNum"></h5>
-      <div id="itemsOrdered">
-      </div>
-      <div id="orderTotals">
-        <button class="btn add-order-btn btn-outline" id="${reservationId}">Add Order</button>
+    <div class="row">
+      <div id="menuItemsDiv" class="col-md"></div>
+      <div id="checkoutDiv" class="col-sm">
+        <h5 id="tableNum" class="mont-font"></h5>
+        <table class="table table-borderless" id="itemsOrdered"></table>
+        <div id="orderTotals">
+          <button class="btn add-order-btn btn-outline" id="${reservationId}">Add Order</button>
+        </div>
       </div>
     </div>
   </div>`);
@@ -77,7 +78,7 @@ const addOrdersView = (reservationId) => {
     const reservId = e.currentTarget.id;
     const tentOrders = orderData.getTentativeOrders(reservationId);
 
-    if (tentOrders === null) {
+    if (tentOrders === null || tentOrders.length === 0) {
       $('#errorMsg').html(`<div class="alert alert-secondary" role="alert">
       Please select an order.
     </div>`);

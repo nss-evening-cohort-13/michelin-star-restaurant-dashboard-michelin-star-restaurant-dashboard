@@ -1,7 +1,10 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import reservations from '../../helpers/data/reservationData';
 import card from '../cards/reservationCards';
 
 const reservationView = (user) => {
+  const currentUser = user || firebase.auth().currentUser;
   $('#app').html(`<div id="add-reservation"> 
   <div id="error-message-reservation"></div>
   <button id="addReservation" type="button" class="btn btn-outline">Add Reservation</button>
@@ -11,7 +14,7 @@ const reservationView = (user) => {
   $('a.nav-link#staffLink').css({ color: 'white' });
   $('a.nav-link#reservationLink').css({ color: '#EA859E' });
   reservations.getAllReservations().then((response) => {
-    if (user) {
+    if (currentUser) {
       response.forEach((item) => {
         $('#reservationSection').append(card.authReservationCardMaker(item));
       });

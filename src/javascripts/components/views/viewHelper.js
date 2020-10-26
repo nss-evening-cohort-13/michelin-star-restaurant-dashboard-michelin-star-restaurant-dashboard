@@ -121,6 +121,7 @@ const viewListener = (view, user) => {
     viewHelper('home');
   });
   $('body').on('click', '.orders-reservation-btn', (e) => {
+    e.stopImmediatePropagation();
     viewHelper('orders', e.currentTarget.id);
   });
 };
