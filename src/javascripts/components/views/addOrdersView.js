@@ -24,12 +24,12 @@ const displayTentativeOrders = (reservationId) => {
 
 const addOrdersView = (reservationId) => {
   $('#app').html(`
-  <div id="ordersDiv" class="container">
+  <div id="ordersDiv" class="container-fluid">
     <h2 class="prat-font">Add an Order</h2>
     <div id="errorMsg"></div>
     <div class="row">
-      <div id="menuItemsDiv" class="col-md"></div>
-      <div id="checkoutDiv" class="col-sm">
+      <div id="menuItemsDiv" class="col-7"></div>
+      <div id="checkoutDiv" class="col-5">
         <h5 id="tableNum" class="mont-font"></h5>
         <table class="table table-borderless" id="itemsOrdered"></table>
         <div id="orderTotals">
