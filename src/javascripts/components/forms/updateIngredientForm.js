@@ -38,7 +38,7 @@ const updateIngredientsForm = (ingredientObject) => {
     const data = {
       ingredient: $('#ingredient').val() || false,
       category: $('#category').val() || false,
-      quantity: $('#ingredientQuantity').val() || false,
+      quantity: Number($('#ingredientQuantity').val())
     };
 
     if (Object.values(data).includes(false)) {

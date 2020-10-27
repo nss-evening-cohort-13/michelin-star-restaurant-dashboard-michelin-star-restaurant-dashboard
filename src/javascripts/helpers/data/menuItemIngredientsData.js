@@ -73,6 +73,30 @@ const getIngredientObjs = (menuItemId) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const subtractQuantity = (menuItemId) => {
+  getIngredientObjs(menuItemId).then((response) => {
+    response.forEach((item) => {
+      ingredientsData.getSingleIngredient(item.ingredientId).then((res) => {
+        res.quantity -= 1;
+        ingredientsData.updateIngredient(item.ingredientId, res);
+      });
+    });
+  });
+};
+
+const getQuantity = (menuItemId) => new Promise((resolve, reject) => {
+  const ingredientQuantities = [];
+  getIngredientObjs(menuItemId).then((response) => {
+    response.forEach((item) => {
+      ingredientsData.getSingleIngredient(item.ingredientId).then((res) => {
+        ingredientQuantities.push(res.quantity);
+      });
+    });
+    console.warn(ingredientQuantities);
+    resolve(ingredientQuantities);
+  }).catch((error) => reject(error));
+});
+
 const deleteMenuIngredients = (joinTableId) => axios.delete(`${baseUrl}/menuItems_ingredients/${joinTableId}.json`);
 
 export default {
@@ -80,5 +104,7 @@ export default {
   getMenuItemIngredients,
   getMenuIngredientIds,
   deleteMenuIngredients,
-  getIngredientObjs
+  getIngredientObjs,
+  subtractQuantity,
+  getQuantity
 };
