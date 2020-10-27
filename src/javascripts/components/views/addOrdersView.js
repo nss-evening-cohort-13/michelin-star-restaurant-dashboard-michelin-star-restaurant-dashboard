@@ -40,12 +40,24 @@ const addOrdersView = (reservationId) => {
     </div>
   </div>`);
 
+  // const arr = [];
+
+  // const promiseArr = arr.map(() => menuItems.getMenuItems().then((response) => {
+  //   response.forEach((menuItem) => {
+  //     menuIngredients.getQuantity(menuItem.id).then((res) => {
+  //       if (res.includes(0)) {
+  //         $('#menuItemsDiv').append(orderCards.buildOrdersCard(menuItem));
+  //       }
+  //     });
+  //   });
+  // }));
+
   // menuItems
   //   .getMenuItems()
   //   .then((response) => {
   //     response.forEach((menuItem) => {
   //       menuIngredients.getQuantity(menuItem.id).then((res) => {
-  //         if (!res.includes(0)) {
+  //         if (res.includes(0)) {
   //           $('#menuItemsDiv').append(orderCards.buildOrdersCard(menuItem));
   //         }
   //       });
@@ -99,19 +111,19 @@ const addOrdersView = (reservationId) => {
   //   });
   // });
 
-  const menu = menuItems.getMenuItems((response) => response);
-  console.log(menu);
-  // const menuIds = menu.map((x) => x.id);
+  // const menu = menuItems.getMenuItems((response) => response);
+  // console.log(menu);
+  // // const menuIds = menu.map((x) => x.id);
 
-  const promiseArray = (arr) => {
-    const promises = [];
-    arr.forEach((item) => {
-      promises.push(item);
-    });
-    return promises;
-  };
+  // const promiseArray = (arr) => {
+  //   const promises = [];
+  //   arr.forEach((item) => {
+  //     promises.push(item);
+  //   });
+  //   return promises;
+  // };
 
-  console.warn(promiseArray(menu));
+  // console.warn(promiseArray(menu));
   // const x = [];
   // x[0] = new Promise((resolve) => {
   //   resolve(menuIngredients.getQuantity(menuIds[0]));
