@@ -5,27 +5,27 @@ import menuView from '../views/menuView';
 import menuItemIngredientsData from '../../helpers/data/menuItemIngredientsData';
 
 const updateMenuItemForm = (menuObject) => {
-  $('#updateMenuItemForm').html(`<div id="update-menu-item-form">
+  $('#updateMenuItemForm').html(`<form id="update-menu-item-form">
                     <h2 class="form-title">Update Menu Item</h2>
                     <div id="success-message"></div>
                     <div id="error-message"></div>
                     <div id="input-group-menu">
                       <div class="form-group">
                         <label for="menuItemName" class="form-label">Menu Item</label>
-                        <input type="text" class="form-control" id="menuItemName" value="${menuObject.name}" placeholder="Menu Item">
+                        <input type="text" class="form-control" id="menuItemName" value="${menuObject.name}" placeholder="Baguette" required>
                       </div>
                       <div class="form-group">
                         <label for="ingredientSelection" class="form-label">Select Ingredients</label>
-                        <select multiple class="form-control" id="ingredientSelection">
+                        <select multiple class="form-control" id="ingredientSelection" required>
                         </select>
                       </div>
                       <div class="form-group">
                         <label for="price" class="form-label">Price</label>
-                        <input class="form-control" id="price" class="timePicker" autocomplete="off" value="${menuObject.price}" placeholder="Enter a price">
+                        <input type="number" min="0.01" step="0.01" class="form-control" id="price" class="timePicker" autocomplete="off" value="${menuObject.price}" placeholder="0.00" required>
                       </div>
                       <button id="updateMenuItemBtn" type="button" class="btn btn-outline"></i>Update Menu Item</button>
                     </div>
-                  <div>
+                  </form>
   `);
   ingredientsData.getAllIngredients().then((response) => {
     menuItemIngredientsData.getMenuItemIngredients(menuObject.id).then((res) => {
@@ -44,11 +44,11 @@ const updateMenuItemForm = (menuObject) => {
 
   $('#updateMenuItemBtn').on('click', () => {
     const menuItemData = {
-      name: $('#menuItemName').val() || false,
-      price: $('#price').val() || false,
+      name: $('#menuItemName').val(),
+      price: Number($('#price').val()),
     };
 
-    if (Object.values(menuItemData).includes(false)) {
+    if (!document.getElementById('update-menu-item-form').checkValidity()) {
       $('#error-message').html(
         '<div class="alert" role="alert">Please complete all fields</div>'
       );
