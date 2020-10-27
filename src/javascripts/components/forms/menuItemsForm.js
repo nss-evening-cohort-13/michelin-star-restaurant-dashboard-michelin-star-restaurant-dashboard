@@ -12,7 +12,7 @@ const makeMenuItemForm = () => {
                     <div id="input-group-menu">
                       <div class="form-group">
                         <label for="menuItemName">Menu Item</label>
-                        <input type="text" class="form-control" id="menuItemName" placeholder="Menu Item" required>
+                        <input type="text" class="form-control" id="menuItemName" placeholder="Baguette" required>
                       </div>
                       <div class="form-group">
                         <label for="ingredientSelection">Select Ingredients</label>
