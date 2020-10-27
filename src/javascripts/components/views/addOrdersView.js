@@ -1,5 +1,5 @@
 import menuItems from '../../helpers/data/menuItemsData';
-// import orderCards from '../cards/ordersCard';
+import orderCards from '../cards/ordersCard';
 import reservationData from '../../helpers/data/reservationData';
 import orderData from '../../helpers/data/ordersData';
 import orderReservation from '../../helpers/data/orderReservationData';
@@ -51,6 +51,20 @@ const addOrdersView = (reservationId) => {
   //     });
   //   });
   // }));
+
+  const printAvailableMenu = () => {
+    menuItems.getMenuItems().then((response) => {
+      response.forEach((menuItem) => {
+        menuIngredients.getQuantity(menuItem.id).then((res) => {
+          if (!res.includes(0)) {
+            $('#menuItemsDiv').append(orderCards.buildOrdersCard(menuItem));
+          }
+        });
+      });
+    });
+  };
+
+  printAvailableMenu();
 
   // menuItems
   //   .getMenuItems()
