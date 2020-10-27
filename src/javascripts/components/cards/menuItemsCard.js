@@ -6,7 +6,7 @@ const menuItemCardMaker = (item) => {
                       <div class="card-body-menu">
                         <div class="menu-item-title">
                           <h4 class="card-text-menu text-uppercase">${item.name}</h4>
-                          <p id="menuItemPrice">${item.price}</p>
+                          <p id="menuItemPrice">$${item.price}</p>
                         </div>
                         <p id="listOfIngredients-${item.id}" class="text-lowercase"></p>
                       </div>
@@ -25,7 +25,7 @@ const authMenuItemCardMaker = (item) => {
         <div class="card-body-menu">
           <div class="menu-item-title">
             <h4 class="card-text-menu text-uppercase">${item.name}</h4>
-            <p id="menuItemPrice">${item.price}</p>
+            <p id="menuItemPrice">$${item.price}</p>
           </div>
           <div id="menuItemInfo" class="menuItemInfo">
           <p id="listOfIngredients-${item.id}" class="text-lowercase"></p>

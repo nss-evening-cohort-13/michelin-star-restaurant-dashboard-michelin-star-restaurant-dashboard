@@ -22,8 +22,8 @@ const displayTentativeOrders = (reservationId) => {
         <td class="td-small td-orders">${menuItem.price}</td>
         <td class="td-orders delete-order-btn" id="${menuItem.id}"><i class="far fa-trash-alt"></i></td>
       </tr>`);
-      calculateTotal(reservationId);
     });
+    $('#totalPrice').text(`$${calculateTotal(reservationId)}`);
   } else if (tentativeOrders === null) {
     $('#itemsOrdered').html('');
   }
@@ -43,7 +43,7 @@ const addOrdersView = (reservationId) => {
           <table class="table table-borderless text-white mont-font">
             <tr>
               <td>Total</td>
-              <td id="totalPrice">$77.77</td>
+              <td id="totalPrice"></td>
             <tr>
           </table>
           <button class="btn add-order-btn btn-outline" id="${reservationId}">Add Order</button>
