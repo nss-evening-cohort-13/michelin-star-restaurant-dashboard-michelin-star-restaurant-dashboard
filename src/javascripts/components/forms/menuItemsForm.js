@@ -21,7 +21,7 @@ const makeMenuItemForm = () => {
                       </div>
                       <div class="form-group">
                         <label for="price">Price</label>
-                        <input class="form-control" id="price" class="timePicker" autocomplete="off" placeholder="Enter a price">
+                        <input type="number" class="form-control" id="price" class="timePicker" autocomplete="off" placeholder="Enter a price">
                       </div>
                       <button id="submitMenuItemBtn" type="button" class="btn btn-outline"></i>Add Menu Item</button>
                     </div>
@@ -36,7 +36,7 @@ const makeMenuItemForm = () => {
     });
   });
   $('#submitMenuItemBtn').on('click', (e) => {
-    e.preventDefault(e);
+    e.preventDefault();
     const menuItemData = {
       name: $('#menuItemName').val() || false,
       price: $('#price').val() || false,
