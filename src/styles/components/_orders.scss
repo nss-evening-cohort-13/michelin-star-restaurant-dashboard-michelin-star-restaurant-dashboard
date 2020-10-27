@@ -15,6 +15,10 @@
   width: 27%;
 }
 
+.order-body {
+  margin-top: 3%;
+}
+
 .order-card-body {
   display: flex;
   justify-content: center;
@@ -25,7 +29,7 @@ h5.order-card-title {
   padding: 1%;
 }
 
-.checkoutDiv {
+div.checkoutDiv {
   background-color: #555;
   height: 90%;
 }

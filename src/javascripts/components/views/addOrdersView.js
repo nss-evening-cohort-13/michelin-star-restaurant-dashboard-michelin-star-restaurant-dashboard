@@ -27,7 +27,7 @@ const addOrdersView = (reservationId) => {
   <div id="ordersDiv" class="container-fluid">
     <h2 class="prat-font">Add an Order</h2>
     <div id="errorMsg"></div>
-    <div class="row">
+    <div class="row order-body">
       <div id="menuItemsDiv" class="col-7"></div>
       <div id="checkoutDiv" class="col-5">
         <h5 id="tableNum" class="mont-font"></h5>
