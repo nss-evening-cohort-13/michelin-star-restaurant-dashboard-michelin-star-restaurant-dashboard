@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
-  entry: ['babel-polyfill', './src/javascripts/main.js'],
+  entry: './src/javascripts/main.js',
   devtool: "eval-source-map",
   module: {
     rules: [
