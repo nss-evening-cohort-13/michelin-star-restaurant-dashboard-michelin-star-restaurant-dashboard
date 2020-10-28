@@ -29,9 +29,11 @@ h5.order-card-title {
   padding: 1%;
 }
 
-div.checkoutDiv {
+#checkoutDiv {
   background-color: #555;
-  height: 90%;
+  padding: 1.5%;
+  border-radius: 1%;
+  height: 35vw;
 }
 
 .mont-font {
@@ -66,4 +68,13 @@ td.order-name {
 #menuItemsDiv {
   display: flex;
   flex-flow: row wrap;
+}
+
+#orderTotals {
+  position: absolute;
+  bottom: 3%;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  width: 100%;
 }
