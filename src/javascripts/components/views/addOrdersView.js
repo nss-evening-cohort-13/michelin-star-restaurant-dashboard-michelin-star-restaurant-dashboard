@@ -40,121 +40,15 @@ const addOrdersView = (reservationId) => {
     </div>
   </div>`);
 
-  // const arr = [];
-
-  // const promiseArr = arr.map(() => menuItems.getMenuItems().then((response) => {
-  //   response.forEach((menuItem) => {
-  //     menuIngredients.getQuantity(menuItem.id).then((res) => {
-  //       if (res.includes(0)) {
-  //         $('#menuItemsDiv').append(orderCards.buildOrdersCard(menuItem));
-  //       }
-  //     });
-  //   });
-  // }));
-
-  const printAvailableMenu = () => {
-    menuItems.getMenuItems().then((response) => {
-      response.forEach((menuItem) => {
-        menuIngredients.getQuantity(menuItem.id).then((res) => {
-          if (!res.includes(0)) {
-            $('#menuItemsDiv').append(orderCards.buildOrdersCard(menuItem));
-          }
-        });
+  menuItems.getMenuItems().then((response) => {
+    response.forEach((item) => {
+      menuIngredients.getQuantity(item.id).then((res) => {
+        if (!res.includes(0)) {
+          $('#menuItemsDiv').append(orderCards.buildOrdersCard(item));
+        }
       });
     });
-  };
-
-  printAvailableMenu();
-
-  // menuItems
-  //   .getMenuItems()
-  //   .then((response) => {
-  //     response.forEach((menuItem) => {
-  //       menuIngredients.getQuantity(menuItem.id).then((res) => {
-  //         if (res.includes(0)) {
-  //           $('#menuItemsDiv').append(orderCards.buildOrdersCard(menuItem));
-  //         }
-  //       });
-  //     });
-  //   })
-  //   .catch((error) => console.warn(error));
-
-  // const coolFunction = (id) => menuIngredients.getQuantity(id);
-
-  // const hasIngredients = () => new Promise(() => {
-  //   menuItems.getMenuItems().then((res) => {
-  //     console.warn(res);
-  //     return res;
-  //   }).then((re) => {
-  //     console.warn('inner', re);
-  //     const ids = [];
-  //     re.forEach((menuItem) => {
-  //       ids.push(menuItem.id);
-  //     });
-  //     console.warn(ids);
-  //     return ids;
-  //   }).then((id) => {
-  //     id.forEach((menuId) => {
-  //       coolFunction(menuId).then((r) => {
-  //         console.warn(r);
-  //       });
-  //     });
-  //   });
-  // }).then(console.warn('outer'));
-  // .then((response) => response).then((res) => {
-  //   res.forEach((menuItem) => {
-  //     menuIngredients.getQuantity(menuItem.id).then((re) => {
-  //       if (!re.includes(0)) {
-  //         $('#menuItemsDiv').append(orderCards.buildOrdersCard(menuItem));
-  //       }
-  //     });
-  //   });
-  // });
-
-  // hasIngredients();
-
-  // const getQuan = menuIngredients.getQuantity();
-
-  // Promise.all([getMenu, getQuan]).then(([menuResponse, quantityResponse]) => {
-  //   menuResponse.forEach((menuItem) => {
-  //     getQuan(menuItem.id).then(() => {
-  //       if (!quantityResponse.includes(0)) {
-  //         $('#menuItemsDiv').append(orderCards.buildOrdersCard(menuItem));
-  //       }
-  //     });
-  //   });
-  // });
-
-  // const menu = menuItems.getMenuItems((response) => response);
-  // console.log(menu);
-  // // const menuIds = menu.map((x) => x.id);
-
-  // const promiseArray = (arr) => {
-  //   const promises = [];
-  //   arr.forEach((item) => {
-  //     promises.push(item);
-  //   });
-  //   return promises;
-  // };
-
-  // console.warn(promiseArray(menu));
-  // const x = [];
-  // x[0] = new Promise((resolve) => {
-  //   resolve(menuIngredients.getQuantity(menuIds[0]));
-  // });
-  // console.log(x);
-
-  // menuItems.getMenuItems().then((response) => {
-  //   response.forEach((item) => {
-  //     menuIngredients.getQuantity(item.id).then((res) => {
-  //       res.forEach((re) => {
-  //         if (!re.includes(0)) {
-  //           $('#menuItemsDiv').append(orderCards.buildOrdersCard(item));
-  //         }
-  //       });
-  //     });
-  //   });
-  // });
+  });
 
   reservationData.getSingleReservation(reservationId).then((response) => {
     $('#tableNum').text(`Table ${response.table}`);

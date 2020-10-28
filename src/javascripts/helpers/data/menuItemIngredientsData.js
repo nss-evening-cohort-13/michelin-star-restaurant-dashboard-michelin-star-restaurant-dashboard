@@ -86,15 +86,12 @@ const subtractQuantity = (menuItemId) => {
 
 const getQuantity = (menuItemId) => new Promise((resolve, reject) => {
   const ingredientQuantities = [];
-  getIngredientObjs(menuItemId).then((response) => {
-    response.forEach((item) => {
-      ingredientsData.getSingleIngredient(item.ingredientId).then((res) => {
-        ingredientQuantities.push(res.quantity);
-      });
-    });
-    console.warn(ingredientQuantities);
-    resolve(ingredientQuantities);
-  }).catch((error) => reject(error));
+  getIngredientObjs(menuItemId)
+    .then((response) => Promise.all(response.map((item) => ingredientsData.getSingleIngredient(item.ingredientId))))
+    .then((res) => res.forEach((ingredient) => {
+      ingredientQuantities.push(ingredient.quantity);
+    })).then(() => resolve(ingredientQuantities))
+    .catch((error) => reject(error));
 });
 
 const deleteMenuIngredients = (joinTableId) => axios.delete(`${baseUrl}/menuItems_ingredients/${joinTableId}.json`);
