@@ -6,6 +6,12 @@ import orderReservation from '../../helpers/data/orderReservationData';
 import reservationView from './reservationView';
 import menuIngredients from '../../helpers/data/menuItemIngredientsData';
 
+const calculateTotal = (reservationId) => {
+  const orders = orderData.getTentativeOrders(reservationId);
+  const orderTotal = orders.reduce((total, order) => total + order.price, 0);
+  return Number(orderTotal).toFixed(2);
+};
+
 const displayTentativeOrders = (reservationId) => {
   const tentativeOrders = orderData.getTentativeOrders(reservationId);
   if (tentativeOrders !== null) {
@@ -14,10 +20,11 @@ const displayTentativeOrders = (reservationId) => {
       $('#itemsOrdered').append(`
       <tr class="orderedItem mont-font">
         <td class="order-name td-orders">${menuItem.name}</td>
-        <td class="td-small td-orders">${menuItem.price}</td>
+        <td class="td-small td-orders">$${menuItem.price.toFixed(2)}</td>
         <td class="td-orders delete-order-btn" id="${menuItem.id}"><i class="far fa-trash-alt"></i></td>
       </tr>`);
     });
+    $('#totalPrice').text(`$${calculateTotal(reservationId)}`);
   } else if (tentativeOrders === null) {
     $('#itemsOrdered').html('');
   }
@@ -34,6 +41,12 @@ const addOrdersView = (reservationId) => {
         <h5 id="tableNum" class="mont-font"></h5>
         <table class="table table-borderless" id="itemsOrdered"></table>
         <div id="orderTotals">
+          <table class="table table-borderless text-white mont-font">
+            <tr>
+              <td>Total</td>
+              <td id="totalPrice"></td>
+            <tr>
+          </table>
           <button class="btn add-order-btn btn-outline" id="${reservationId}">Add Order</button>
         </div>
       </div>
