@@ -19,6 +19,10 @@ const updateIngredientsForm = (ingredientObject) => {
           <option selected ='selected' value="${ingredientObject.category}">${ingredientObject.category}</option>
         </select>
         </div>
+        <div class="form-group">
+          <label for="Quantity" class="form-label">Quantity</label>
+          <input type="number" class="form-control pr-3" id="ingredientQuantity" value="${ingredientObject.quantity}" placeholder=0 />
+        </div>
       </div>
       <button id="updateIngredientBtn" type="button" class="btn btn-outline">
         Update Ingredient
@@ -34,6 +38,7 @@ const updateIngredientsForm = (ingredientObject) => {
     const data = {
       ingredient: $('#ingredient').val() || false,
       category: $('#category').val() || false,
+      quantity: Number($('#ingredientQuantity').val())
     };
 
     if (Object.values(data).includes(false)) {
@@ -60,6 +65,7 @@ const updateIngredientsForm = (ingredientObject) => {
         .catch((error) => console.warn(error));
       $('#ingredient').val('');
       $('#category').val('');
+      $('#ingredientQuantity').val('');
     }
   });
 };
