@@ -20,7 +20,7 @@ const displayTentativeOrders = (reservationId) => {
       $('#itemsOrdered').append(`
       <tr class="orderedItem mont-font">
         <td class="order-name td-orders">${menuItem.name}</td>
-        <td class="td-small td-orders">$${menuItem.price.toFixed(2)}</td>
+        <td class="td-small td-orders">$${menuItem.price.toFixed(2) || 0.00}</td>
         <td class="td-orders delete-order-btn" id="${menuItem.id}"><i class="far fa-trash-alt"></i></td>
       </tr>`);
     });
@@ -32,16 +32,16 @@ const displayTentativeOrders = (reservationId) => {
 
 const addOrdersView = (reservationId) => {
   $('#app').html(`
-  <div id="ordersDiv" class="container">
+  <div id="ordersDiv" class="container-fluid">
     <h2 class="prat-font">Add an Order</h2>
     <div id="errorMsg"></div>
-    <div class="row">
-      <div id="menuItemsDiv" class="col-md"></div>
-      <div id="checkoutDiv" class="col-sm">
+    <div class="row order-body">
+      <div id="menuItemsDiv" class="col-7"></div>
+      <div id="checkoutDiv" class="col-5">
         <h5 id="tableNum" class="mont-font"></h5>
         <table class="table table-borderless" id="itemsOrdered"></table>
         <div id="orderTotals">
-          <table class="table table-borderless text-white mont-font">
+          <table class="table table-borderless text-white mont-font order-total-table">
             <tr>
               <td>Total</td>
               <td id="totalPrice"></td>
