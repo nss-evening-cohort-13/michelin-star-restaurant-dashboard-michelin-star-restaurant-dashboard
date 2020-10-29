@@ -80,5 +80,6 @@ export default {
   getMenuItemIngredients,
   getMenuIngredientIds,
   deleteMenuIngredients,
-  getIngredientObjs
+  getIngredientObjs,
+  objToArray
 };

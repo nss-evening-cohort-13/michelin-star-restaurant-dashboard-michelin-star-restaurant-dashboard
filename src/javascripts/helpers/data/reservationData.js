@@ -33,7 +33,7 @@ const getSingleReservation = (reservationFirebaseKey) => new Promise((resolve, r
     }).catch((error) => reject(error));
 });
 
-// This is updating the reservation data on friebase
+// This is updating the reservation data on firebase
 const updateReservation = (firebaseKey, data) => axios.patch(`${baseUrl}/reservations/${firebaseKey}.json`, data);
 
 export default {

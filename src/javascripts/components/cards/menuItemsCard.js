@@ -1,5 +1,7 @@
 import menuData from '../../helpers/data/menuItemsData';
 import menuItemIngredientsData from '../../helpers/data/menuItemIngredientsData';
+import orderReservationData from '../../helpers/data/orderReservationData';
+import reservationData from '../../helpers/data/reservationData';
 
 const menuItemCardMaker = (item) => {
   const domString = `<div class="card-menu m-4" id="${item.id}">
@@ -47,6 +49,17 @@ const authMenuItemCardMaker = (item) => {
             if (menuId.menuItemId === firebaseKey) {
               menuItemIngredientsData.deleteMenuIngredients(menuId.fbKey);
             }
+          });
+        });
+        reservationData.getAllReservations().then((resoResponse) => {
+          resoResponse.forEach((reservation) => {
+            orderReservationData.getReservationOrders(reservation.uid).then((resoRes) => {
+              menuItemIngredientsData.objToArray(resoRes.data).forEach((resoId) => {
+                if (resoId.menuItemId === firebaseKey) {
+                  orderReservationData.deleteReservationItems(resoId.fbKey);
+                }
+              });
+            });
           });
         });
       });

@@ -1,5 +1,7 @@
 import axios from 'axios';
 import apiKeys from '../apiKeys.json';
+import objToArray from './menuItemIngredientsData';
+import menuItems from './menuItemsData';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
@@ -11,4 +13,31 @@ const addOrderReservation = (data) => axios
   })
   .catch((error) => console.warn(error));
 
-export default { addOrderReservation };
+const getReservationOrders = (reservationId) => axios.get(`${baseUrl}/reservations_menuItems.json?orderBy="reservationId"&equalTo="${reservationId}"`);
+
+const orderTotal = (reservationId) => new Promise((resolve, reject) => {
+  const getReservation = getReservationOrders(reservationId);
+  const getMenuItems = menuItems.getMenuItems();
+
+  Promise.all([getReservation, getMenuItems]).then(([reservationResponse, menuResponse]) => {
+    const menuPrices = [];
+    const orderArray = objToArray.objToArray(reservationResponse.data);
+    orderArray.forEach((menuItem) => {
+      const menuObject = menuResponse.find(
+        (price) => price.id === menuItem.menuItemId
+      );
+      const menuItemUse = menuObject.price || 0;
+      menuPrices.push(menuItemUse);
+    });
+    resolve(menuPrices);
+  }).catch((error) => reject(error));
+});
+
+const deleteReservationItems = (joinTableId) => axios.delete(`${baseUrl}/reservations_menuItems/${joinTableId}.json`);
+
+export default {
+  addOrderReservation,
+  deleteReservationItems,
+  orderTotal,
+  getReservationOrders
+};
