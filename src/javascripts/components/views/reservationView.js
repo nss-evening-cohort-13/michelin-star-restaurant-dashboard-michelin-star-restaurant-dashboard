@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import reservations from '../../helpers/data/reservationData';
 import card from '../cards/reservationCards';
+import singleReservation from './singleReservationView';
 
 const reservationView = (user) => {
   const currentUser = user || firebase.auth().currentUser;
@@ -17,6 +18,9 @@ const reservationView = (user) => {
     if (currentUser) {
       response.forEach((item) => {
         $('#reservationSection').append(card.authReservationCardMaker(item));
+        singleReservation.calculateTotal(item).then((res) => {
+          $(`#total-${item.uid}`).html(`Total: $${res}`);
+        });
       });
     } else {
       response.forEach((item) => {

@@ -102,6 +102,7 @@ export default {
   getMenuIngredientIds,
   deleteMenuIngredients,
   getIngredientObjs,
+  objToArray,
   subtractQuantity,
   getQuantity
 };
