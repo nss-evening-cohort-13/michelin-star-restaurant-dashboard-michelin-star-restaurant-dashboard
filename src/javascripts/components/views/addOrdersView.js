@@ -4,6 +4,7 @@ import reservationData from '../../helpers/data/reservationData';
 import orderData from '../../helpers/data/ordersData';
 import orderReservation from '../../helpers/data/orderReservationData';
 import reservationView from './reservationView';
+import menuIngredients from '../../helpers/data/menuItemIngredientsData';
 
 const calculateTotal = (reservationId) => {
   const orders = orderData.getTentativeOrders(reservationId);
@@ -52,14 +53,15 @@ const addOrdersView = (reservationId) => {
     </div>
   </div>`);
 
-  menuItems
-    .getMenuItems()
-    .then((response) => {
-      response.forEach((menuItem) => {
-        $('#menuItemsDiv').append(orderCards.buildOrdersCard(menuItem));
+  menuItems.getMenuItems().then((response) => {
+    response.forEach((item) => {
+      menuIngredients.getQuantity(item.id).then((res) => {
+        if (!res.includes(0)) {
+          $('#menuItemsDiv').append(orderCards.buildOrdersCard(item));
+        }
       });
-    })
-    .catch((error) => console.warn(error));
+    });
+  });
 
   reservationData.getSingleReservation(reservationId).then((response) => {
     $('#tableNum').text(`Table ${response.table}`);
@@ -100,6 +102,7 @@ const addOrdersView = (reservationId) => {
           menuItemId: menuItem.id,
           reservationId: reservId
         };
+        menuIngredients.subtractQuantity(menuItem.id);
         orderReservation.addOrderReservation(data);
         orderData.clearOrder(reservId);
         reservationView.reservationView();
