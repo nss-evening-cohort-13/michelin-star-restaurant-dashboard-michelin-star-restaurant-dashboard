@@ -104,9 +104,9 @@ const addOrdersView = (reservationId) => {
         };
         menuIngredients.subtractQuantity(menuItem.id);
         orderReservation.addOrderReservation(data);
-        orderData.clearOrder(reservId);
-        reservationView.reservationView();
       });
+      orderData.clearOrder(reservId);
+      reservationView.reservationView();
     }
   });
 };
