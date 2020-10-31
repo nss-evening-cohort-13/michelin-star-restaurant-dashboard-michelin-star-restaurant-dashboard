@@ -30,6 +30,7 @@ const menuView = (user) => {
   });
   $('a.nav-link#reservationLink').css({ color: 'white' });
   $('a.nav-link#staffLink').css({ color: 'white' });
+  $('a.nav-link#reportsLink').css({ color: 'white' });
   $('a.nav-link#menuLink').css({ color: '#EA859E' });
 };
 

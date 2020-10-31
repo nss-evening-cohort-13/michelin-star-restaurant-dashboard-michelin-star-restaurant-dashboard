@@ -14,6 +14,7 @@ const staffView = (user) => {
   $('.staff-form').css({ display: 'none' });
   $('a.nav-link#reservationLink').css({ color: 'white' });
   $('a.nav-link#menuLink').css({ color: 'white' });
+  $('a.nav-link#reportsLink').css({ color: 'white' });
   $('a.nav-link#staffLink').css({ color: '#EA859E' });
   staffData.getAllStaff().then((response) => {
     if (user) {
