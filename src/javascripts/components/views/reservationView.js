@@ -14,6 +14,7 @@ const reservationView = (user) => {
   <div id="edit-reservation"></div>`);
   $('a.nav-link#menuLink').css({ color: 'white' });
   $('a.nav-link#staffLink').css({ color: 'white' });
+  $('a.nav-link#reportsLink').css({ color: 'white' });
   $('a.nav-link#reservationLink').css({ color: '#EA859E' });
   reservations.getAllReservations().then((response) => {
     if (currentUser) {
