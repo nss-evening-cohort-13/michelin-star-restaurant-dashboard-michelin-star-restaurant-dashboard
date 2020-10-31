@@ -18,6 +18,10 @@ const navbar = () => {
     <li class="nav-item mx-3" id="staffLink">
       <a class="nav-link" id="staffLink" href="#" style="color: white;">Staff</a>
     </li>
+    <li class="nav-item mx-3"  id="reportsLink">
+    <a class="nav-link" id="reportsLink" href="#" style="color: white;">
+    Reports</a>
+  </li>
   </ul>
 
       <ul class="navbar-nav ml-auto">
