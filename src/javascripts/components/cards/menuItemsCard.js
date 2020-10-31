@@ -1,12 +1,14 @@
 import menuData from '../../helpers/data/menuItemsData';
 import menuItemIngredientsData from '../../helpers/data/menuItemIngredientsData';
+import orderReservationData from '../../helpers/data/orderReservationData';
+import reservationData from '../../helpers/data/reservationData';
 
 const menuItemCardMaker = (item) => {
   const domString = `<div class="card-menu m-4" id="${item.id}">
                       <div class="card-body-menu">
                         <div class="menu-item-title">
                           <h4 class="card-text-menu text-uppercase">${item.name}</h4>
-                          <p id="menuItemPrice">${item.price}</p>
+                          <p id="menuItemPrice">$${item.price.toFixed(2)}</p>
                         </div>
                         <p id="listOfIngredients-${item.id}" class="text-lowercase"></p>
                       </div>
@@ -25,7 +27,7 @@ const authMenuItemCardMaker = (item) => {
         <div class="card-body-menu">
           <div class="menu-item-title">
             <h4 class="card-text-menu text-uppercase">${item.name}</h4>
-            <p id="menuItemPrice">${item.price}</p>
+            <p id="menuItemPrice">$${item.price.toFixed(2)}</p>
           </div>
           <div id="menuItemInfo" class="menuItemInfo">
           <p id="listOfIngredients-${item.id}" class="text-lowercase"></p>
@@ -47,6 +49,17 @@ const authMenuItemCardMaker = (item) => {
             if (menuId.menuItemId === firebaseKey) {
               menuItemIngredientsData.deleteMenuIngredients(menuId.fbKey);
             }
+          });
+        });
+        reservationData.getAllReservations().then((resoResponse) => {
+          resoResponse.forEach((reservation) => {
+            orderReservationData.getReservationOrders(reservation.uid).then((resoRes) => {
+              menuItemIngredientsData.objToArray(resoRes.data).forEach((resoId) => {
+                if (resoId.menuItemId === firebaseKey) {
+                  orderReservationData.deleteReservationItems(resoId.fbKey);
+                }
+              });
+            });
           });
         });
       });

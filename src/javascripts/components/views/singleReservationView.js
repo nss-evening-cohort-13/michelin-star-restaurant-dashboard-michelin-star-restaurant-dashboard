@@ -1,3 +1,15 @@
+import orderReservationData from '../../helpers/data/orderReservationData';
+
+const calculateTotal = (reso) => new Promise((resolve, reject) => {
+  orderReservationData.orderTotal(reso.uid).then((res) => {
+    if (res === null || res.length === 0) {
+      resolve('0');
+    }
+    const orderTotalFinal = res.reduce((total, price) => total + price, 0);
+    resolve(Number(orderTotalFinal.toFixed(2)));
+  }).catch((error) => reject(error));
+});
+
 const singleReservationView = (reso) => {
   const domString = `<div class="modal fade reservation-modal" id="view-${reso.uid}" tabindex="-1" aria-labelledby="reservationModal" aria-hidden="true">
   <div class="modal-dialog">
@@ -17,6 +29,11 @@ const singleReservationView = (reso) => {
           <p>Busser: ${reso.busser || 'Not Assigned'}</p>
           <p>Bartender: ${reso.bartender || 'Not Assigned'}</p>
         </div>
+        <div id="billTotal">
+          <h3 class="modal-header">Bill Info</h3>
+          <ul id="items-${reso.uid}"></ul>
+          <p id="total-${reso.uid}"></p>
+        </div>
         <div id="guestInfo">
           <h3 class="modal-header">Guest Information</h3>
           <p>${reso.firstName} ${reso.lastName} · ${reso.phoneNumber}</p>
@@ -30,4 +47,4 @@ const singleReservationView = (reso) => {
   return domString;
 };
 
-export default { singleReservationView };
+export default { singleReservationView, calculateTotal };

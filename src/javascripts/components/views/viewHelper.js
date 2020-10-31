@@ -14,6 +14,7 @@ import homePage from './homePageView';
 import editReservationView from './editReservationView';
 import updateMenuView from './updateMenuView';
 import updateIngredient from './updateIngredientsView';
+import ordersView from './addOrdersView';
 
 const viewHelper = (id, argument) => {
   $('#app').html('');
@@ -42,6 +43,8 @@ const viewHelper = (id, argument) => {
         return updateIngredient.updateIngredientView(argument);
       case 'home':
         return homePage.homePageView();
+      case 'orders':
+        return ordersView.addOrdersView(argument);
       default:
         return console.warn('nothing clicked');
     }
@@ -116,6 +119,10 @@ const viewListener = (view, user) => {
   });
   $('body').on('click', 'a.navbar-brand', () => {
     viewHelper('home');
+  });
+  $('body').on('click', '.orders-reservation-btn', (e) => {
+    e.stopImmediatePropagation();
+    viewHelper('orders', e.currentTarget.id);
   });
 };
 

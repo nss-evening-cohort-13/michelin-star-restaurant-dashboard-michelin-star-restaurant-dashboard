@@ -1,0 +1,84 @@
+#ordersDiv {
+  color: white;
+  background-color: #444444;
+  width: 80%;
+  padding: 2%;
+}
+
+.order-card {
+  background-color: #555;
+  height: 8rem;
+  cursor: pointer;
+  margin: 1% 3%;
+  text-align: center;
+  padding: 1%;
+  width: 27%;
+}
+
+.order-body {
+  margin-top: 3%;
+}
+
+.order-card-body {
+  display: flex;
+  justify-content: center;
+}
+
+h5.order-card-title {
+  font-size: 1vw;
+  padding: 1%;
+}
+
+#checkoutDiv {
+  background-color: #555;
+  padding: 1.5%;
+  border-radius: 1%;
+  height: 35vw;
+}
+
+.mont-font {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.prat-font {
+  font-family: 'Prata', serif;
+}
+.orderedItem {
+  display: flex;
+  list-style-type: none;
+}
+
+td.td-orders {
+  margin: 1% 5% 1% 5%;
+  text-align: left;
+}
+
+td.td-small {
+  width: 2rem;
+}
+
+td.order-name {
+  width: 100%;
+}
+
+#itemsOrdered {
+  color: white;
+}
+
+#menuItemsDiv {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#orderTotals {
+  position: absolute;
+  bottom: 3%;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}

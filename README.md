@@ -9,7 +9,7 @@ The motivation is to show our proficiency with CRUD, while doing API calls to an
 Deployed
 
 ## Site Link
-### [Le Baguette](https://michelin-star-35c92.web.app/)
+### [Le Baguette](https://le-baguette-e03bd.web.app/)
 
 ## Code Style
 We are using webpack with Eslintrc with Airbnb strict rules
@@ -68,7 +68,6 @@ const viewHelper = (id, argument) => {
 ```
 
 ## ERD
-![ERD - First Group](https://i.postimg.cc/bNRHYqzb/ERD-michelin-star.png)
 ![ERD - Second Group](https://i.postimg.cc/NMS3NsvM/le-baguette-screenshot.png)
 
 ## Wireframe
