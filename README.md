@@ -68,7 +68,6 @@ const viewHelper = (id, argument) => {
 ```
 
 ## ERD
-![ERD - First Group](https://i.postimg.cc/bNRHYqzb/ERD-michelin-star.png)
 ![ERD - Second Group](https://i.postimg.cc/NMS3NsvM/le-baguette-screenshot.png)
 
 ## Wireframe
