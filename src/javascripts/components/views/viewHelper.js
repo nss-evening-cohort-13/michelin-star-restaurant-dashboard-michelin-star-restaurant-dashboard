@@ -15,6 +15,7 @@ import editReservationView from './editReservationView';
 import updateMenuView from './updateMenuView';
 import updateIngredient from './updateIngredientsView';
 import ordersView from './addOrdersView';
+import reportsView from './reportsView';
 
 const viewHelper = (id, argument) => {
   $('#app').html('');
@@ -25,6 +26,8 @@ const viewHelper = (id, argument) => {
         return menuView.menuView(user);
       case 'reservationLink':
         return reservationView.reservationView(user);
+      case 'reportsLink':
+        return reportsView.reportsView(user);
       case 'addReservation':
         return addReservationView.addReservationView();
       case 'staffLink':
