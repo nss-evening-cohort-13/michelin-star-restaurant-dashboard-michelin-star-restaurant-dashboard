@@ -36,4 +36,20 @@ const popularItems = () => {
   });
 };
 
-export default { popularItems };
+const leastPopularItems = () => {
+  topTenItems().then((res) => {
+    const resSort = res.sort((a, b) => a.count - b.count);
+
+    if (resSort.length < 10) {
+      for (let i = 0; i < resSort.length; i += 1) {
+        $('#leastPopularList').append(`<li>${resSort[i].name}</li>`);
+      }
+    } else {
+      for (let i = 0; i < 9; i += 1) {
+        $('#leastPopularList').append(`<li>${resSort[i].name}</li>`);
+      }
+    }
+  });
+};
+
+export default { popularItems, leastPopularItems };
