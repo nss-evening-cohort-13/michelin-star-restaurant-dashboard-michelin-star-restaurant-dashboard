@@ -26,11 +26,11 @@ const popularItems = () => {
   topTenItems().then((res) => {
     if (res.length < 10) {
       for (let i = 0; i < res.length; i += 1) {
-        $('#popularItemsList').append(`<li>${res[i].name}</li>`);
+        $('#popularItemsList').append(`<li>${res[i].name} - ${res[i].count} orders</li>`);
       }
     } else {
-      for (let i = 0; i < 9; i += 1) {
-        $('#popularItemsList').append(`<li>${res[i].name}</li>`);
+      for (let i = 0; i < 10; i += 1) {
+        $('#popularItemsList').append(`<li>${res[i].name} - ${res[i].count} orders</li>`);
       }
     }
   });
@@ -42,11 +42,11 @@ const leastPopularItems = () => {
 
     if (resSort.length < 10) {
       for (let i = 0; i < resSort.length; i += 1) {
-        $('#leastPopularList').append(`<li>${resSort[i].name}</li>`);
+        $('#leastPopularList').append(`<li>${resSort[i].name} - ${resSort[i].count} orders</li>`);
       }
     } else {
-      for (let i = 0; i < 9; i += 1) {
-        $('#leastPopularList').append(`<li>${resSort[i].name}</li>`);
+      for (let i = 0; i < 10; i += 1) {
+        $('#leastPopularList').append(`<li>${resSort[i].name} - ${resSort[i].count} orders</li>`);
       }
     }
   });
