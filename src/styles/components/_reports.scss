@@ -1,0 +1,17 @@
+#popularMenuItemsDiv, #leastPopularDiv {
+  background-color: white;
+  padding: 2%;
+  border-radius: 2%;
+  text-align: left;
+  margin: 2%;
+}
+
+#popularMenuItemsDiv > h3,
+#leastPopularDiv > h3 {
+  font-family: 'Prata', serif;
+}
+
+#popularMenuItemsDiv > li,
+#leastPopularDiv > li {
+  font-family: 'Montserrat', sans-serif;
+}
