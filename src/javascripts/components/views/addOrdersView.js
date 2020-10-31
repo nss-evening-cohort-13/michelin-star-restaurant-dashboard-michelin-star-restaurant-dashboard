@@ -107,6 +107,7 @@ const addOrdersView = (reservationId) => {
       });
       orderData.clearOrder(reservId);
       reservationView.reservationView();
+      e.stopImmediatePropagation();
     }
   });
 };
