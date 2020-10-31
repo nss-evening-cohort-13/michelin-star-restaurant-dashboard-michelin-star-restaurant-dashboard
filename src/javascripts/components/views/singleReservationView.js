@@ -31,6 +31,7 @@ const singleReservationView = (reso) => {
         </div>
         <div id="billTotal">
           <h3 class="modal-header">Bill Info</h3>
+          <ul id="items-${reso.uid}"></ul>
           <p id="total-${reso.uid}"></p>
         </div>
         <div id="guestInfo">

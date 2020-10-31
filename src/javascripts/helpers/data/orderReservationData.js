@@ -45,6 +45,23 @@ const getAllMenRes = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const getOrderItems = (resoId) => new Promise((resolve, reject) => {
+  const getReservation = getReservationOrders(resoId);
+  const getMenuItems = menuItems.getMenuItems();
+
+  Promise.all([getReservation, getMenuItems]).then(([reservationResponse, menuResponse]) => {
+    const orderItems = [];
+    const orderArray = objToArray.objToArray(reservationResponse.data);
+    orderArray.forEach((menuItem) => {
+      const menuObject = menuResponse.find(
+        (orderItem) => orderItem.id === menuItem.menuItemId
+      );
+      orderItems.push(menuObject);
+    });
+    resolve(orderItems);
+  }).catch((error) => reject(error));
+});
+
 const deleteReservationItems = (joinTableId) => axios.delete(`${baseUrl}/reservations_menuItems/${joinTableId}.json`);
 
 export default {
@@ -53,5 +70,6 @@ export default {
   orderTotal,
   getReservationOrders,
   getMenuOrders,
-  getAllMenRes
+  getAllMenRes,
+  getOrderItems
 };
