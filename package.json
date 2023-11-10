@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.14.0",
-    "axios": "0.20.0",
+    "axios": "1.6.0",
     "bootstrap": "4.5.2",
     "firebase": "^7.21.0",
     "firebase-tools": "^8.13.1",
